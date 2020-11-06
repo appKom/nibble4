@@ -7,18 +7,22 @@ const Navbar: FC = () => {
       <div>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="RFID scan here" />
       </div>
+      <div>
+        <span>Ola Nordmann | (icon) xxxkr - xxx Ølcoins (icon)</span>
+      </div>
+      <div>(icon)</div>
     </Container>
   );
 };
 
-export default styled(Navbar)``;
+export default Navbar;
 
 const Container = styled.div`
   background-color: #0d5474;
   color: white;
-
+  text-align: left;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 2fr 4fr 1fr;
   padding: 10px;
 
   img {
