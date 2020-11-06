@@ -1,15 +1,17 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
-import ShopWindow from "./ShopWindow";
+import Window from "./ShopWindow";
 
 const Shop: FC = () => {
   return (
-    <div>
+    <Container>
       <Navbar />
-      <ShopWindow />
-    </div>
+      <Window />
+    </Container>
   );
 };
 
 export default styled(Shop)``;
+
+const Container = styled.div``;

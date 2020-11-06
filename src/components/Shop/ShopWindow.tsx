@@ -8,7 +8,8 @@ const ShopWindow: FC = () => {
 export default ShopWindow;
 
 const Container = styled.div`
+  background-color: #f7f7fb;
   width: 200px;
   height: 200px;
-  background-color: #f7f7fb;
+  border: 1px solid black;
 `;
