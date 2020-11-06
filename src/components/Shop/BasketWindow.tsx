@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-const ShopWindow: FC = () => {
+const BasketWindow: FC = () => {
   return <Container> </Container>;
 };
 
-export default ShopWindow;
+export default BasketWindow;
 
 const Container = styled.div`
-  background-color: #f7f7fb;
-  width: 100%;
+  background-color: blue;
+  width: 100%
   border: 1px solid black;
 `;
