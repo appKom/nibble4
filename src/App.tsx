@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Login from "./Login";
-import Shop from "./Shop";
+import Login from "./components/Login";
+import Shop from "./components/Shop";
 
 const App: FC = () => (
   <Router>
