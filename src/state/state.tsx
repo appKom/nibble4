@@ -6,10 +6,12 @@ import { Action, ActionTypes } from "state/actions";
 type State = {
   user?: User;
   inventory: Product[];
+  category: string;
 };
 
 const initialState: State = {
   inventory: [],
+  category: "Alt",
 };
 
 // const getIncrementedCartItem = (id: number, state: GlobalState): CartItem => {
@@ -36,6 +38,8 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, user: undefined };
     case ActionTypes.SET_INVENTORY:
       return { ...state, inventory: action.payload };
+    case ActionTypes.SET_CATEGORY:
+      return { ...state, category: action.payload };
     default:
       return { ...state };
   }
