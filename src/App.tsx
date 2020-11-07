@@ -1,4 +1,4 @@
-import Login from "pages/Login";
+import LoginPage from "pages/LoginPage";
 import React, { FC } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -8,7 +8,8 @@ const App: FC = () => (
   <Router>
     <Switch>
       <Route path="/shop/" component={Shop} />
-      <Route path="/" exact component={Login} />
+      <Route path="/" component={LoginPage} />
+      <Route component={LoginPage} />
     </Switch>
   </Router>
 );

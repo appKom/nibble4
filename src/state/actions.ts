@@ -7,15 +7,22 @@ export enum ActionTypes {
   SET_INVENTORY = "SET_INVENTORY",
 }
 
-export type Action =
-  | {
-      type: ActionTypes.SET_USER;
-      payload: User;
-    }
-  | {
-      type: ActionTypes.LOGOUT_USER;
-    }
-  | {
-      type: ActionTypes.SET_INVENTORY;
-      payload: Product[];
-    };
+type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
+type LogoutUserAction = { type: ActionTypes.LOGOUT_USER };
+type SetInventoryAction = {
+  type: ActionTypes.SET_INVENTORY;
+  payload: Product[];
+};
+export type Action = SetUserAction | LogoutUserAction | SetInventoryAction;
+
+export const setUser = (user: User): SetUserAction => ({
+  type: ActionTypes.SET_USER,
+  payload: user,
+});
+export const logoutUser = (): LogoutUserAction => ({
+  type: ActionTypes.LOGOUT_USER,
+});
+export const setInventory = (inventory: Product[]): SetInventoryAction => ({
+  type: ActionTypes.SET_INVENTORY,
+  payload: inventory,
+});

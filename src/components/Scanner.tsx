@@ -1,14 +1,13 @@
 import React, { FC } from "react";
-import Card from "atoms/Card";
 import styled from "styled-components";
+import Login from "./Login";
 
 const Scanner: FC = () => (
-  <Card>
-    <ScannerStyle>
-      <h1>Logg inn</h1>
-      <img src="images/rfid.png" alt="RFID icon" />
-    </ScannerStyle>
-  </Card>
+  <ScannerStyle>
+    <h1>Logg inn</h1>
+    <Login />
+    <img src="images/rfid.png" alt="RFID icon" />
+  </ScannerStyle>
 );
 
 const ScannerStyle = styled.div`
