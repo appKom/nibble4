@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { OnlineBlue } from "style";
+import { OnlineBlue, OnlineOrange } from "style";
 
 type CategoryButtonProps = {
   text: string;
@@ -23,4 +23,12 @@ const Button = styled.button`
   width: 6%;
   height: 25px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  :active {
+    background-color: ${OnlineOrange};
+  }
+
+  :focus {
+    outline: none;
+  }
 `;
