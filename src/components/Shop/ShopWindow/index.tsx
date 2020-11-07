@@ -23,7 +23,7 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  height: 80%;
+  height: 70%;
   display: grid;
   overflow: auto;
   grid-template-columns: 1fr 1fr 1fr;
