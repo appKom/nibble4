@@ -8,9 +8,12 @@ import { Product } from "types/inventory";
 const ShopWindow: FC = () => {
   const { state } = useContext(StateContext);
 
-  const shopItems = state.inventory.map((item) => (
-    <ShopItem key={item.pk} storeObject={item} />
-  ));
+  const shopItems = state.inventory.map((item) => {
+    if (state.category == "Alt")
+      return <ShopItem key={item.pk} storeObject={item} />;
+    else if (item.category.name == state.category)
+      return <ShopItem key={item.pk} storeObject={item} />;
+  });
 
   return <Container>{shopItems}</Container>;
 };
