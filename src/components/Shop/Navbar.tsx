@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { OnlineBlue } from "style";
+import { OnlineBlue } from "utility/style";
 
 const Navbar: FC = () => {
   return (

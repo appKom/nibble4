@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import ShopItem from "./ShopItem";
-import { OnlineOrange, OffWhite } from "style";
+import { OnlineOrange, OffWhite } from "utility/style";
 const ShopWindow: FC = () => {
   return (
     <Container>
@@ -28,7 +28,6 @@ const Container = styled.div`
   width: 95%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
 
   height: 80%;
   display: grid;
