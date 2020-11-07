@@ -24,7 +24,6 @@ const Container = styled.div`
   width: 95%;
 
   border-top: 10px solid orange;
-
   border-radius: 3px;
   box-shadow: 2px 2px 7px #888888;
 
