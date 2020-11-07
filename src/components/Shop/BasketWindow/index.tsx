@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
+import { OnlineOrange } from "style";
+
 const BasketWindow: FC = () => {
   return (
     <Container>
@@ -39,7 +41,7 @@ const Container = styled.div`
   background-color: white;
   width: 85%;
   height: 70%;
-  border-top: 10px solid orange;
+  border-top: 10px solid ${OnlineOrange};
   border-radius: 3px;
   box-shadow: 2px 2px 7px #888888;
   padding: 5px;

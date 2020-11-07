@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { OnlineBlue } from "style";
 
 const Navbar: FC = () => {
   return (
@@ -21,7 +22,7 @@ const Navbar: FC = () => {
 export default Navbar;
 
 const Container = styled.div`
-  background-color: #0d5474;
+  background-color: ${OnlineBlue};
   color: white;
   text-align: left;
   display: grid;
