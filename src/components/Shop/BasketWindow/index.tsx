@@ -50,7 +50,6 @@ const Container = styled.div`
   padding: 5px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
 `;
 
 const ItemDiv = styled.div`
