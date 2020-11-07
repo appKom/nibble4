@@ -17,17 +17,17 @@ const Register: FC = () => {
   if (cancel) return <Redirect to={cancelRegisterRoute} />;
 
   return (
-    <RegisterStyle>
+    <Container>
       <h1>Registrer</h1>
       <InputField value={username} onChange={onUsernameChange} />
       <InputField value={password} onChange={onPasswordChange} password />
       <button>Registrer</button>
       <button onClick={() => setCancel(true)}>Tilbake</button>
-    </RegisterStyle>
+    </Container>
   );
 };
 
-const RegisterStyle = styled.div`
+const Container = styled.div`
   margin: auto;
   h1 {
     text-align: center;

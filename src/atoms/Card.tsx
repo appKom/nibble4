@@ -7,10 +7,10 @@ interface Props {
 }
 
 const Card: FC<Props> = ({ children }: Props) => (
-  <CardStyle>{children}</CardStyle>
+  <Container>{children}</Container>
 );
 
-const CardStyle = styled.div`
+const Container = styled.div`
   border-top: 15px solid ${OnlineOrange};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;

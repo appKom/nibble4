@@ -56,6 +56,7 @@ const Login: FC = () => {
 };
 
 const HiddenInput = styled.input`
+  display: block;
   transform: scale(0);
 `;
 

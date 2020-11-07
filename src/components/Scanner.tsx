@@ -3,20 +3,23 @@ import styled from "styled-components";
 import Login from "components/Login";
 
 const Scanner: FC = () => (
-  <ScannerStyle>
+  <Container>
     <h1>Logg inn</h1>
     <Login />
     <img src="images/rfid.png" alt="RFID icon" />
-  </ScannerStyle>
+  </Container>
 );
 
-const ScannerStyle = styled.div`
+const Container = styled.div`
   margin: auto;
   h1 {
     text-align: center;
   }
   img {
-    transform: scale(70%);
+    margin: auto;
+    transform: scale(50%);
+    max-width: 350px;
+    display: flex;
   }
 `;
 

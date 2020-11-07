@@ -24,16 +24,16 @@ const LoginPage: FC = () => {
   const { state } = useContext(StateContext);
   if (state.user) return <Redirect to={shopRoute} />;
   return (
-    <LoginStyle>
+    <Container>
       <Card>
         <CardReader />
       </Card>
       <Instructions />
-    </LoginStyle>
+    </Container>
   );
 };
 
-const LoginStyle = styled.div`
+const Container = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr;
