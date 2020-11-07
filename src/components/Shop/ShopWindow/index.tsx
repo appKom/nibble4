@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import ShopItem from "./ShopItem";
-import { OffWhite } from "style";
+import { OnlineOrange, OffWhite } from "style";
 const ShopWindow: FC = () => {
   return (
     <Container>
@@ -35,4 +35,12 @@ const Container = styled.div`
   overflow: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 1fr);
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${OnlineOrange};
+    border-radius: 2px;
+  }
 `;

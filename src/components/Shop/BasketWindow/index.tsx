@@ -8,12 +8,15 @@ const BasketWindow: FC = () => {
   return (
     <Container>
       <h2> Your Cart</h2>
-      <div>
+      <ItemDiv>
         <BasketItem text="Powerking" />
         <BasketItem text="Powerking" />
         <BasketItem text="Powerking" />
         <BasketItem text="Powerking" />
-      </div>
+        <BasketItem text="Powerking" />
+        <BasketItem text="Powerking" />
+        <BasketItem text="Powerking" />
+      </ItemDiv>
 
       <CostDiv>
         <span>
@@ -48,10 +51,18 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+`;
 
-  div {
-    overflow: auto;
+const ItemDiv = styled.div`
+  ::-webkit-scrollbar {
+    width: 8px;
   }
+  ::-webkit-scrollbar-thumb {
+    background: ${OnlineOrange};
+    border-radius: 2px;
+  }
+
+  overflow: auto;
 `;
 
 const CostDiv = styled.div`
@@ -62,12 +73,13 @@ const CostDiv = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
-  width: 100%;
+  margin-top: 10px;
+  width: 90%;
   text-align: left;
-
+  padding: 5px;
   font-size: 16px;
   border-bottom: 1px dashed gray;
-
+  border-top: 1px dashed gray;
   #olcoins {
     grid-column: 2;
     grid-row: 2;
