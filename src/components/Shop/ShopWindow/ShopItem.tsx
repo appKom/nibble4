@@ -1,24 +1,31 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { Product } from "types/inventory";
+import { IMAGE_URI } from "../../../api";
 
-const ShopItem: FC = () => {
+type ShopWindowItemProps = {
+  storeObject: Product;
+};
+
+const ShopItem: FC<ShopWindowItemProps> = (storeObject) => {
+  const imageSrc = storeObject.storeObject.image
+    ? IMAGE_URI(storeObject.storeObject.image.sm)
+    : "";
+
   return (
     <Container>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/pk.png`}
-        alt="Product image"
-      />
+      <img src={imageSrc} alt="Product image" />
 
       <TextContainer>
         <span>
-          <b> Powerking </b>
+          <b> {storeObject.storeObject.name} </b>
         </span>
 
         <span>
-          <b>10</b>kr
+          <b>{storeObject.storeObject.price}</b>kr
         </span>
 
-        <DescSpan> Lorem ipsum dolor sit amet </DescSpan>
+        <DescSpan>{storeObject.storeObject.description} </DescSpan>
       </TextContainer>
     </Container>
   );

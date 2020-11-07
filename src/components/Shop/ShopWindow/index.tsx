@@ -1,24 +1,18 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import ShopItem from "./ShopItem";
 import { OnlineOrange, OffWhite } from "utility/style";
+import { StateContext } from "state/state";
+import { Product } from "types/inventory";
+
 const ShopWindow: FC = () => {
-  return (
-    <Container>
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
-    </Container>
-  );
+  const { state } = useContext(StateContext);
+
+  const shopItems = state.inventory.map((item) => (
+    <ShopItem key={item.pk} storeObject={item} />
+  ));
+
+  return <Container>{shopItems}</Container>;
 };
 
 export default ShopWindow;

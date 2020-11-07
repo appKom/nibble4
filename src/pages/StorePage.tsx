@@ -9,7 +9,7 @@ import CategoryBar from "components/Shop/CategoryBar";
 
 const StorePage: FC = () => {
   const { state } = useContext(StateContext);
-  if (!state.user) return <Redirect to={initialRoute} />;
+  //if (!state.user) return <Redirect to={initialRoute} />;
   return (
     <Container>
       <Navbar />
