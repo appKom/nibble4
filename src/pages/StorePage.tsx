@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { StateContext } from "state/state";
 import Navbar from "components/Shop/Navbar";
 import Window from "components/Shop/Window";
+import { initialRoute } from "utility/routes";
 
 const StorePage: FC = () => {
   const { state } = useContext(StateContext);
-  if (!state.user) return <Redirect to={{ pathname: "" }} />;
+  if (!state.user) return <Redirect to={initialRoute} />;
   return (
     <Container>
       <Navbar />

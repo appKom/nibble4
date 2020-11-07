@@ -17,7 +17,7 @@ const Container = styled.div`
   }
   img {
     margin: auto;
-    transform: scale(50%);
+    transform: scale(60%);
     max-width: 350px;
     display: flex;
   }
