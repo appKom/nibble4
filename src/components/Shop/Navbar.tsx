@@ -5,7 +5,10 @@ const Navbar: FC = () => {
   return (
     <Container>
       <div>
-        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="RFID scan here" />
+        <img
+          src={`${process.env.PUBLIC_URL}/images/logo.png`}
+          alt="RFID scan here"
+        />
       </div>
       <div>
         <span>Ola Nordmann | (icon) xxxkr - xxx Ølcoins (icon)</span>

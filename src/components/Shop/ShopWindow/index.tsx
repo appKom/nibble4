@@ -30,8 +30,9 @@ const Container = styled.div`
   margin-right: auto;
   margin-top: 10px;
 
+  height: 80%;
   display: grid;
-  overflow: scroll;
+  overflow: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 1fr);
 `;
