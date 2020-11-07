@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { OnlineBlue } from "style";
 
 type ButtonProps = {
   text: string;
@@ -12,7 +13,7 @@ const PurchaseButton: FC<ButtonProps> = ({ text }: ButtonProps) => {
 export default PurchaseButton;
 
 const Button = styled.button`
-  background-color: #0d5474;
+  background-color: ${OnlineBlue};
   font-size: 26px;
   color: white;
   border: none;
