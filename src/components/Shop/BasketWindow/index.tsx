@@ -6,6 +6,8 @@ const BasketWindow: FC = () => {
   return (
     <Container>
       <h2> Your Cart</h2>
+      <div> </div>
+      <div> </div>
       <PurchaseButton text="Purchase" />
     </Container>
   );
@@ -15,13 +17,11 @@ export default BasketWindow;
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10fr 1fr;
-  padding-left: 10px;
-  padding-right: 10px;
+  grid-template-rows: 8fr 1fr 1fr 1fr;
 
   text-align: left;
   background-color: white;
-  width: 90%;
+  width: 95%;
 
   border-top: 10px solid orange;
 
@@ -31,4 +31,8 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+
+  div {
+    border-top: 1px dashed gray;
+  }
 `;

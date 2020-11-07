@@ -9,7 +9,7 @@ export default ShopWindow;
 
 const Container = styled.div`
   background-color: #f7f7fb;
-  width: 90%;
+  width: 95%;
   border: 1px solid black;
   margin-left: auto;
   margin-right: auto;
