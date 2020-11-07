@@ -1,17 +1,18 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import CategoryButton from "./CategoryButton";
+import { StateContext } from "state/state";
+import { getCategories } from "types/inventory";
 
 const CategoryBar: FC = () => {
-  return (
-    <Container>
-      <CategoryButton text="Annet" />
-      <CategoryButton text="Drikke" />
-      <CategoryButton text="Mat" />
-      <CategoryButton text="Snacks" />
-      <CategoryButton text="Øl" />
-    </Container>
-  );
+  const { state, dispatch } = useContext(StateContext);
+
+  const categories = getCategories(state.inventory);
+
+  const knapper = categories.map((category) => (
+    <CategoryButton key={category} text={category} />
+  ));
+  return <Container> {knapper} </Container>;
 };
 
 export default CategoryBar;

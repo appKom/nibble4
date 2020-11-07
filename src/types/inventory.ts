@@ -11,3 +11,14 @@ export type Product = {
     name: string;
   };
 };
+
+export const getCategories = (inventory: Product[]) =>
+  inventory.reduce(
+    (acc, current) => {
+      if (acc.includes(current.category.name)) {
+        return [...acc];
+      }
+      return [...acc, current.category.name];
+    },
+    ["Alt"] as string[]
+  );

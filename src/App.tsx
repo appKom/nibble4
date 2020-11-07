@@ -22,14 +22,12 @@ const fetchInventory = async (
 const App: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { user } = state;
-  console.log(INVENTORY_URI);
   useEffect(() => {
     const getData = async () => {
       const data = await fetchInventory(INVENTORY_URI);
 
       if (!state.inventory.length) {
         dispatch(setInventory(data));
-        console.log("here");
       }
       if (user && JSON.stringify(data) !== JSON.stringify(state.inventory)) {
         dispatch(setInventory(data));
