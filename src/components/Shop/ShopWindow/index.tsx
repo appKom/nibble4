@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import ShopItem from "./ShopItem";
-
+import { OnlineOrange, OffWhite } from "style";
 const ShopWindow: FC = () => {
   return (
     <Container>
@@ -24,14 +24,23 @@ const ShopWindow: FC = () => {
 export default ShopWindow;
 
 const Container = styled.div`
-  background-color: #f7f7fb;
+  background-color: ${OffWhite};
   width: 95%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
 
+  height: 80%;
   display: grid;
-  overflow: scroll;
+  overflow: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 1fr);
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${OnlineOrange};
+    border-radius: 2px;
+  }
 `;
