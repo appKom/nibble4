@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import ShopItem from "./ShopItem";
-
+import { OffWhite } from "style";
 const ShopWindow: FC = () => {
   return (
     <Container>
@@ -24,7 +24,7 @@ const ShopWindow: FC = () => {
 export default ShopWindow;
 
 const Container = styled.div`
-  background-color: #f7f7fb;
+  background-color: ${OffWhite};
   width: 95%;
   margin-left: auto;
   margin-right: auto;
