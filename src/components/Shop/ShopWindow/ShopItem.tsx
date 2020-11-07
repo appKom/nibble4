@@ -54,14 +54,14 @@ const Container = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 35%;
+    width: 40%;
   }
 `;
 
 const TextContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 6fr 1fr;
 `;
 
 const DescSpan = styled.span`

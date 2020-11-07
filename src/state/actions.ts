@@ -5,6 +5,9 @@ export enum ActionTypes {
   SET_USER = "SET_USER",
   LOGOUT_USER = "LOGOUT_USER",
   SET_INVENTORY = "SET_INVENTORY",
+  ADD_TO_CART = "ADD_TO_CART",
+  REMOVE_FROM_CART = "REMOVE_FROM_CART",
+  EMPTY_CART = "EMPTY_CART",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -26,3 +29,12 @@ export const setInventory = (inventory: Product[]): SetInventoryAction => ({
   type: ActionTypes.SET_INVENTORY,
   payload: inventory,
 });
+export const addToCart = (id: number) => ({
+  type: ActionTypes.ADD_TO_CART,
+  payload: id,
+});
+export const removeFromCart = (id: number) => ({
+  type: ActionTypes.REMOVE_FROM_CART,
+  payload: id,
+});
+export const emptyCart = () => ({ type: ActionTypes.EMPTY_CART });
