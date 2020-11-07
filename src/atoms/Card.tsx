@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
-import { OnlineOrange } from "style";
+import { OnlineOrange } from "utility/style";
 
 interface Props {
   children: ReactNode;

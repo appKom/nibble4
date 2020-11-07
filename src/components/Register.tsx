@@ -1,7 +1,8 @@
-import InputField from "atoms/InputField";
 import React, { ChangeEvent, FC, useState } from "react";
 import { Redirect } from "react-router-dom";
 import styled from "styled-components";
+import InputField from "atoms/InputField";
+import { cancelRegisterRoute } from "utility/routes";
 
 const Register: FC = () => {
   const [username, setUsername] = useState("");
@@ -13,8 +14,7 @@ const Register: FC = () => {
   const onPasswordChange = (event: ChangeEvent<HTMLInputElement>) =>
     setPassword(event.target.value);
 
-  if (cancel)
-    return <Redirect to={{ pathname: "/", state: { register: false } }} />;
+  if (cancel) return <Redirect to={cancelRegisterRoute} />;
 
   return (
     <RegisterStyle>

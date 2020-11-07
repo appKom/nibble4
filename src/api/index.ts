@@ -1,4 +1,4 @@
-import { loadToken } from "./token";
+import { loadToken } from "api/token";
 
 export const CLIENT_ID = encodeURIComponent(
   process.env.REACT_APP_CLIENT_ID || ""

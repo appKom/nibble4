@@ -1,19 +1,20 @@
 import React, { FC, useContext } from "react";
-import Instructions from "components/Instructions";
-import Scanner from "components/Scanner";
+import { Redirect, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Card from "atoms/Card";
+import Instructions from "components/Instructions";
+import Scanner from "components/Scanner";
 import Register from "components/Register";
-import { Redirect, useLocation } from "react-router-dom";
 import { StateContext } from "state/state";
+import { shopRoute } from "utility/routes";
 
 type RegisterLocation = {
-  register: boolean;
+  register?: boolean;
 };
 
 const CardReader: FC = () => {
   const location = useLocation<RegisterLocation>();
-  if (location.state.register) {
+  if (location.state?.register) {
     return <Register />;
   }
   return <Scanner />;
@@ -21,7 +22,7 @@ const CardReader: FC = () => {
 
 const LoginPage: FC = () => {
   const { state } = useContext(StateContext);
-  if (state.user) return <Redirect to="/shop" />;
+  if (state.user) return <Redirect to={shopRoute} />;
   return (
     <LoginStyle>
       <Card>
