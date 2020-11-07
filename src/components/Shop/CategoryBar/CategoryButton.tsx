@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { OnlineBlue, OnlineOrange } from "style";
+import { OnlineBlue, OnlineOrange } from "utility/style";
 
 type CategoryButtonProps = {
   text: string;

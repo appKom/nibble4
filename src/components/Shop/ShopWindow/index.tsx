@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import ShopItem from "./ShopItem";
-import { OnlineOrange, OffWhite } from "style";
+import { OnlineOrange, OffWhite } from "utility/style";
 const ShopWindow: FC = () => {
   return (
     <Container>

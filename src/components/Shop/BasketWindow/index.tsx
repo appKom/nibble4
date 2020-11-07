@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
-import { OnlineOrange } from "style";
+import { OnlineOrange } from "utility/style";
 
 const BasketWindow: FC = () => {
   return (

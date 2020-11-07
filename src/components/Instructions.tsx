@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import Card from "atoms/Card";
-import { OnlineBlue } from "style";
+import { OnlineBlue } from "utility/style";
 
 const Instructions: FC = () => (
   <Card>
-    <InstructionsStyle>
+    <Container>
       <h1>Har du ikke bruker?</h1>
       <p>
         For å bruke Online sitt kiosksystem, Nibble, så må man ha registrert
@@ -32,11 +32,11 @@ const Instructions: FC = () => (
           profilen din på <span>online.ntnu.no</span>
         </li>
       </ol>
-    </InstructionsStyle>
+    </Container>
   </Card>
 );
 
-const InstructionsStyle = styled.div`
+const Container = styled.div`
   margin: auto;
   h1 {
     text-align: center;
