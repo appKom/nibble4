@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import PurchaseButton from "./PurchaseButton";
 
 const BasketWindow: FC = () => {
   return (
     <Container>
       <h2> Your Cart</h2>
+      <PurchaseButton text="Purchase" />
     </Container>
   );
 };
@@ -12,8 +14,11 @@ const BasketWindow: FC = () => {
 export default BasketWindow;
 
 const Container = styled.div`
+  display: grid;
+  grid-template-rows: 10fr 1fr;
   padding-left: 10px;
   padding-right: 10px;
+
   text-align: left;
   background-color: white;
   width: 90%;
