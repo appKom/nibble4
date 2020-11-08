@@ -22,12 +22,27 @@ type SetCategoryAction = {
   type: ActionTypes.SET_CATEGORY;
   payload: string;
 };
+type AddToCartAction = {
+  type: ActionTypes.ADD_TO_CART;
+  payload: number;
+};
+type RemoveFromCartAction = {
+  type: ActionTypes.REMOVE_FROM_CART;
+  payload: number;
+};
+
+type EmptyCartAction = {
+  type: ActionTypes.EMPTY_CART;
+};
 
 export type Action =
   | SetUserAction
   | LogoutUserAction
   | SetInventoryAction
-  | SetCategoryAction;
+  | SetCategoryAction
+  | AddToCartAction
+  | RemoveFromCartAction
+  | EmptyCartAction;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
@@ -40,17 +55,19 @@ export const setInventory = (inventory: Product[]): SetInventoryAction => ({
   type: ActionTypes.SET_INVENTORY,
   payload: inventory,
 });
-export const addToCart = (id: number) => ({
+export const addToCart = (id: number): AddToCartAction => ({
   type: ActionTypes.ADD_TO_CART,
   payload: id,
 });
-export const removeFromCart = (id: number) => ({
+export const removeFromCart = (id: number): RemoveFromCartAction => ({
   type: ActionTypes.REMOVE_FROM_CART,
   payload: id,
 });
+export const emptyCart = (): EmptyCartAction => ({
+  type: ActionTypes.EMPTY_CART,
+});
+
 export const setCategory = (id: string): SetCategoryAction => ({
   type: ActionTypes.SET_CATEGORY,
   payload: id,
 });
-
-export const emptyCart = () => ({ type: ActionTypes.EMPTY_CART });

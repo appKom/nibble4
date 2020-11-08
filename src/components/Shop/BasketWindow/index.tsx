@@ -1,10 +1,14 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
+import { StateContext } from "state/state";
 
 const BasketWindow: FC = () => {
+  const { state } = useContext(StateContext);
+  console.log(state.cart);
+
   return (
     <Container>
       <h2> Your Cart</h2>

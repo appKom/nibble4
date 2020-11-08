@@ -5,27 +5,31 @@ import { IMAGE_URI } from "../../../api";
 
 type ShopWindowItemProps = {
   storeObject: Product;
+  addItem: (id: number) => void;
 };
 
-const ShopItem: FC<ShopWindowItemProps> = (storeObject) => {
-  const imageSrc = storeObject.storeObject.image
-    ? IMAGE_URI(storeObject.storeObject.image.sm)
-    : "";
+const ShopItem: FC<ShopWindowItemProps> = ({
+  storeObject,
+  addItem,
+}: ShopWindowItemProps) => {
+  const imageSrc = storeObject.image ? IMAGE_URI(storeObject.image.sm) : "";
+
+  const addToCart = () => addItem(storeObject.pk);
 
   return (
-    <Container>
+    <Container onClick={addToCart}>
       <img src={imageSrc} alt="Product image" />
 
       <TextContainer>
         <span>
-          <b> {storeObject.storeObject.name} </b>
+          <b> {storeObject.name} </b>
         </span>
 
         <span>
-          <b>{storeObject.storeObject.price}</b>kr
+          <b>{storeObject.price}</b>kr
         </span>
 
-        <DescSpan>{storeObject.storeObject.description} </DescSpan>
+        <DescSpan>{storeObject.description} </DescSpan>
       </TextContainer>
     </Container>
   );

@@ -11,6 +11,10 @@ export type Product = {
     name: string;
   };
 };
+export type CartItem = {
+  object_id: number;
+  quantity: number;
+};
 
 export const getCategories = (inventory: Product[]) =>
   inventory.reduce(
@@ -22,3 +26,18 @@ export const getCategories = (inventory: Product[]) =>
     },
     ["Alt"] as string[]
   );
+
+export const createCartItem = (id: number): CartItem => ({
+  object_id: id,
+  quantity: 1,
+});
+
+export const incrementCartItem = (item: CartItem): CartItem => ({
+  ...item,
+  quantity: item.quantity + 1,
+});
+
+export const decrementCartItem = (item: CartItem): CartItem => ({
+  ...item,
+  quantity: item.quantity - 1,
+});

@@ -3,16 +3,19 @@ import styled from "styled-components";
 import ShopItem from "./ShopItem";
 import { OnlineOrange, OffWhite } from "utility/style";
 import { StateContext } from "state/state";
+import { addToCart } from "state/actions";
 import { Product } from "types/inventory";
 
 const ShopWindow: FC = () => {
-  const { state } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
+
+  const addItem = (id: number) => dispatch(addToCart(id));
 
   const shopItems = state.inventory.map((item) => {
     if (state.category == "Alt")
-      return <ShopItem key={item.pk} storeObject={item} />;
+      return <ShopItem key={item.pk} storeObject={item} addItem={addItem} />;
     else if (item.category.name == state.category)
-      return <ShopItem key={item.pk} storeObject={item} />;
+      return <ShopItem key={item.pk} storeObject={item} addItem={addItem} />;
   });
 
   return <Container>{shopItems}</Container>;

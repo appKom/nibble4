@@ -1,5 +1,11 @@
 import React, { createContext, Dispatch, ReactNode, useReducer } from "react";
-import { Product } from "types/inventory";
+import {
+  Product,
+  CartItem,
+  incrementCartItem,
+  createCartItem,
+  decrementCartItem,
+} from "types/inventory";
 import { User } from "types/user";
 import { Action, ActionTypes } from "state/actions";
 
@@ -7,28 +13,30 @@ type State = {
   user?: User;
   inventory: Product[];
   category: string;
+  cart: { [id: number]: CartItem };
 };
 
 const initialState: State = {
   inventory: [],
   category: "Alt",
+  cart: {},
 };
 
-// const getIncrementedCartItem = (id: number, state: GlobalState): CartItem => {
-//     if (state.cart[id]) {
-//         return incrementCartItem(state.cart[id]);
-//     }
-//     return createCartItem(id);
-// };
+const getIncrementedCartItem = (id: number, state: State): CartItem => {
+  if (state.cart[id]) {
+    return incrementCartItem(state.cart[id]);
+  }
+  return createCartItem(id);
+};
 
-// const getDecrementedCart = (id: number, state: GlobalState) => {
-//     if (state.cart[id].quantity > 1) {
-//         return { ...state.cart, [id]: decrementCartItem(state.cart[id]) };
-//     }
-//     const removedCart = { ...state.cart };
-//     delete removedCart[id];
-//     return { ...removedCart };
-// };
+const getDecrementedCart = (id: number, state: State) => {
+  if (state.cart[id].quantity > 1) {
+    return { ...state.cart, [id]: decrementCartItem(state.cart[id]) };
+  }
+  const removedCart = { ...state.cart };
+  delete removedCart[id];
+  return { ...removedCart };
+};
 
 const StateReducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -40,6 +48,22 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, inventory: action.payload };
     case ActionTypes.SET_CATEGORY:
       return { ...state, category: action.payload };
+    case ActionTypes.ADD_TO_CART:
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          [action.payload]: getIncrementedCartItem(action.payload, state),
+        },
+      };
+    case ActionTypes.REMOVE_FROM_CART: {
+      return {
+        ...state,
+        cart: getDecrementedCart(action.payload, state),
+      };
+    }
+    case ActionTypes.EMPTY_CART:
+      return { ...state, cart: {} };
     default:
       return { ...state };
   }
