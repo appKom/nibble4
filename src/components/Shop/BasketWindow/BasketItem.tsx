@@ -1,11 +1,18 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
+import { StateContext } from "state/state";
+import { Product } from "types/inventory";
 
 type BasketItemProps = {
-  text: string;
+  id: number;
+  quantity: number;
 };
 
-const BasketItem: FC<BasketItemProps> = ({ text }: BasketItemProps) => {
+const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
+  const { state, dispatch } = useContext(StateContext);
+
+  const item: Product = state.inventory.find((e) => e.pk === id)!;
+
   return (
     <Container>
       <img
@@ -14,13 +21,13 @@ const BasketItem: FC<BasketItemProps> = ({ text }: BasketItemProps) => {
       />
 
       <span>
-        <b> {text} </b>
+        <b> {item.name} </b>
       </span>
 
       <span>X</span>
 
       <span>
-        Quantity:<b>3</b>
+        Quantity:<b>{quantity}</b>
       </span>
 
       <span>

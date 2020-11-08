@@ -7,20 +7,20 @@ import { StateContext } from "state/state";
 
 const BasketWindow: FC = () => {
   const { state } = useContext(StateContext);
-  console.log(state.cart);
+  const { cart } = state;
+
+  const basketItems = Object.keys(cart).map((key: string) => (
+    <BasketItem
+      key={key}
+      id={Number(key)}
+      quantity={cart[Number(key)].quantity}
+    />
+  ));
 
   return (
     <Container>
       <h2> Your Cart</h2>
-      <ItemDiv>
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-      </ItemDiv>
+      <ItemDiv>{basketItems}</ItemDiv>
 
       <CostDiv>
         <span>
