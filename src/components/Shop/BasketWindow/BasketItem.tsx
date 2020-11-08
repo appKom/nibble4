@@ -2,6 +2,7 @@ import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 import { Product } from "types/inventory";
+import { IMAGE_URI } from "../../../api";
 
 type BasketItemProps = {
   id: number;
@@ -12,13 +13,11 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
   const { state, dispatch } = useContext(StateContext);
 
   const item: Product = state.inventory.find((e) => e.pk === id)!;
+  const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";
 
   return (
     <Container>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/pk.png`}
-        alt="Product image"
-      />
+      <img src={imageSrc} alt="Product image" />
 
       <span>
         <b> {item.name} </b>
@@ -31,7 +30,7 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
       </span>
 
       <span>
-        <b>30</b>kr
+        <b>{item.price}</b>kr
       </span>
     </Container>
   );
