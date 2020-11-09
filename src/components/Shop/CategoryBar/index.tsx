@@ -9,11 +9,11 @@ const CategoryBar: FC = () => {
 
   const categories = getCategories(state.inventory);
 
-  const knapper = categories.map((category) => (
+  const CategoryBar = categories.map((category) => (
     <CategoryButton key={category} category={category} />
   ));
 
-  return <Container> {knapper} </Container>;
+  return <Container> {CategoryBar} </Container>;
 };
 
 export default CategoryBar;

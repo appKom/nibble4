@@ -4,17 +4,17 @@ import { Product } from "types/inventory";
 import { IMAGE_URI } from "../../../api";
 
 type ShopWindowItemProps = {
-  storeObject: Product;
+  product: Product;
   addItem: (id: number) => void;
 };
 
 const ShopItem: FC<ShopWindowItemProps> = ({
-  storeObject,
+  product,
   addItem,
 }: ShopWindowItemProps) => {
-  const imageSrc = storeObject.image ? IMAGE_URI(storeObject.image.sm) : "";
+  const imageSrc = product.image ? IMAGE_URI(product.image.sm) : "";
 
-  const addToCart = () => addItem(storeObject.pk);
+  const addToCart = () => addItem(product.pk);
 
   return (
     <Container onClick={addToCart}>
@@ -22,14 +22,14 @@ const ShopItem: FC<ShopWindowItemProps> = ({
 
       <TextContainer>
         <span>
-          <b> {storeObject.name} </b>
+          <b> {product.name} </b>
         </span>
 
         <span>
-          <b>{storeObject.price}</b>kr
+          <b>{product.price}</b>kr
         </span>
 
-        <DescSpan>{storeObject.description} </DescSpan>
+        <DescSpan>{product.description} </DescSpan>
       </TextContainer>
     </Container>
   );

@@ -12,10 +12,8 @@ const ShopWindow: FC = () => {
   const addItem = (id: number) => dispatch(addToCart(id));
 
   const shopItems = state.inventory.map((item) => {
-    if (state.category == "Alt")
-      return <ShopItem key={item.pk} storeObject={item} addItem={addItem} />;
-    else if (item.category.name == state.category)
-      return <ShopItem key={item.pk} storeObject={item} addItem={addItem} />;
+    if (item.category.name === state.category || state.category === "Alt")
+      return <ShopItem key={item.pk} product={item} addItem={addItem} />;
   });
 
   return <Container>{shopItems}</Container>;

@@ -6,7 +6,7 @@ import { StateContext } from "state/state";
 const Navbar: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { user } = state;
-  console.log(user);
+
   return (
     <Container>
       <div>
@@ -18,7 +18,6 @@ const Navbar: FC = () => {
       <div>
         {user ? (
           <span>
-            {" "}
             {user.first_name} | (icon) {user.balance}kr - 0 Ølcoins (icon)
           </span>
         ) : (
