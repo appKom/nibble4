@@ -25,8 +25,7 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
       <span>
         <b> {item.name} </b>
       </span>
-
-      <span>X</span>
+      <span></span>
 
       <span>
         Quantity:<b>{quantity}</b>

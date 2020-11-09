@@ -1,8 +1,12 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
+import { StateContext } from "state/state";
 
 const Navbar: FC = () => {
+  const { state, dispatch } = useContext(StateContext);
+  const { user } = state;
+  console.log(user);
   return (
     <Container>
       <div>
@@ -12,7 +16,14 @@ const Navbar: FC = () => {
         />
       </div>
       <div>
-        <span>Ola Nordmann | (icon) xxxkr - xxx Ølcoins (icon)</span>
+        {user ? (
+          <span>
+            {" "}
+            {user.first_name} | (icon) {user.balance}kr - 0 Ølcoins (icon)
+          </span>
+        ) : (
+          ""
+        )}
       </div>
       <div>(icon)</div>
     </Container>
