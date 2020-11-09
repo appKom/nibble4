@@ -6,18 +6,7 @@ import { Product } from "./types/inventory";
 import { INVENTORY_URI } from "./api/";
 import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
-
-const fetchInventory = async (
-  uri: string,
-  options = {}
-): Promise<Product[]> => {
-  const response = await fetch(uri, options);
-  if (response.ok) {
-    const json = await response.json();
-    return json;
-  }
-  return [];
-};
+import { fetchInventory } from "./api/";
 
 const App: FC = () => {
   const { state, dispatch } = useContext(StateContext);
