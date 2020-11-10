@@ -4,10 +4,10 @@ import styled from "styled-components";
 import InputField from "atoms/InputField";
 import { cancelRegisterRoute } from "utility/routes";
 import Button, { ButtonColors } from "atoms/Button";
-import { handleRfid, login, registerUser } from "api/authorization";
+import { handleRfid, registerUser } from "api/authorization";
 import { StateContext } from "state/state";
 import { setUser } from "state/actions";
-import InfoBox from "atoms/InfoBox";
+import InfoBox, { InfoBoxTypes } from "atoms/InfoBox";
 
 type Props = {
   rfid: string;
@@ -50,12 +50,17 @@ const Register: FC<Props> = ({ rfid }: Props) => {
         </p>
       </InfoBox>
       {badCredentials ? (
-        <InfoBox>
+        <InfoBox type={InfoBoxTypes.WARNING}>
           Du skrev inn feil brukernavn eller passord. Prøv igjen på nytt.
         </InfoBox>
       ) : null}
-      <InputField value={username} onChange={onUsernameChange} />
       <InputField
+        inputLabel="Brukernavn"
+        value={username}
+        onChange={onUsernameChange}
+      />
+      <InputField
+        inputLabel="Passord"
         value={password}
         onChange={onPasswordChange}
         type="password"
@@ -77,9 +82,12 @@ const Container = styled.div`
   h1 {
     text-align: center;
   }
-  > :nth-child(3) {
+  div:last-child {
     display: flex;
     justify-content: space-between;
+  }
+  > * {
+    margin: 0.5rem 0;
   }
 `;
 

@@ -30,9 +30,6 @@ const Container = styled.button<{ buttonColor: ButtonColors }>`
   color: white;
   border: none;
   border-radius: 3px;
-
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 export default Button;
