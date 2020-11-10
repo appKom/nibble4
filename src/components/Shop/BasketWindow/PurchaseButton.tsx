@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
+import purchaseItems from "api/order";
 
 const PurchaseButton: FC = () => {
   const { state } = useContext(StateContext);
@@ -11,9 +12,18 @@ const PurchaseButton: FC = () => {
   const totalPrice = calculateCartTotal(cart, inventory);
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
 
-  //const purchase = () => (isDisabled ? undefined : console.log("ok"));
+  const purchase = () => {
+    if (insufficient) return undefined;
+    else {
+      return purchaseItems(user!.pk, cart);
+    }
+  };
 
-  return <Button> {insufficient ? "Insufficient" : "Purchase"}</Button>;
+  return (
+    <Button onClick={purchase}>
+      {insufficient ? "Insufficient" : "Purchase"}
+    </Button>
+  );
 };
 
 export default PurchaseButton;
