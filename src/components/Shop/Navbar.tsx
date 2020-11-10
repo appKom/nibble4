@@ -8,7 +8,7 @@ import { IoIosBeer } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 const Navbar: FC = () => {
-  const { state, dispatch } = useContext(StateContext);
+  const { state } = useContext(StateContext);
   const { user } = state;
 
   return (
@@ -21,20 +21,14 @@ const Navbar: FC = () => {
       </div>
       <div>
         <IconContext.Provider value={{ color: "white", size: "20px" }}>
-          {user ? (
-            <span>
-              {user.first_name} | <GiWallet /> {user.balance}kr - 0 Ølcoins
-              <IoIosBeer />
-            </span>
-          ) : (
-            ""
-          )}
+          <span>
+            {user!.first_name} | <GiWallet /> {user!.balance}kr - 0 Ølcoins
+            <IoIosBeer />
+          </span>
         </IconContext.Provider>
       </div>
-      <IconContext.Provider value={{ color: "black", size: "40px" }}>
-        <div>
-          <RiLogoutBoxRLine />
-        </div>
+      <IconContext.Provider value={{ color: "white", size: "40px" }}>
+        <RiLogoutBoxRLine />
       </IconContext.Provider>
     </Container>
   );

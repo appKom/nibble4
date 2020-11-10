@@ -29,6 +29,7 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "no-non-null-assertion": 0
   }
 }
