@@ -1,10 +1,11 @@
 import React, { FC, ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
+import { ErrorRed, OnlineBlue, OnlineOrange } from "utility/style";
 
 export enum ButtonColors {
-  PRIMARY = "#0D5474",
-  SECONDARY = "#F9B759",
-  RED = "#ED3E18",
+  PRIMARY = "PRIMARY",
+  SECONDARY = "SECONDARY",
+  RED = "RED",
 }
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -23,8 +24,21 @@ const Button: FC<Props> = ({
   );
 };
 
+const getColor = (color: ButtonColors): string => {
+  switch (color) {
+    case ButtonColors.PRIMARY:
+      return OnlineBlue;
+    case ButtonColors.SECONDARY:
+      return OnlineOrange;
+    case ButtonColors.RED:
+      return ErrorRed;
+    default:
+      return OnlineBlue;
+  }
+};
+
 const Container = styled.button<{ buttonColor: ButtonColors }>`
-  background-color: ${(props) => props.buttonColor};
+  background-color: ${(props) => getColor(props.buttonColor)};
   padding: 0.2rem 1rem;
   font-size: 26px;
   color: white;
