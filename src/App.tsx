@@ -2,7 +2,6 @@ import LoginPage from "pages/LoginPage";
 import StorePage from "pages/StorePage";
 import React, { useContext, useEffect, FC } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Product } from "./types/inventory";
 import { INVENTORY_URI } from "./api/";
 import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
