@@ -1,4 +1,5 @@
 import { loadToken } from "api/token";
+import { Product } from "../types/inventory";
 
 export const CLIENT_ID = encodeURIComponent(
   process.env.REACT_APP_CLIENT_ID || ""
@@ -70,3 +71,12 @@ export const authorizedPost = ({
       Authorization: `Bearer ${loadToken()}`,
     },
   });
+
+export const fetchInventory = async (url: string): Promise<Product[]> => {
+  const response = await get({ url });
+  if (response.ok) {
+    const json = await response.json();
+    return json;
+  }
+  return [];
+};

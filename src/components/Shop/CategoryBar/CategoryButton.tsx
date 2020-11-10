@@ -1,15 +1,19 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { OnlineBlue, OnlineOrange } from "utility/style";
-
+import { StateContext } from "state/state";
+import { setCategory } from "state/actions";
 type CategoryButtonProps = {
-  text: string;
+  category: string;
 };
 
 const CategoryButton: FC<CategoryButtonProps> = ({
-  text,
+  category,
 }: CategoryButtonProps) => {
-  return <Button> {text} </Button>;
+  const { dispatch } = useContext(StateContext);
+  const onClick = () => dispatch(setCategory(category));
+
+  return <Button onClick={onClick}> {category} </Button>;
 };
 
 export default CategoryButton;
