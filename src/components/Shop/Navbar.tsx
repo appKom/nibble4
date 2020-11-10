@@ -1,7 +1,7 @@
-import React, { useContext, FC } from "react";
+import React, { FC, useContext } from "react";
+import { StateContext } from "state/state";
 import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
-import { StateContext } from "state/state";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { GiWallet } from "react-icons/gi";
 import { IoIosBeer } from "react-icons/io";
@@ -13,12 +13,10 @@ const Navbar: FC = () => {
 
   return (
     <Container>
-      <div>
-        <img
-          src={`${process.env.PUBLIC_URL}/images/logo.png`}
-          alt="RFID scan here"
-        />
-      </div>
+      <img
+        src={`${process.env.PUBLIC_URL}/images/logo.png`}
+        alt="Online logo"
+      />
       <div>
         <IconContext.Provider value={{ color: "white", size: "20px" }}>
           <span>
@@ -41,10 +39,16 @@ const Container = styled.div`
   color: white;
   text-align: left;
   display: grid;
-  grid-template-columns: 2fr 4fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   padding: 10px;
-
+  * {
+    margin: auto 0;
+  }
   img {
-    width: 70%;
+    width: 50%;
+  }
+  > svg {
+    margin-right: 0;
+    margin-left: auto;
   }
 `;
