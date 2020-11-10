@@ -4,18 +4,13 @@ import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
-
 import { calculateCartTotal } from "types/inventory";
 
 const BasketWindow: FC = () => {
   const { state } = useContext(StateContext);
-  const { cart, user } = state;
+  const { cart } = state;
 
   const totalPrice = calculateCartTotal(cart, state.inventory);
-  const balance = user!.balance;
-
-  const insufficient = balance - totalPrice <= 0 ? true : false;
-
   const basketItems = Object.keys(cart).map((key: string) => (
     <BasketItem
       key={key}
@@ -40,7 +35,7 @@ const BasketWindow: FC = () => {
           <b> 0øc</b>
         </span>
       </CostDiv>
-      <PurchaseButton isDisabled={insufficient} />
+      <PurchaseButton />
     </Container>
   );
 };
