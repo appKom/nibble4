@@ -1,6 +1,11 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
-import { OnlineBlue, OnlineOrange } from "utility/style";
+import {
+  selectedStyle,
+  notSelectedStyle,
+  OnlineBlue,
+  OnlineOrange,
+} from "utility/style";
 import { StateContext } from "state/state";
 import { setCategory } from "state/actions";
 type CategoryButtonProps = {
@@ -10,16 +15,22 @@ type CategoryButtonProps = {
 const CategoryButton: FC<CategoryButtonProps> = ({
   category,
 }: CategoryButtonProps) => {
-  const { dispatch } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
   const onClick = () => dispatch(setCategory(category));
 
-  return <Button onClick={onClick}> {category} </Button>;
+  return (
+    <Button
+      style={category == state.category ? selectedStyle : notSelectedStyle}
+      onClick={onClick}
+    >
+      {category}
+    </Button>
+  );
 };
 
 export default CategoryButton;
 
 const Button = styled.button`
-  background-color: ${OnlineBlue};
   color: white;
   border: none;
   border-radius: 2px;
