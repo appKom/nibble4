@@ -47,7 +47,7 @@ const Container = styled.div`
   img {
     width: 50%;
   }
-  div:nth-child(3) {
+  > svg {
     margin-right: 0;
     margin-left: auto;
   }
