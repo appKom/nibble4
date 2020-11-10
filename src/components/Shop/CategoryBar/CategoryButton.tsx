@@ -10,16 +10,24 @@ type CategoryButtonProps = {
 const CategoryButton: FC<CategoryButtonProps> = ({
   category,
 }: CategoryButtonProps) => {
-  const { dispatch } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
   const onClick = () => dispatch(setCategory(category));
 
-  return <Button onClick={onClick}> {category} </Button>;
+  return (
+    <Button
+      style={{
+        backgroundColor: category == state.category ? OnlineOrange : OnlineBlue,
+      }}
+      onClick={onClick}
+    >
+      {category}
+    </Button>
+  );
 };
 
 export default CategoryButton;
 
 const Button = styled.button`
-  background-color: ${OnlineBlue};
   color: white;
   border: none;
   border-radius: 2px;
