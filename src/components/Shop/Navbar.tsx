@@ -1,8 +1,16 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
+import { StateContext } from "state/state";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import { GiWallet } from "react-icons/gi";
+import { IoIosBeer } from "react-icons/io";
+import { IconContext } from "react-icons";
 
 const Navbar: FC = () => {
+  const { state } = useContext(StateContext);
+  const { user } = state;
+
   return (
     <Container>
       <div>
@@ -12,9 +20,16 @@ const Navbar: FC = () => {
         />
       </div>
       <div>
-        <span>Ola Nordmann | (icon) xxxkr - xxx Ølcoins (icon)</span>
+        <IconContext.Provider value={{ color: "white", size: "20px" }}>
+          <span>
+            {user!.first_name} | <GiWallet /> {user!.balance}kr - 0 Ølcoins
+            <IoIosBeer />
+          </span>
+        </IconContext.Provider>
       </div>
-      <div>(icon)</div>
+      <IconContext.Provider value={{ color: "white", size: "40px" }}>
+        <RiLogoutBoxRLine />
+      </IconContext.Provider>
     </Container>
   );
 };

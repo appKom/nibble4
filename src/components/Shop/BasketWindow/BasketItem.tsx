@@ -1,30 +1,38 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
+import { StateContext } from "state/state";
+import { removeFromCart } from "state/actions";
+import { Product } from "types/inventory";
+import { IMAGE_URI } from "../../../api";
 
 type BasketItemProps = {
-  text: string;
+  id: number;
+  quantity: number;
 };
 
-const BasketItem: FC<BasketItemProps> = ({ text }: BasketItemProps) => {
+const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
+  const { state, dispatch } = useContext(StateContext);
+
+  const removeItem = () => dispatch(removeFromCart(id));
+
+  const item: Product = state.inventory.find((e) => e.pk === id)!;
+  const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";
+
   return (
-    <Container>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/pk.png`}
-        alt="Product image"
-      />
+    <Container onClick={removeItem}>
+      <img src={imageSrc} alt="Product image" />
 
       <span>
-        <b> {text} </b>
+        <b> {item.name} </b>
       </span>
-
-      <span>X</span>
+      <span></span>
 
       <span>
-        Quantity:<b>3</b>
+        Quantity:<b>{quantity}</b>
       </span>
 
       <span>
-        <b>30</b>kr
+        <b>{item.price}</b>kr
       </span>
     </Container>
   );

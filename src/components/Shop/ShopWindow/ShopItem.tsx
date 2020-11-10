@@ -1,24 +1,35 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { Product } from "types/inventory";
+import { IMAGE_URI } from "../../../api";
 
-const ShopItem: FC = () => {
+type ShopWindowItemProps = {
+  product: Product;
+  addItem: (id: number) => void;
+};
+
+const ShopItem: FC<ShopWindowItemProps> = ({
+  product,
+  addItem,
+}: ShopWindowItemProps) => {
+  const imageSrc = product.image ? IMAGE_URI(product.image.sm) : "";
+
+  const addToCart = () => addItem(product.pk);
+
   return (
-    <Container>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/pk.png`}
-        alt="Product image"
-      />
+    <Container onClick={addToCart}>
+      <img src={imageSrc} alt="Product image" />
 
       <TextContainer>
         <span>
-          <b> Powerking </b>
+          <b> {product.name} </b>
         </span>
 
         <span>
-          <b>10</b>kr
+          <b>{product.price}</b>kr
         </span>
 
-        <DescSpan> Lorem ipsum dolor sit amet </DescSpan>
+        <DescSpan>{product.description} </DescSpan>
       </TextContainer>
     </Container>
   );
@@ -31,7 +42,7 @@ const Container = styled.div`
   padding: 5px;
   background-color: white;
   border-radius: 3px;
-  width: 70%;
+  width: 90%;
   height: 90%;
 
   margin-left: auto;
@@ -47,14 +58,14 @@ const Container = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 35%;
+    width: 40%;
   }
 `;
 
 const TextContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 6fr 1fr;
 `;
 
 const DescSpan = styled.span`

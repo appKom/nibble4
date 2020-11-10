@@ -1,32 +1,40 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
+import { StateContext } from "state/state";
+
+import { calculateCartTotal } from "types/inventory";
 
 const BasketWindow: FC = () => {
+  const { state } = useContext(StateContext);
+  const { cart } = state;
+
+  const totalPrice = calculateCartTotal(cart, state.inventory);
+
+  const basketItems = Object.keys(cart).map((key: string) => (
+    <BasketItem
+      key={key}
+      id={Number(key)}
+      quantity={cart[Number(key)].quantity}
+    />
+  ));
+
   return (
     <Container>
       <h2> Your Cart</h2>
-      <ItemDiv>
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-        <BasketItem text="Powerking" />
-      </ItemDiv>
+      <ItemDiv>{basketItems}</ItemDiv>
 
       <CostDiv>
         <span>
           <b> Total Cost</b>
         </span>
         <span id="pris">
-          <b> 100kr</b>
+          <b> {totalPrice}kr</b>
         </span>
         <span id="olcoins">
-          <b> 20øc</b>
+          <b> 0øc</b>
         </span>
       </CostDiv>
       <PurchaseButton text="Purchase" />
