@@ -1,11 +1,6 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
-import {
-  selectedStyle,
-  notSelectedStyle,
-  OnlineBlue,
-  OnlineOrange,
-} from "utility/style";
+import { OnlineBlue, OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
 import { setCategory } from "state/actions";
 type CategoryButtonProps = {
@@ -20,7 +15,9 @@ const CategoryButton: FC<CategoryButtonProps> = ({
 
   return (
     <Button
-      style={category == state.category ? selectedStyle : notSelectedStyle}
+      style={{
+        backgroundColor: category == state.category ? OnlineOrange : OnlineBlue,
+      }}
       onClick={onClick}
     >
       {category}
