@@ -10,12 +10,13 @@ import { shopRoute } from "utility/routes";
 
 type RegisterLocation = {
   register?: boolean;
+  rfid?: string;
 };
 
 const CardReader: FC = () => {
-  const location = useLocation<RegisterLocation>();
-  if (location.state?.register) {
-    return <Register />;
+  const { state } = useLocation<RegisterLocation>();
+  if (state?.register && state?.rfid) {
+    return <Register rfid={state.rfid} />;
   }
   return <Scanner />;
 };
