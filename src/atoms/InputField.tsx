@@ -1,27 +1,9 @@
-import React, { ChangeEvent, KeyboardEvent, FC } from "react";
+import React, { FC, InputHTMLAttributes } from "react";
 
-type Props = {
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
-  password?: boolean;
-};
+type Props = InputHTMLAttributes<HTMLInputElement>;
 
-const InputField: FC<Props> = ({
-  value,
-  onChange,
-  onKeyUp,
-  password,
-}: Props) => {
-  const inputType = password ? "password" : "text";
-  return (
-    <input
-      type={inputType}
-      value={value}
-      onChange={onChange}
-      onKeyUp={onKeyUp}
-    />
-  );
+const InputField: FC<Props> = ({ ...props }: Props) => {
+  return <input {...props} />;
 };
 
 export default InputField;

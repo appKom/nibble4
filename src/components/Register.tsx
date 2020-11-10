@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import styled from "styled-components";
 import InputField from "atoms/InputField";
 import { cancelRegisterRoute } from "utility/routes";
+import Button, { ButtonColors } from "atoms/Button";
 
 const Register: FC = () => {
   const [username, setUsername] = useState("");
@@ -20,9 +21,15 @@ const Register: FC = () => {
     <Container>
       <h1>Registrer</h1>
       <InputField value={username} onChange={onUsernameChange} />
-      <InputField value={password} onChange={onPasswordChange} password />
-      <button>Registrer</button>
-      <button onClick={() => setCancel(true)}>Tilbake</button>
+      <InputField
+        value={password}
+        onChange={onPasswordChange}
+        type="password"
+      />
+      <Button>Registrer</Button>
+      <Button buttonColor={ButtonColors.RED} onClick={() => setCancel(true)}>
+        Tilbake
+      </Button>
     </Container>
   );
 };
