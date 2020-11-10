@@ -9,9 +9,12 @@ import { calculateCartTotal } from "types/inventory";
 
 const BasketWindow: FC = () => {
   const { state } = useContext(StateContext);
-  const { cart } = state;
+  const { cart, user } = state;
 
   const totalPrice = calculateCartTotal(cart, state.inventory);
+  const balance = user!.balance;
+
+  const insufficient = balance - totalPrice <= 0 ? true : false;
 
   const basketItems = Object.keys(cart).map((key: string) => (
     <BasketItem
@@ -37,7 +40,7 @@ const BasketWindow: FC = () => {
           <b> 0øc</b>
         </span>
       </CostDiv>
-      <PurchaseButton text="Purchase" />
+      <PurchaseButton isDisabled={insufficient} />
     </Container>
   );
 };

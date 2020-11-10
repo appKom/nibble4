@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
 
 type ButtonProps = {
-  text: string;
+  isDisabled: boolean;
 };
 
-const PurchaseButton: FC<ButtonProps> = ({ text }: ButtonProps) => {
-  return <Button> {text} </Button>;
+const PurchaseButton: FC<ButtonProps> = ({ isDisabled }: ButtonProps) => {
+  return <Button> {isDisabled ? "Inncuficient" : "Purchase"} </Button>;
 };
 
 export default PurchaseButton;
