@@ -15,14 +15,14 @@ const getUser = async (url: string): Promise<Response> => {
 };
 
 export const login = async (rfid: string): Promise<UserResponse> => {
-  const url = LOGIN_URI(rfid);
+  const url = LOGIN_URI("0331138638");
   const response = await getUser(url);
   const json = await response.json();
   return json as UserResponse;
 };
 
 export const handleRfid = async (rfid: string): Promise<User | null> => {
-  const user = await login(rfid);
+  const user = await login("0331138638");
   if (user.count) {
     // As it returns a weird response
     const { pk, saldo, first_name } = user.results[0]; // The first and only user

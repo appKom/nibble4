@@ -2,11 +2,12 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import ShopWindow from "./ShopWindow";
 import BasketWindow from "./BasketWindow";
-
+import Modal from "./Modal";
 const Window: FC = () => {
   return (
     <Container>
       <ShopWindow />
+      <Modal active={true} />
       <BasketWindow />
     </Container>
   );
