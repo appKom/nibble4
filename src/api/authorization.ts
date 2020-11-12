@@ -1,4 +1,9 @@
-import { authorizedGet, LOGIN_URI } from "api";
+import {
+  authorizedGet,
+  authorizedPost,
+  LOGIN_URI,
+  REGISTER_RFID_URI,
+} from "api";
 import { UserResponse } from "types/api";
 import { User } from "types/user";
 import { fetchToken } from "api/token";
@@ -29,4 +34,17 @@ export const handleRfid = async (rfid: string): Promise<User | null> => {
     return { pk, balance: saldo, first_name };
   }
   return null;
+};
+
+export const registerUser = (
+  username: string,
+  password: string,
+  rfid: string
+) => {
+  const data = {
+    username,
+    password,
+    rfid,
+  };
+  return authorizedPost({ url: REGISTER_RFID_URI, body: data });
 };

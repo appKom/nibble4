@@ -1,27 +1,43 @@
-import React, { ChangeEvent, KeyboardEvent, FC } from "react";
+import React, { FC, InputHTMLAttributes } from "react";
+import styled from "styled-components";
+import { OffWhite } from "utility/style";
 
-type Props = {
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
-  password?: boolean;
+type Props = InputHTMLAttributes<HTMLInputElement> & {
+  inputLabel?: string;
 };
+type LabelProps = { label: string };
 
-const InputField: FC<Props> = ({
-  value,
-  onChange,
-  onKeyUp,
-  password,
-}: Props) => {
-  const inputType = password ? "password" : "text";
+const InputLabel: FC<LabelProps> = ({ label }: LabelProps) =>
+  label ? <label>{label}</label> : null;
+
+const InputField: FC<Props> = ({ inputLabel, ...props }: Props) => {
   return (
-    <input
-      type={inputType}
-      value={value}
-      onChange={onChange}
-      onKeyUp={onKeyUp}
-    />
+    <Container>
+      <InputLabel label={inputLabel || ""} />
+      <input id={inputLabel} {...props} />
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    width: max-content;
+    font-size: 1rem;
+  }
+  input {
+    color: 000;
+    font-size: 1.5em;
+    border: none;
+    background-color: ${OffWhite};
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+  input:focus {
+    outline: none;
+  }
+`;
 
 export default InputField;

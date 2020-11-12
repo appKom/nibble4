@@ -42,7 +42,7 @@ const Login: FC = () => {
     else setRegisterCard(true);
   };
 
-  if (registerCard) return <Redirect to={registerCardRoute} />;
+  if (registerCard) return <Redirect to={registerCardRoute(rfid)} />;
 
   return (
     <HiddenInput
