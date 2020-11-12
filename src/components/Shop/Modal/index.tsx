@@ -1,16 +1,16 @@
-import React, { useState, useContext, FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 import Purchase from "./Purchase";
 import { calculateCartTotal } from "types/inventory";
-import { OffWhite, OnlineOrange } from "utility/style";
+import { OffWhite } from "utility/style";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { setModal } from "state/actions";
 
 const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, user, inventory, modalActive } = state;
+  const { cart, inventory, modalActive } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
 

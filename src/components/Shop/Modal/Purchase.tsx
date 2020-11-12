@@ -2,7 +2,6 @@ import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
 import { StateContext } from "state/state";
-import { calculateCartTotal } from "types/inventory";
 import purchaseItems from "api/order";
 
 const PurchaseButton: FC = () => {

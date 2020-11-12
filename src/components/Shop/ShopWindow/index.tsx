@@ -4,7 +4,6 @@ import ShopItem from "./ShopItem";
 import { OnlineOrange, OffWhite } from "utility/style";
 import { StateContext } from "state/state";
 import { addToCart } from "state/actions";
-import { Product } from "types/inventory";
 
 const ShopWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);

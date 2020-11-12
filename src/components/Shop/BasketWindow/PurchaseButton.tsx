@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
-import purchaseItems from "api/order";
 import { setModal } from "state/actions";
 
 const PurchaseButton: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, user, inventory, modalActive } = state;
+  const { cart, user, inventory } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
