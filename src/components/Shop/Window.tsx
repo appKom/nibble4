@@ -1,13 +1,20 @@
-import React, { FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import ShopWindow from "./ShopWindow";
 import BasketWindow from "./BasketWindow";
-import Modal from "./Modal";
+import { StateContext } from "state/state";
+
 const Window: FC = () => {
+  const { state } = useContext(StateContext);
+  const { modalActive } = state;
+
   return (
-    <Container>
+    <Container
+      style={{
+        filter: modalActive ? "blur(10px)" : "none",
+      }}
+    >
       <ShopWindow />
-      <Modal active={true} />
       <BasketWindow />
     </Container>
   );
@@ -20,4 +27,5 @@ const Container = styled.div`
   grid-template-columns: 2fr 1fr;
   width: 100%;
   height: 100%;
+  filter: blur(0px);
 `;

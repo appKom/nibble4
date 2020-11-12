@@ -6,6 +6,7 @@ import { initialRoute } from "utility/routes";
 import Navbar from "components/Shop/Navbar";
 import Window from "components/Shop/Window";
 import CategoryBar from "components/Shop/CategoryBar";
+import Modal from "components/Shop/Modal";
 
 const StorePage: FC = () => {
   const { state } = useContext(StateContext);
@@ -13,6 +14,7 @@ const StorePage: FC = () => {
   return (
     <Container>
       <Navbar />
+      <Modal />;
       <CategoryBar />
       <Window />
     </Container>

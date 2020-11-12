@@ -8,11 +8,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { setModal } from "state/actions";
 
-type ModalProps = {
-  active: boolean;
-};
-
-const Modal: FC<ModalProps> = ({ active }: ModalProps) => {
+const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { cart, user, inventory, modalActive } = state;
 
@@ -57,7 +53,6 @@ const Container = styled.div`
   grid-template-rows: 2fr 3fr 1fr;
   grid-template-columns: 1fr 2fr 1fr;
 
-  border: 1px solid black;
   text-align: center;
 `;
 
