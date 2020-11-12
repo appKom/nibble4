@@ -29,6 +29,7 @@ const Modal: FC = () => {
         <hr />
         <span> {totalPrice} kr </span>
       </TotalDiv>
+
       <Purchase />
     </Container>
   );
