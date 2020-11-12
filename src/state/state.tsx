@@ -14,12 +14,14 @@ type State = {
   inventory: Product[];
   category: string;
   cart: { [id: number]: CartItem };
+  modalActive: boolean;
 };
 
 const initialState: State = {
   inventory: [],
   category: "Alt",
   cart: {},
+  modalActive: false,
 };
 
 const getIncrementedCartItem = (id: number, state: State): CartItem => {
@@ -48,6 +50,8 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, inventory: action.payload };
     case ActionTypes.SET_CATEGORY:
       return { ...state, category: action.payload };
+    case ActionTypes.SET_MODAL:
+      return { ...state, modalActive: action.payload };
     case ActionTypes.ADD_TO_CART:
       return {
         ...state,

@@ -4,17 +4,20 @@ import { OnlineBlue } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
 import purchaseItems from "api/order";
+import { setModal } from "state/actions";
+
 const PurchaseButton: FC = () => {
-  const { state } = useContext(StateContext);
-  const { cart, user, inventory } = state;
+  const { state, dispatch } = useContext(StateContext);
+  const { cart, user, inventory, modalActive } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
+  const ShowModal = (show: boolean) => dispatch(setModal(show));
 
   const purchase = () => {
-    if (insufficient) return undefined;
+    if (insufficient || totalPrice <= 0) return undefined;
     else {
-      return purchaseItems(user!.pk, cart);
+      return ShowModal(true);
     }
   };
 

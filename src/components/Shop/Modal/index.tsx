@@ -6,30 +6,33 @@ import { calculateCartTotal } from "types/inventory";
 import { OffWhite, OnlineOrange } from "utility/style";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
+import { setModal } from "state/actions";
 
 type ModalProps = {
   active: boolean;
 };
 
 const Modal: FC<ModalProps> = ({ active }: ModalProps) => {
-  const { state } = useContext(StateContext);
-  const { cart, user, inventory } = state;
+  const { state, dispatch } = useContext(StateContext);
+  const { cart, user, inventory, modalActive } = state;
 
-  console.log(cart);
   const totalPrice = calculateCartTotal(cart, inventory);
 
+  const HideModal = () => dispatch(setModal(false));
+
   return (
-    <Container style={{ zIndex: active ? 1 : -1 }}>
-      <IconContext.Provider value={{ color: "orange", size: "50px" }}>
-        <BiArrowBack />
-      </IconContext.Provider>
+    <Container style={{ zIndex: modalActive ? 1 : -1 }}>
+      <div onClick={HideModal}>
+        <IconContext.Provider value={{ color: "orange", size: "50px" }}>
+          <BiArrowBack />
+        </IconContext.Provider>
+      </div>
       <h3> Confirm purchase </h3>
       <TotalDiv>
         <span> Your total </span>
         <hr />
         <span> {totalPrice} kr </span>
       </TotalDiv>
-
       <Purchase />
     </Container>
   );
