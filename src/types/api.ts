@@ -1,3 +1,5 @@
+import { CartItem } from "./inventory";
+
 export interface UserResponse {
   count: number;
   results: Array<{
@@ -7,3 +9,8 @@ export interface UserResponse {
     saldo: number;
   }>;
 }
+
+export type OrderLineFormat = {
+  user: number;
+  orders: CartItem[];
+};

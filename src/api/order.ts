@@ -1,10 +1,6 @@
 import { TRANSACTION_URI as url, authorizedPost } from "./index";
 import { CartItem } from "../types/inventory";
-
-type OrderLineFormat = {
-  user: number;
-  orders: CartItem[];
-};
+import { OrderLineFormat } from "../types/api";
 
 const purchaseItems = (
   id: number,
