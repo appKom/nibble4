@@ -1,18 +1,29 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
-import Purchase from "./Purchase";
 import { calculateCartTotal } from "types/inventory";
 import { OffWhite } from "utility/style";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { setModal } from "state/actions";
+import Button from "../../../atoms/Button";
+import purchaseItems from "api/order";
 
+const styledButton = {
+  gridColumn: 2,
+  gridRow: 3,
+  width: "80%",
+  height: "85%",
+  outline: "none",
+  marginLeft: "auto",
+  marginRight: "auto",
+};
 const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, inventory, modalActive } = state;
+  const { cart, inventory, modalActive, user } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
+  const purchase = () => purchaseItems(user!.pk, cart);
 
   const HideModal = () => dispatch(setModal(false));
 
@@ -29,8 +40,9 @@ const Modal: FC = () => {
         <hr />
         <span> {totalPrice} kr </span>
       </TotalDiv>
-
-      <Purchase />
+      <Button style={styledButton} onClick={purchase}>
+        Purchase
+      </Button>
     </Container>
   );
 };
