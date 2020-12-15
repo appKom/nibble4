@@ -1,16 +1,28 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
-import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
+import Button from "../../../atoms/Button";
+import { setModal } from "state/actions";
 
 const BasketWindow: FC = () => {
-  const { state } = useContext(StateContext);
-  const { cart } = state;
+  const { state, dispatch } = useContext(StateContext);
+  const { cart, user, inventory } = state;
 
-  const totalPrice = calculateCartTotal(cart, state.inventory);
+  const totalPrice = calculateCartTotal(cart, inventory);
+  const insufficient = user!.balance - totalPrice <= 0 ? true : false;
+
+  const ShowModal = (show: boolean) => dispatch(setModal(show));
+
+  const purchase = () => {
+    if (insufficient || totalPrice <= 0) return undefined;
+    else {
+      return ShowModal(true);
+    }
+  };
+
   const basketItems = Object.keys(cart).map((key: string) => (
     <BasketItem
       key={key}
@@ -35,7 +47,9 @@ const BasketWindow: FC = () => {
           <b> 0øc</b>
         </span>
       </CostDiv>
-      <PurchaseButton />
+      <Button onClick={purchase}>
+        {insufficient ? "Insufficient" : "Purchase"}
+      </Button>
     </Container>
   );
 };
