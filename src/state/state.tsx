@@ -15,6 +15,7 @@ type State = {
   category: string;
   cart: { [id: number]: CartItem };
   modalActive: boolean;
+  purchaseComplete: boolean;
 };
 
 const initialState: State = {
@@ -22,6 +23,7 @@ const initialState: State = {
   category: "Alt",
   cart: {},
   modalActive: false,
+  purchaseComplete: false,
 };
 
 const getIncrementedCartItem = (id: number, state: State): CartItem => {
@@ -52,6 +54,8 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, category: action.payload };
     case ActionTypes.SET_MODAL:
       return { ...state, modalActive: action.payload };
+    case ActionTypes.PURCHASE_COMPLETE:
+      return { ...state, purchaseComplete: action.payload };
     case ActionTypes.ADD_TO_CART:
       return {
         ...state,

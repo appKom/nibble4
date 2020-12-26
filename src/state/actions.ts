@@ -10,6 +10,7 @@ export enum ActionTypes {
   EMPTY_CART = "EMPTY_CART",
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL = "SET_MODAL",
+  PURCHASE_COMPLETE = "PURCHASE_COMPLETE",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -41,6 +42,11 @@ type ModalAction = {
   payload: boolean;
 };
 
+type PurchaseCompleteAction = {
+  type: ActionTypes.PURCHASE_COMPLETE;
+  payload: boolean;
+};
+
 export type Action =
   | SetUserAction
   | LogoutUserAction
@@ -49,7 +55,8 @@ export type Action =
   | AddToCartAction
   | RemoveFromCartAction
   | EmptyCartAction
-  | ModalAction;
+  | ModalAction
+  | PurchaseCompleteAction;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
@@ -82,4 +89,11 @@ export const setCategory = (id: string): SetCategoryAction => ({
 export const setModal = (show: boolean): ModalAction => ({
   type: ActionTypes.SET_MODAL,
   payload: show,
+});
+
+export const purchaseComplete = (
+  complete: boolean
+): PurchaseCompleteAction => ({
+  type: ActionTypes.PURCHASE_COMPLETE,
+  payload: complete,
 });
