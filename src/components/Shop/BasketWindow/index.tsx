@@ -7,6 +7,7 @@ import { calculateCartTotal } from "types/inventory";
 import Button from "../../../atoms/Button";
 import { setModal } from "state/actions";
 import Modal from "components/Shop/Modal";
+import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -52,7 +53,7 @@ const BasketWindow: FC = () => {
         {insufficient ? "Insufficient" : "Purchase"}
       </Button>
 
-      <Modal title="hei" />
+      <Modal type={modalTypes.PURCHASE} />
     </Container>
   );
 };

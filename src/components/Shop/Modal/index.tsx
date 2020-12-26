@@ -9,22 +9,14 @@ import { setModal } from "state/actions";
 import Button from "../../../atoms/Button";
 import purchaseItems from "api/order";
 import ReactDOM from "react-dom";
-
-const styledButton = {
-  gridColumn: 2,
-  gridRow: 3,
-  width: "80%",
-  height: "85%",
-  outline: "none",
-  marginLeft: "auto",
-  marginRight: "auto",
-};
+import { modalTypes } from "types/modal";
+import PurchaseModal from "./PurchaseModal";
 
 type modalProps = {
-  title: string;
+  type: modalTypes;
 };
 
-const Modal: FC<modalProps> = ({ title }: modalProps) => {
+const Modal: FC<modalProps> = ({ type }: modalProps) => {
   const { state, dispatch } = useContext(StateContext);
   const { modalActive } = state;
 
@@ -37,9 +29,8 @@ const Modal: FC<modalProps> = ({ title }: modalProps) => {
           <BiArrowBack />
         </IconContext.Provider>
       </div>
-      <div>
-        <h3> {title} </h3>
-      </div>
+
+      <PurchaseModal />
     </Container>,
     document.getElementById("root")!
   );
@@ -49,41 +40,15 @@ export default Modal;
 
 const Container = styled.div`
   position: absolute;
-
-  width: 400px;
-  height: 300px;
-
   left: 0;
   right: 0;
+
+  width: 400px;
+  height: 400px;
+
   margin: auto;
   margin-top: 10%;
-
   border-radius: 25px;
   background: white;
-  display: grid;
-  grid-template-rows: 2fr 3fr 1fr;
-  grid-template-columns: 1fr 2fr 1fr;
-
-  text-align: center;
-`;
-
-const TotalDiv = styled.div`
-  display: grid;
-
-  width: 100%;
-  height: 60%;
-
-  background-color: ${OffWhite};
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 2px;
-
-  grid-column: 2;
-  grid-row: 2;
-  hr {
-    width: 100%;
-    overflow: hidden;
-    border-top: 1px dashed #aeb2a8;
-    height: 0px;
-  }
+  box-shadow: 2px 2px 7px #888888;
 `;
