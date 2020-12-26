@@ -1,4 +1,4 @@
-import React, { useContext, FC, useState } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";

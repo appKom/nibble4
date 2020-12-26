@@ -1,13 +1,9 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
-import { calculateCartTotal } from "types/inventory";
-import { OffWhite } from "utility/style";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { setModal } from "state/actions";
-import Button from "../../../atoms/Button";
-import purchaseItems from "api/order";
 import ReactDOM from "react-dom";
 import { modalTypes } from "types/modal";
 import PurchaseModal from "./PurchaseModal";
