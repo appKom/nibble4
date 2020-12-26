@@ -11,6 +11,7 @@ import purchaseItems from "api/order";
 import ReactDOM from "react-dom";
 import { modalTypes } from "types/modal";
 import PurchaseModal from "./PurchaseModal";
+import CompleteModal from "./CompleteModal";
 
 type modalProps = {
   type: modalTypes;
@@ -30,7 +31,8 @@ const Modal: FC<modalProps> = ({ type }: modalProps) => {
         </IconContext.Provider>
       </div>
 
-      <PurchaseModal />
+      {type == modalTypes.PURCHASE ? <PurchaseModal /> : null}
+      {type == modalTypes.COMPLETE ? <CompleteModal /> : null}
     </Container>,
     document.getElementById("root")!
   );

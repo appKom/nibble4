@@ -20,7 +20,7 @@ const getUser = async (url: string): Promise<Response> => {
 };
 
 export const login = async (rfid: string): Promise<UserResponse> => {
-  const url = LOGIN_URI("0331138638");
+  const url = LOGIN_URI(rfid);
   const response = await getUser(url);
   const json = await response.json();
   return json as UserResponse;
