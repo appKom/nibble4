@@ -1,4 +1,4 @@
-import React, { useContext, FC } from "react";
+import React, { useContext, FC, useState } from "react";
 import styled from "styled-components";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
@@ -6,6 +6,7 @@ import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
 import Button from "../../../atoms/Button";
 import { setModal } from "state/actions";
+import Modal from "components/Shop/Modal";
 
 const BasketWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -50,6 +51,8 @@ const BasketWindow: FC = () => {
       <Button onClick={purchase}>
         {insufficient ? "Insufficient" : "Purchase"}
       </Button>
+
+      <Modal title="hei" />
     </Container>
   );
 };

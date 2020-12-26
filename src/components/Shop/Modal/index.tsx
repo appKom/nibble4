@@ -8,6 +8,7 @@ import { IconContext } from "react-icons";
 import { setModal } from "state/actions";
 import Button from "../../../atoms/Button";
 import purchaseItems from "api/order";
+import ReactDOM from "react-dom";
 
 const styledButton = {
   gridColumn: 2,
@@ -18,32 +19,29 @@ const styledButton = {
   marginLeft: "auto",
   marginRight: "auto",
 };
-const Modal: FC = () => {
-  const { state, dispatch } = useContext(StateContext);
-  const { cart, inventory, modalActive, user } = state;
 
-  const totalPrice = calculateCartTotal(cart, inventory);
-  const purchase = () => purchaseItems(user!.pk, cart);
+type modalProps = {
+  title: string;
+};
+
+const Modal: FC<modalProps> = ({ title }: modalProps) => {
+  const { state, dispatch } = useContext(StateContext);
+  const { modalActive } = state;
 
   const HideModal = () => dispatch(setModal(false));
 
-  return (
+  return ReactDOM.createPortal(
     <Container style={{ zIndex: modalActive ? 1 : -1 }}>
       <div onClick={HideModal}>
         <IconContext.Provider value={{ color: "orange", size: "50px" }}>
           <BiArrowBack />
         </IconContext.Provider>
       </div>
-      <h3> Confirm purchase </h3>
-      <TotalDiv>
-        <span> Your total </span>
-        <hr />
-        <span> {totalPrice} kr </span>
-      </TotalDiv>
-      <Button style={styledButton} onClick={purchase}>
-        Purchase
-      </Button>
-    </Container>
+      <div>
+        <h3> {title} </h3>
+      </div>
+    </Container>,
+    document.getElementById("root")!
   );
 };
 
