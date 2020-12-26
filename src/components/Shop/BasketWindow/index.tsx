@@ -53,7 +53,7 @@ const BasketWindow: FC = () => {
         {insufficient ? "Insufficient" : "Purchase"}
       </Button>
 
-      <Modal type={modalTypes.COMPLETE} />
+      <Modal type={modalTypes.PURCHASE} />
     </Container>
   );
 };
