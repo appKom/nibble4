@@ -8,7 +8,7 @@ import { IoIosBeer } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { logoutUser } from "state/actions";
 const Navbar: FC = () => {
-  const { state } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
   const { user } = state;
 
   return (
@@ -28,7 +28,7 @@ const Navbar: FC = () => {
       <IconContext.Provider value={{ color: "white", size: "40px" }}>
         <RiLogoutBoxRLine
           onClick={() => {
-            logoutUser();
+            dispatch(logoutUser());
           }}
         />
       </IconContext.Provider>
