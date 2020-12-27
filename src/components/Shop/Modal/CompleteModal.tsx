@@ -1,9 +1,13 @@
 import React, { FC, useContext, useEffect, useState } from "react";
 import { StateContext } from "state/state";
 import styled from "styled-components";
-import { logoutUser } from "state/actions";
-import { setModal } from "state/actions";
-import { setPurchaseComplete } from "state/actions";
+import {
+  setModal,
+  setPurchaseComplete,
+  emptyCart,
+  logoutUser,
+  setCategory,
+} from "state/actions";
 
 const CompleteModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -13,8 +17,9 @@ const CompleteModal: FC = () => {
   if (seconds <= 0) {
     dispatch(setModal(false));
     dispatch(setPurchaseComplete(false));
+    dispatch(emptyCart());
+    dispatch(setCategory("Alt"));
     dispatch(logoutUser());
-    //clearInterval(interval);
   }
 
   useEffect(() => {
