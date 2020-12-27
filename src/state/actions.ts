@@ -91,7 +91,7 @@ export const setModal = (show: boolean): ModalAction => ({
   payload: show,
 });
 
-export const purchaseComplete = (
+export const setPurchaseComplete = (
   complete: boolean
 ): PurchaseCompleteAction => ({
   type: ActionTypes.PURCHASE_COMPLETE,

@@ -17,12 +17,16 @@ const BasketWindow: FC = () => {
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
 
   const ShowModal = (show: boolean) => dispatch(setModal(show));
-
+  /*
   const purchase = () => {
     if (insufficient || totalPrice <= 0) return undefined;
     else {
       return ShowModal(true);
     }
+  };
+*/
+  const purchase = () => {
+    return ShowModal(true);
   };
 
   const basketItems = Object.keys(cart).map((key: string) => (

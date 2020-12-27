@@ -5,7 +5,7 @@ import { calculateCartTotal } from "types/inventory";
 import { OffWhite } from "utility/style";
 import Button from "../../../atoms/Button";
 import purchaseItems from "api/order";
-import { purchaseComplete } from "state/actions";
+import { setPurchaseComplete } from "state/actions";
 
 const styledButton = {
   gridColumn: 2,
@@ -28,7 +28,7 @@ const PurchaseModal: FC = () => {
   const { cart, inventory, user } = state;
 
   const showPurchaseComplete = (show: boolean) =>
-    dispatch(purchaseComplete(show));
+    dispatch(setPurchaseComplete(show));
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const purchase = () => {
