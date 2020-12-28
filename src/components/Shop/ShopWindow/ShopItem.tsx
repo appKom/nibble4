@@ -18,7 +18,12 @@ const ShopItem: FC<ShopWindowItemProps> = ({
 
   return (
     <Container onClick={addToCart}>
-      <img src={imageSrc} alt="Product image" />
+      <img
+        src={
+          imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
+        }
+        alt="Product image"
+      />
 
       <TextContainer>
         <span>
@@ -41,7 +46,7 @@ const Container = styled.div`
   background-color: white;
   border-radius: 3px;
   width: 90%;
-  height: 90%;
+  height: 175px;
 
   margin-left: auto;
   margin-right: auto;
