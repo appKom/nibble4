@@ -20,7 +20,12 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
 
   return (
     <Container onClick={removeItem}>
-      <img src={imageSrc} alt="Product image" />
+      <img
+        src={
+          imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
+        }
+        alt="Product image"
+      />
 
       <span>
         <b> {item.name} </b>
