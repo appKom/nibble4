@@ -28,8 +28,6 @@ const ShopItem: FC<ShopWindowItemProps> = ({
         <span>
           <b>{product.price}</b>kr
         </span>
-
-        <DescSpan>{product.description} </DescSpan>
       </TextContainer>
     </Container>
   );
@@ -66,9 +64,4 @@ const TextContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 6fr 1fr;
-`;
-
-const DescSpan = styled.span`
-  color: gray;
-  font-size: 12px;
 `;
