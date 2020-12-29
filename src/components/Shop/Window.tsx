@@ -9,11 +9,7 @@ const Window: FC = () => {
   const { modalActive } = state;
 
   return (
-    <Container
-      style={{
-        filter: modalActive ? "blur(10px)" : "none",
-      }}
-    >
+    <Container>
       <ShopWindow />
       <BasketWindow />
     </Container>
@@ -27,5 +23,4 @@ const Container = styled.div`
   grid-template-columns: 2fr 1fr;
   width: 100%;
   height: 100%;
-  filter: blur(0px);
 `;
