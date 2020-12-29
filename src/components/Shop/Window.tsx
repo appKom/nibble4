@@ -1,13 +1,9 @@
-import React, { useContext, FC } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import ShopWindow from "./ShopWindow";
 import BasketWindow from "./BasketWindow";
-import { StateContext } from "state/state";
 
 const Window: FC = () => {
-  const { state } = useContext(StateContext);
-  const { modalActive } = state;
-
   return (
     <Container>
       <ShopWindow />
