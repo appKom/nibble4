@@ -3,8 +3,6 @@ import { modalTypes } from "types/modal";
 import { StateContext } from "state/state";
 import styled from "styled-components";
 import {
-  setModal,
-  setPurchaseComplete,
   emptyCart,
   logoutUser,
   setCategory,
@@ -13,12 +11,10 @@ import {
 
 const CompleteModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { purchaseComplete, modalState } = state;
+  const { modalState } = state;
   const [seconds, decrementSeconds] = useState(3);
 
   if (seconds <= 0) {
-    dispatch(setModal(false));
-    dispatch(setPurchaseComplete(false));
     dispatch(setModalState(modalTypes.DISABLED));
     dispatch(emptyCart());
     dispatch(setCategory("Alt"));

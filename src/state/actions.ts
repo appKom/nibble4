@@ -10,8 +10,6 @@ export enum ActionTypes {
   REMOVE_FROM_CART = "REMOVE_FROM_CART",
   EMPTY_CART = "EMPTY_CART",
   SET_CATEGORY = "SET_CATEGORY",
-  SET_MODAL = "SET_MODAL",
-  PURCHASE_COMPLETE = "PURCHASE_COMPLETE",
   SET_MODAL_STATE = "SET_MODAL_STATE",
 }
 
@@ -39,16 +37,6 @@ type EmptyCartAction = {
   type: ActionTypes.EMPTY_CART;
 };
 
-type ModalAction = {
-  type: ActionTypes.SET_MODAL;
-  payload: boolean;
-};
-
-type PurchaseCompleteAction = {
-  type: ActionTypes.PURCHASE_COMPLETE;
-  payload: boolean;
-};
-
 type SetModalState = {
   type: ActionTypes.SET_MODAL_STATE;
   payload: modalTypes;
@@ -62,8 +50,6 @@ export type Action =
   | AddToCartAction
   | RemoveFromCartAction
   | EmptyCartAction
-  | ModalAction
-  | PurchaseCompleteAction
   | SetModalState;
 
 export const setUser = (user: User): SetUserAction => ({
@@ -94,19 +80,7 @@ export const setCategory = (id: string): SetCategoryAction => ({
   payload: id,
 });
 
-export const setModal = (show: boolean): ModalAction => ({
-  type: ActionTypes.SET_MODAL,
-  payload: show,
-});
-
 export const setModalState = (modalType: modalTypes): SetModalState => ({
   type: ActionTypes.SET_MODAL_STATE,
   payload: modalType,
-});
-
-export const setPurchaseComplete = (
-  complete: boolean
-): PurchaseCompleteAction => ({
-  type: ActionTypes.PURCHASE_COMPLETE,
-  payload: complete,
 });

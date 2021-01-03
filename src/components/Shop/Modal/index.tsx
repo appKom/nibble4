@@ -3,19 +3,15 @@ import styled from "styled-components";
 import { StateContext } from "state/state";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import { setModal, setModalState } from "state/actions";
+import { setModalState } from "state/actions";
 import ReactDOM from "react-dom";
 import { modalTypes } from "types/modal";
 import PurchaseModal from "./PurchaseModal";
 import CompleteModal from "./CompleteModal";
 
-type modalProps = {
-  type: modalTypes;
-};
-
-const Modal: FC<modalProps> = ({ type }: modalProps) => {
+const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { modalActive, modalState } = state;
+  const { modalState } = state;
 
   const HideModal = () => dispatch(setModalState(modalTypes.DISABLED));
 

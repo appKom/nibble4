@@ -15,8 +15,6 @@ type State = {
   inventory: Product[];
   category: string;
   cart: { [id: number]: CartItem };
-  modalActive: boolean;
-  purchaseComplete: boolean;
   modalState: modalTypes;
 };
 
@@ -24,8 +22,6 @@ const initialState: State = {
   inventory: [],
   category: "Alt",
   cart: {},
-  modalActive: false,
-  purchaseComplete: false,
   modalState: modalTypes.DISABLED,
 };
 
@@ -55,10 +51,6 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, inventory: action.payload };
     case ActionTypes.SET_CATEGORY:
       return { ...state, category: action.payload };
-    case ActionTypes.SET_MODAL:
-      return { ...state, modalActive: action.payload };
-    case ActionTypes.PURCHASE_COMPLETE:
-      return { ...state, purchaseComplete: action.payload };
     case ActionTypes.SET_MODAL_STATE:
       return { ...state, modalState: action.payload };
     case ActionTypes.ADD_TO_CART:

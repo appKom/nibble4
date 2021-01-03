@@ -5,7 +5,7 @@ import { calculateCartTotal } from "types/inventory";
 import { OffWhite } from "utility/style";
 import Button from "../../../atoms/Button";
 import purchaseItems from "api/order";
-import { setPurchaseComplete, setModalState } from "state/actions";
+import { setModalState } from "state/actions";
 import { modalTypes } from "types/modal";
 
 const styledButton = {
@@ -27,9 +27,6 @@ const styledText = {
 const PurchaseModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { cart, inventory, user } = state;
-
-  const showPurchaseComplete = (show: boolean) =>
-    dispatch(setPurchaseComplete(show));
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const purchase = () => {
