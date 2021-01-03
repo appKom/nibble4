@@ -29,10 +29,15 @@ const PurchaseModal: FC = () => {
   const { cart, inventory, user } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
+
   const purchase = () => {
-    purchaseItems(user!.pk, cart).then((response) => {
-      if (response.status == 201) dispatch(setModalState(modalTypes.COMPLETE));
-    });
+    purchaseItems(user!.pk, cart)
+      .then((response) => {
+        if (response.status == 201)
+          dispatch(setModalState(modalTypes.COMPLETE));
+        else console.log("error");
+      })
+      .catch((error) => console.log("ERROR"));
   };
 
   return (
