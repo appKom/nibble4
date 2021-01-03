@@ -1,5 +1,6 @@
 import { Product } from "types/inventory";
 import { User } from "types/user";
+import { modalTypes } from "types/modal";
 
 export enum ActionTypes {
   SET_USER = "SET_USER",
@@ -11,6 +12,7 @@ export enum ActionTypes {
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL = "SET_MODAL",
   PURCHASE_COMPLETE = "PURCHASE_COMPLETE",
+  SET_MODAL_STATE = "SET_MODAL_STATE",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -47,6 +49,11 @@ type PurchaseCompleteAction = {
   payload: boolean;
 };
 
+type SetModalState = {
+  type: ActionTypes.SET_MODAL_STATE;
+  payload: modalTypes;
+};
+
 export type Action =
   | SetUserAction
   | LogoutUserAction
@@ -56,7 +63,8 @@ export type Action =
   | RemoveFromCartAction
   | EmptyCartAction
   | ModalAction
-  | PurchaseCompleteAction;
+  | PurchaseCompleteAction
+  | SetModalState;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
@@ -89,6 +97,11 @@ export const setCategory = (id: string): SetCategoryAction => ({
 export const setModal = (show: boolean): ModalAction => ({
   type: ActionTypes.SET_MODAL,
   payload: show,
+});
+
+export const setModalState = (modalType: modalTypes): SetModalState => ({
+  type: ActionTypes.SET_MODAL_STATE,
+  payload: modalType,
 });
 
 export const setPurchaseComplete = (

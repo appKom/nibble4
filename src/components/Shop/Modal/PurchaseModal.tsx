@@ -5,7 +5,8 @@ import { calculateCartTotal } from "types/inventory";
 import { OffWhite } from "utility/style";
 import Button from "../../../atoms/Button";
 import purchaseItems from "api/order";
-import { setPurchaseComplete } from "state/actions";
+import { setPurchaseComplete, setModalState } from "state/actions";
+import { modalTypes } from "types/modal";
 
 const styledButton = {
   gridColumn: 2,
@@ -33,7 +34,7 @@ const PurchaseModal: FC = () => {
   const totalPrice = calculateCartTotal(cart, inventory);
   const purchase = () => {
     purchaseItems(user!.pk, cart).then((response) => {
-      if (response.status == 201) showPurchaseComplete(true);
+      if (response.status == 201) dispatch(setModalState(modalTypes.COMPLETE));
     });
   };
 

@@ -5,23 +5,21 @@ import { OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
 import Button from "../../../atoms/Button";
-import { setModal } from "state/actions";
+import { setModal, setModalState } from "state/actions";
 import Modal from "components/Shop/Modal";
 import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, user, inventory, purchaseComplete } = state;
+  const { cart, user, inventory, purchaseComplete, modalState } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
 
-  const ShowModal = (show: boolean) => dispatch(setModal(show));
-
   const purchase = () => {
     if (insufficient || totalPrice <= 0) return undefined;
     else {
-      return ShowModal(true);
+      return dispatch(setModalState(modalTypes.PURCHASE));
     }
   };
 

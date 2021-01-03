@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { StateContext } from "state/state";
 import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import { setModal } from "state/actions";
+import { setModal, setModalState } from "state/actions";
 import ReactDOM from "react-dom";
 import { modalTypes } from "types/modal";
 import PurchaseModal from "./PurchaseModal";
@@ -15,20 +15,20 @@ type modalProps = {
 
 const Modal: FC<modalProps> = ({ type }: modalProps) => {
   const { state, dispatch } = useContext(StateContext);
-  const { modalActive } = state;
+  const { modalActive, modalState } = state;
 
-  const HideModal = () => dispatch(setModal(false));
+  const HideModal = () => dispatch(setModalState(modalTypes.DISABLED));
 
   return ReactDOM.createPortal(
-    <Container style={{ zIndex: modalActive ? 1 : -1 }}>
+    <Container style={{ zIndex: modalState != modalTypes.DISABLED ? 1 : -1 }}>
       <div onClick={HideModal}>
         <IconContext.Provider value={{ color: "orange", size: "50px" }}>
           <BiArrowBack />
         </IconContext.Provider>
       </div>
 
-      {type == modalTypes.PURCHASE ? <PurchaseModal /> : null}
-      {type == modalTypes.COMPLETE ? <CompleteModal /> : null}
+      {modalState == modalTypes.PURCHASE ? <PurchaseModal /> : null}
+      {modalState == modalTypes.COMPLETE ? <CompleteModal /> : null}
     </Container>,
     document.getElementById("root")!
   );
