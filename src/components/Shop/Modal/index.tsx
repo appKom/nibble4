@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 import { modalTypes } from "types/modal";
 import PurchaseModal from "./PurchaseModal";
 import CompleteModal from "./CompleteModal";
+import ErrorModal from "./ErrorModal";
 
 const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -25,6 +26,7 @@ const Modal: FC = () => {
 
       {modalState == modalTypes.PURCHASE ? <PurchaseModal /> : null}
       {modalState == modalTypes.COMPLETE ? <CompleteModal /> : null}
+      {modalState == modalTypes.ERROR ? <ErrorModal /> : null}
     </Container>,
     document.getElementById("root")!
   );
