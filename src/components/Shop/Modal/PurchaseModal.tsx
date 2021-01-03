@@ -32,8 +32,9 @@ const PurchaseModal: FC = () => {
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const purchase = () => {
-    purchaseItems(user!.pk, cart);
-    showPurchaseComplete(true);
+    purchaseItems(user!.pk, cart).then((response) => {
+      if (response.status == 201) showPurchaseComplete(true);
+    });
   };
 
   return (
