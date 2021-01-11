@@ -1,4 +1,4 @@
-import React, { useState, useContext, FC } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import CategoryButton from "./CategoryButton";
 import { StateContext } from "state/state";

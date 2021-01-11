@@ -6,9 +6,9 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { GiWallet } from "react-icons/gi";
 import { IoIosBeer } from "react-icons/io";
 import { IconContext } from "react-icons";
-
+import { logoutUser } from "state/actions";
 const Navbar: FC = () => {
-  const { state } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
   const { user } = state;
 
   return (
@@ -26,7 +26,11 @@ const Navbar: FC = () => {
         </IconContext.Provider>
       </div>
       <IconContext.Provider value={{ color: "white", size: "40px" }}>
-        <RiLogoutBoxRLine />
+        <RiLogoutBoxRLine
+          onClick={() => {
+            dispatch(logoutUser());
+          }}
+        />
       </IconContext.Provider>
     </Container>
   );

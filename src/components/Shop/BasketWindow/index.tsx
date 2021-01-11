@@ -1,17 +1,25 @@
-import React, { useContext, FC } from "react";
+import React, { useContext, FC, useState } from "react";
 import styled from "styled-components";
-import PurchaseButton from "./PurchaseButton";
 import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
-
 import { calculateCartTotal } from "types/inventory";
+import Button from "atoms/Button";
+import { setModalState } from "state/actions";
+import Modal from "components/Shop/Modal";
+import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
-  const { state } = useContext(StateContext);
-  const { cart } = state;
+  const { state, dispatch } = useContext(StateContext);
+  const { cart, user, inventory, modalState } = state;
 
-  const totalPrice = calculateCartTotal(cart, state.inventory);
+  const totalPrice = calculateCartTotal(cart, inventory);
+  const insufficient = user!.balance - totalPrice <= 0 ? true : false;
+
+  const purchase = () => {
+    if (insufficient || totalPrice <= 0) return undefined;
+    return dispatch(setModalState(modalTypes.PURCHASE));
+  };
 
   const basketItems = Object.keys(cart).map((key: string) => (
     <BasketItem
@@ -37,7 +45,11 @@ const BasketWindow: FC = () => {
           <b> 0øc</b>
         </span>
       </CostDiv>
-      <PurchaseButton text="Purchase" />
+      <Button onClick={purchase}>
+        {insufficient ? "Insufficient" : "Purchase"}
+      </Button>
+
+      <Modal />
     </Container>
   );
 };

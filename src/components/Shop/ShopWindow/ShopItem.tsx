@@ -18,7 +18,12 @@ const ShopItem: FC<ShopWindowItemProps> = ({
 
   return (
     <Container onClick={addToCart}>
-      <img src={imageSrc} alt="Product image" />
+      <img
+        src={
+          imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
+        }
+        alt="Product image"
+      />
 
       <TextContainer>
         <span>
@@ -28,8 +33,6 @@ const ShopItem: FC<ShopWindowItemProps> = ({
         <span>
           <b>{product.price}</b>kr
         </span>
-
-        <DescSpan>{product.description} </DescSpan>
       </TextContainer>
     </Container>
   );
@@ -43,7 +46,7 @@ const Container = styled.div`
   background-color: white;
   border-radius: 3px;
   width: 90%;
-  height: 90%;
+  height: 175px;
 
   margin-left: auto;
   margin-right: auto;
@@ -66,9 +69,4 @@ const TextContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 6fr 1fr;
-`;
-
-const DescSpan = styled.span`
-  color: gray;
-  font-size: 12px;
 `;

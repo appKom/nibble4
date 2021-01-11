@@ -1,5 +1,6 @@
 import { Product } from "types/inventory";
 import { User } from "types/user";
+import { modalTypes } from "types/modal";
 
 export enum ActionTypes {
   SET_USER = "SET_USER",
@@ -9,6 +10,7 @@ export enum ActionTypes {
   REMOVE_FROM_CART = "REMOVE_FROM_CART",
   EMPTY_CART = "EMPTY_CART",
   SET_CATEGORY = "SET_CATEGORY",
+  SET_MODAL_STATE = "SET_MODAL_STATE",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -35,6 +37,11 @@ type EmptyCartAction = {
   type: ActionTypes.EMPTY_CART;
 };
 
+type SetModalState = {
+  type: ActionTypes.SET_MODAL_STATE;
+  payload: modalTypes;
+};
+
 export type Action =
   | SetUserAction
   | LogoutUserAction
@@ -42,7 +49,8 @@ export type Action =
   | SetCategoryAction
   | AddToCartAction
   | RemoveFromCartAction
-  | EmptyCartAction;
+  | EmptyCartAction
+  | SetModalState;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
@@ -70,4 +78,9 @@ export const emptyCart = (): EmptyCartAction => ({
 export const setCategory = (id: string): SetCategoryAction => ({
   type: ActionTypes.SET_CATEGORY,
   payload: id,
+});
+
+export const setModalState = (modalType: modalTypes): SetModalState => ({
+  type: ActionTypes.SET_MODAL_STATE,
+  payload: modalType,
 });

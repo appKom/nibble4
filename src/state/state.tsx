@@ -7,6 +7,7 @@ import {
   decrementCartItem,
 } from "types/inventory";
 import { User } from "types/user";
+import { modalTypes } from "types/modal";
 import { Action, ActionTypes } from "state/actions";
 
 type State = {
@@ -14,12 +15,14 @@ type State = {
   inventory: Product[];
   category: string;
   cart: { [id: number]: CartItem };
+  modalState: modalTypes;
 };
 
 const initialState: State = {
   inventory: [],
   category: "Alt",
   cart: {},
+  modalState: modalTypes.DISABLED,
 };
 
 const getIncrementedCartItem = (id: number, state: State): CartItem => {
@@ -48,6 +51,8 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, inventory: action.payload };
     case ActionTypes.SET_CATEGORY:
       return { ...state, category: action.payload };
+    case ActionTypes.SET_MODAL_STATE:
+      return { ...state, modalState: action.payload };
     case ActionTypes.ADD_TO_CART:
       return {
         ...state,
