@@ -18,9 +18,7 @@ const BasketWindow: FC = () => {
 
   const purchase = () => {
     if (insufficient || totalPrice <= 0) return undefined;
-    else {
-      return dispatch(setModalState(modalTypes.PURCHASE));
-    }
+    return dispatch(setModalState(modalTypes.PURCHASE));
   };
 
   const basketItems = Object.keys(cart).map((key: string) => (
