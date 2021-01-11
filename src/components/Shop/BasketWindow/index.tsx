@@ -4,7 +4,7 @@ import BasketItem from "./BasketItem";
 import { OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
-import Button from "../../../atoms/Button";
+import Button from "atoms/Button";
 import { setModalState } from "state/actions";
 import Modal from "components/Shop/Modal";
 import { modalTypes } from "types/modal";
