@@ -42,14 +42,14 @@ const PurchaseModal: FC = () => {
 
   return (
     <Container>
-      <h3 style={styledText}> Confirm purchase </h3>
+      <h3 style={styledText}> Bekreft kjøp </h3>
       <TotalDiv>
-        <span> Your total </span>
+        <span> Total: </span>
         <hr />
         <span> {totalPrice} kr </span>
       </TotalDiv>
       <Button style={styledButton} onClick={purchase}>
-        Purchase
+        Kjøp
       </Button>
     </Container>
   );

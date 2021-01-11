@@ -4,8 +4,8 @@ import styled from "styled-components";
 const CompleteModal: FC = () => {
   return (
     <Container>
-      <h3> An error concurred </h3>
-      <p> Please log out, and try again!</p>
+      <h3> En feil oppsto! </h3>
+      <p> Vennligst logg ut, og prøv igjen</p>
     </Container>
   );
 };
