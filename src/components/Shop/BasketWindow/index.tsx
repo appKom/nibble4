@@ -41,9 +41,6 @@ const BasketWindow: FC = () => {
         <span id="pris">
           <b> {totalPrice}kr</b>
         </span>
-        <span id="olcoins">
-          <b> 0øc</b>
-        </span>
       </CostDiv>
       <Button onClick={purchase}>
         {insufficient ? "Insufficient" : "Purchase"}
