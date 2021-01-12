@@ -9,7 +9,7 @@ import {
   setModalState,
 } from "state/actions";
 
-const CompleteModal: FC = () => {
+const InactiveModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { modalState } = state;
   const [seconds, decrementSeconds] = useState(10);
@@ -33,7 +33,7 @@ const CompleteModal: FC = () => {
   );
 };
 
-export default CompleteModal;
+export default InactiveModal;
 const Container = styled.div`
   text-align: center;
 `;
