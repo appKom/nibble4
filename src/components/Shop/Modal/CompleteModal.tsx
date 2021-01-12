@@ -33,7 +33,7 @@ const CompleteModal: FC = () => {
       <h3> Handel gjennomført!</h3>
       <img
         src={`${process.env.PUBLIC_URL}/images/complete.gif`}
-        alt="description of gif"
+        alt="Handel gjennomført gif"
       />
       <p> Logger ut om {seconds} sekunder </p>
     </Container>
