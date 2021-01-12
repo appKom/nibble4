@@ -7,6 +7,8 @@ import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
 import { fetchInventory } from "./api/";
 import { useIdleTimer } from "react-idle-timer";
+import { modalTypes } from "types/modal";
+import { setModalState } from "state/actions";
 
 const App: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -26,7 +28,10 @@ const App: FC = () => {
   }, [dispatch, user]);
 
   const handleOnIdle = () => {
-    console.log("User is inactive", getLastActiveTime());
+    if (user) {
+      console.log("User is inactive", getLastActiveTime());
+      dispatch(setModalState(modalTypes.INACTIVE));
+    }
   };
 
   const { getLastActiveTime } = useIdleTimer({
