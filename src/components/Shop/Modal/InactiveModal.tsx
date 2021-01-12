@@ -15,9 +15,6 @@ const CompleteModal: FC = () => {
   const [seconds, decrementSeconds] = useState(10);
 
   if (seconds <= 0) {
-    dispatch(setModalState(modalTypes.DISABLED));
-    dispatch(emptyCart());
-    dispatch(setCategory("Alt"));
     dispatch(logoutUser());
   }
 
