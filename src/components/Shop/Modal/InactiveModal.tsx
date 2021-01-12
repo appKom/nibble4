@@ -11,7 +11,7 @@ import {
 
 const CompleteModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { modalState, user } = state;
+  const { modalState } = state;
   const [seconds, decrementSeconds] = useState(10);
 
   if (seconds <= 0) {
