@@ -22,7 +22,7 @@ const CompleteModal: FC = () => {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       if (modalState == modalTypes.COMPLETE)
         decrementSeconds((seconds) => seconds - 1);
     }, 1000);
