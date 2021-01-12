@@ -30,12 +30,12 @@ const CompleteModal: FC = () => {
 
   return (
     <Container>
-      <h3> Purchase Complete!</h3>
+      <h3> Handel gjennomført!</h3>
       <img
         src={`${process.env.PUBLIC_URL}/images/complete.gif`}
-        alt="description of gif"
+        alt="Handel gjennomført gif"
       />
-      <p> Logging out in {seconds} seconds </p>
+      <p> Logger ut om {seconds} sekunder </p>
     </Container>
   );
 };

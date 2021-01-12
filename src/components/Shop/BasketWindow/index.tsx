@@ -31,22 +31,19 @@ const BasketWindow: FC = () => {
 
   return (
     <Container>
-      <h2> Your Cart</h2>
+      <h2> Handlekurven din</h2>
       <ItemDiv>{basketItems}</ItemDiv>
 
       <CostDiv>
         <span>
-          <b> Total Cost</b>
+          <b> Sum :</b>
         </span>
         <span id="pris">
           <b> {totalPrice}kr</b>
         </span>
-        <span id="olcoins">
-          <b> 0øc</b>
-        </span>
       </CostDiv>
       <Button onClick={purchase}>
-        {insufficient ? "Insufficient" : "Purchase"}
+        {insufficient ? "Utilstrekkelig med penger" : "Kjøp"}
       </Button>
 
       <Modal />
