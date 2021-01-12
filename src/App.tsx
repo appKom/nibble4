@@ -29,7 +29,6 @@ const App: FC = () => {
 
   const handleOnIdle = () => {
     if (user) {
-      console.log("User is inactive", getLastActiveTime());
       dispatch(setModalState(modalTypes.INACTIVE));
     }
   };
