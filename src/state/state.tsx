@@ -46,7 +46,13 @@ const StateReducer = (state: State, action: Action): State => {
     case ActionTypes.SET_USER:
       return { ...state, user: action.payload };
     case ActionTypes.LOGOUT_USER:
-      return { ...state, user: undefined };
+      return {
+        ...state,
+        user: undefined,
+        cart: {},
+        category: "Alt",
+        modalState: modalTypes.DISABLED,
+      };
     case ActionTypes.SET_INVENTORY:
       return { ...state, inventory: action.payload };
     case ActionTypes.SET_CATEGORY:
