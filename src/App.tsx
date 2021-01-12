@@ -6,6 +6,7 @@ import { INVENTORY_URI } from "./api/";
 import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
 import { fetchInventory } from "./api/";
+import { useIdleTimer } from "react-idle-timer";
 
 const App: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -23,6 +24,15 @@ const App: FC = () => {
     };
     getData();
   }, [dispatch, user]);
+
+  const handleOnIdle = () => {
+    console.log("User is inactive", getLastActiveTime());
+  };
+
+  const { getLastActiveTime } = useIdleTimer({
+    timeout: 1000 * 5,
+    onIdle: handleOnIdle,
+  });
 
   return (
     <Router>
