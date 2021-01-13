@@ -40,7 +40,7 @@ export const registerUser = (
   username: string,
   password: string,
   rfid: string
-) => {
+): Promise<Response> => {
   const data = {
     username,
     password,

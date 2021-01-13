@@ -30,6 +30,7 @@
         "endOfLine": "auto"
       }
     ],
+    "@typescript-eslint/no-non-null-assertion": "off",
     "no-non-null-assertion": 0
   }
 }
