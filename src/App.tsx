@@ -33,7 +33,7 @@ const App: FC = () => {
     }
   };
 
-  const { getLastActiveTime } = useIdleTimer({
+  const {} = useIdleTimer({
     timeout: 1000 * 50,
     onIdle: handleOnIdle,
   });
