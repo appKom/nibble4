@@ -6,6 +6,9 @@ import { INVENTORY_URI } from "./api/";
 import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
 import { fetchInventory } from "./api/";
+import { useIdleTimer } from "react-idle-timer";
+import { modalTypes } from "types/modal";
+import { setModalState } from "state/actions";
 
 const App: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -23,6 +26,17 @@ const App: FC = () => {
     };
     getData();
   }, [dispatch, user]);
+
+  const handleOnIdle = () => {
+    if (user) {
+      dispatch(setModalState(modalTypes.INACTIVE));
+    }
+  };
+
+  const { getLastActiveTime } = useIdleTimer({
+    timeout: 1000 * 50,
+    onIdle: handleOnIdle,
+  });
 
   return (
     <Router>
