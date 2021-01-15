@@ -33,9 +33,8 @@ const PurchaseModal: FC = () => {
   const purchase = () => {
     purchaseItems(user!.pk, cart)
       .then((response) => {
-        if (response.status == 201)
-          dispatch(setModalState(modalTypes.COMPLETE));
-        else dispatch(setModalState(modalTypes.COMPLETE));
+        if (response.ok) dispatch(setModalState(modalTypes.COMPLETE));
+        else dispatch(setModalState(modalTypes.ERROR));
       })
       .catch(() => dispatch(setModalState(modalTypes.ERROR)));
   };
