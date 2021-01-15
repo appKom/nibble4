@@ -2,12 +2,7 @@ import React, { FC, useContext, useEffect, useState } from "react";
 import { modalTypes } from "types/modal";
 import { StateContext } from "state/state";
 import styled from "styled-components";
-import {
-  emptyCart,
-  logoutUser,
-  setCategory,
-  setModalState,
-} from "state/actions";
+import { logoutUser } from "state/actions";
 
 const InactiveModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -19,7 +14,7 @@ const InactiveModal: FC = () => {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       if (modalState == modalTypes.INACTIVE)
         decrementSeconds((seconds) => seconds - 1);
     }, 1000);
