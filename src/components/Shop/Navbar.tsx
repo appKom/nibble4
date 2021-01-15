@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { OnlineBlue } from "utility/style";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { GiWallet } from "react-icons/gi";
-import { IoIosBeer } from "react-icons/io";
 import { IconContext } from "react-icons";
 import { logoutUser } from "state/actions";
 const Navbar: FC = () => {

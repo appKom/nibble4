@@ -37,7 +37,7 @@ const PurchaseModal: FC = () => {
           dispatch(setModalState(modalTypes.COMPLETE));
         else console.log("error");
       })
-      .catch((error) => console.log("ERROR"));
+      .catch(() => console.log("ERROR"));
   };
 
   return (
