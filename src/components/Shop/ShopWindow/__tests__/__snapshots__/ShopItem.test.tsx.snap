@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ ixLtVV"
+  >
+    <img
+      alt="Product image"
+      src="https://online.ntnu.no//media/images/responsive/sm/38688f77-21b6-4936-8ba6-c976538fb110.png"
+    />
+    <div
+      class="sc-gsTCUz kFHCOk"
+    >
+      <span>
+        <b>
+           Powerking 
+        </b>
+      </span>
+      <span>
+        <b>
+          10
+        </b>
+        kr
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
