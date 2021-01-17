@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fubCfw fvlDXG"
+  >
+    <h2>
+       Handlekurven din
+    </h2>
+    <div
+      class="sc-pFZIQ sSvdJ"
+    />
+    <div
+      class="sc-jrAGrp hYvsZc"
+    >
+      <span>
+        <b>
+           Sum :
+        </b>
+      </span>
+      <span
+        id="pris"
+      >
+        <b>
+           0kr
+        </b>
+      </span>
+    </div>
+    <button
+      class="sc-gsTCUz dhzAWv"
+    >
+      Kjøp
+    </button>
+  </div>
+</DocumentFragment>
+`;

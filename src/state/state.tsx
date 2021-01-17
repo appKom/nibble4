@@ -10,7 +10,7 @@ import { User } from "types/user";
 import { modalTypes } from "types/modal";
 import { Action, ActionTypes } from "state/actions";
 
-type State = {
+export type State = {
   user?: User;
   inventory: Product[];
   category: string;
@@ -80,7 +80,7 @@ const StateReducer = (state: State, action: Action): State => {
   }
 };
 
-type StateContextProps = {
+export type StateContextProps = {
   state: State;
   dispatch: Dispatch<Action>;
 };

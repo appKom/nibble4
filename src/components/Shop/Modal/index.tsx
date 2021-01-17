@@ -16,6 +16,7 @@ const Modal: FC = () => {
   const { modalState } = state;
 
   const HideModal = () => dispatch(setModalState(modalTypes.DISABLED));
+  const modalElement = document.createElement("div");
 
   return ReactDOM.createPortal(
     <Container style={{ zIndex: modalState != modalTypes.DISABLED ? 1 : -1 }}>
@@ -30,7 +31,7 @@ const Modal: FC = () => {
       {modalState == modalTypes.ERROR ? <ErrorModal /> : null}
       {modalState == modalTypes.INACTIVE ? <InactiveModal /> : null}
     </Container>,
-    document.getElementById("root")!
+    modalElement
   );
 };
 
