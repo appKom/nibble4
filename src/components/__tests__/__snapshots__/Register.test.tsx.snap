@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-hKgILt eLpZrX"
+  >
+    <h1>
+      Registrer
+    </h1>
+    <div
+      class="sc-dlfnbm etrdhU"
+    >
+      <p>
+        <span>
+          Registrer deg med ditt 
+          <span>
+            online.ntnu.no
+          </span>
+           brukernavn og passord.
+        </span>
+      </p>
+    </div>
+    <div
+      class="sc-bdfBwQ gaVwxC"
+    >
+      <label>
+        Brukernavn
+      </label>
+      <input
+        id="Brukernavn"
+        value=""
+      />
+    </div>
+    <div
+      class="sc-bdfBwQ gaVwxC"
+    >
+      <label>
+        Passord
+      </label>
+      <input
+        id="Passord"
+        type="password"
+        value=""
+      />
+    </div>
+    <div>
+      <button
+        class="sc-gsTCUz buoxQL"
+      >
+        Tilbake
+      </button>
+      <button
+        class="sc-gsTCUz dhzAWv"
+      >
+        Registrer
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

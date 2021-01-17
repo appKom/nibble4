@@ -44,10 +44,10 @@ const Register: FC<Props> = ({ rfid }: Props) => {
     <Container>
       <h1>Registrer</h1>
       <InfoBox>
-        <p>
+        <span>
           Registrer deg med ditt <span>online.ntnu.no</span> brukernavn og
           passord.
-        </p>
+        </span>
       </InfoBox>
       {badCredentials ? (
         <InfoBox type={InfoBoxTypes.WARNING}>

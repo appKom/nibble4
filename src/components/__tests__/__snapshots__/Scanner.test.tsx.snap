@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsTCUz dutjKU"
+  >
+    <h1>
+      Logg inn
+    </h1>
+    <input
+      class="sc-bdfBwQ bOBVXI"
+      type="text"
+      value=""
+    />
+    <img
+      alt="RFID icon"
+      src="images/rfid.png"
+    />
+  </div>
+</DocumentFragment>
+`;
