@@ -1,6 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`Integration test for BasketWindow with a BasketItem Should render with an BasketItem 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fubCfw fvlDXG"
+  >
+    <h2>
+       Handlekurven din
+    </h2>
+    <div
+      class="sc-pFZIQ sSvdJ"
+    >
+      <div
+        class="sc-bdfBwQ faJJuY"
+      >
+        <img
+          alt="Product image"
+          src="https://online.ntnu.no//media/images/responsive/sm/38688f77-21b6-4936-8ba6-c976538fb110.png"
+        />
+        <span>
+          <b>
+             Powerking 
+          </b>
+        </span>
+        <span />
+        <span>
+          Quantity:
+          <b>
+            1
+          </b>
+        </span>
+        <span>
+          <b>
+            10
+          </b>
+          kr
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-jrAGrp hYvsZc"
+    >
+      <span>
+        <b>
+           Sum :
+        </b>
+      </span>
+      <span
+        id="pris"
+      >
+        <b>
+           10kr
+        </b>
+      </span>
+    </div>
+    <button
+      class="sc-gsTCUz dhzAWv"
+    >
+      Kjøp
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Unit-testing for BasketWindow Should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="sc-fubCfw fvlDXG"
