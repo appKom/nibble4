@@ -19,7 +19,7 @@ const Navbar: FC = () => {
       <div>
         <IconContext.Provider value={{ color: "white", size: "20px" }}>
           <span>
-            {user!.first_name} | <GiWallet /> {user!.balance}kr
+            {user?.first_name} | <GiWallet /> {user?.balance}kr
           </span>
         </IconContext.Provider>
       </div>
