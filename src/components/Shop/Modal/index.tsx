@@ -1,4 +1,4 @@
-import React, { useContext, FC, useEffect } from "react";
+import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 import { BiArrowBack } from "react-icons/bi";
