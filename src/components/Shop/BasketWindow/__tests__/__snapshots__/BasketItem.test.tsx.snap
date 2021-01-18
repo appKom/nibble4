@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ faJJuY"
+  >
+    <img
+      alt="Product image"
+      src="https://online.ntnu.no//media/images/responsive/sm/38688f77-21b6-4936-8ba6-c976538fb110.png"
+    />
+    <span>
+      <b>
+         Powerking 
+      </b>
+    </span>
+    <span />
+    <span>
+      Quantity:
+      <b>
+        95
+      </b>
+    </span>
+    <span>
+      <b>
+        10
+      </b>
+      kr
+    </span>
+  </div>
+</DocumentFragment>
+`;
