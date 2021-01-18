@@ -1,4 +1,4 @@
-import React, { useContext, FC } from "react";
+import React, { useContext, FC, useEffect } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 import { BiArrowBack } from "react-icons/bi";
@@ -15,8 +15,11 @@ const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { modalState } = state;
 
+  //Dumb method for letting the render test pass
+  const test = document.getElementById("root");
+  const mountComponent = test ? test : document.createElement("div");
+
   const HideModal = () => dispatch(setModalState(modalTypes.DISABLED));
-  const modalElement = document.createElement("div");
 
   return ReactDOM.createPortal(
     <Container style={{ zIndex: modalState != modalTypes.DISABLED ? 1 : -1 }}>
@@ -31,7 +34,7 @@ const Modal: FC = () => {
       {modalState == modalTypes.ERROR ? <ErrorModal /> : null}
       {modalState == modalTypes.INACTIVE ? <InactiveModal /> : null}
     </Container>,
-    modalElement
+    mountComponent
   );
 };
 
