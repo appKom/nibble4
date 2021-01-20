@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dQppl oLBZm"
+  >
+    <div
+      class="sc-dlfnbm gzxhff"
+    >
+      <div
+        class="sc-bdfBwQ ixLtVV"
+      >
+        <img
+          alt="Product image"
+          src="https://online.ntnu.no//media/images/responsive/sm/38688f77-21b6-4936-8ba6-c976538fb110.png"
+        />
+        <div
+          class="sc-gsTCUz kFHCOk"
+        >
+          <span>
+            <b>
+               Powerking 
+            </b>
+          </span>
+          <span>
+            <b>
+              10
+            </b>
+            kr
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-kEjbxe fWIEtG"
+    >
+      <h2>
+         Handlekurven din
+      </h2>
+      <div
+        class="sc-iqHYGH eRPVyT"
+      >
+        <div
+          class="sc-hKgILt jTqAzp"
+        >
+          <img
+            alt="Product image"
+            src="https://online.ntnu.no//media/images/responsive/sm/38688f77-21b6-4936-8ba6-c976538fb110.png"
+          />
+          <span>
+            <b>
+               Powerking 
+            </b>
+          </span>
+          <span />
+          <span>
+            Quantity:
+            <b>
+              1
+            </b>
+          </span>
+          <span>
+            <b>
+              10
+            </b>
+            kr
+          </span>
+        </div>
+      </div>
+      <div
+        class="sc-crrsfI iAyiFX"
+      >
+        <span>
+          <b>
+             Sum :
+          </b>
+        </span>
+        <span
+          id="pris"
+        >
+          <b>
+             10kr
+          </b>
+        </span>
+      </div>
+      <button
+        class="sc-eCssSg gHoaZp"
+      >
+        Kjøp
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
