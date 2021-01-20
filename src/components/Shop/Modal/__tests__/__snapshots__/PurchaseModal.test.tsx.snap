@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsTCUz exa-Dkc"
+  >
+    <h3
+      style="grid-column: 2; grid-row: 1;"
+    >
+       Bekreft kjøp 
+    </h3>
+    <div
+      class="sc-dlfnbm eWUpqm"
+    >
+      <span>
+         Total: 
+      </span>
+      <hr />
+      <span>
+         10 kr 
+      </span>
+    </div>
+    <button
+      class="sc-bdfBwQ eAPZdX"
+      style="grid-column: 2; grid-row: 3; width: 80%; height: 85%; outline: none; margin-left: auto; margin-right: auto; box-shadow: 2px 2px 7px #888888;"
+    >
+      Kjøp
+    </button>
+  </div>
+</DocumentFragment>
+`;

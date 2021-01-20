@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ cXhpjE"
+  >
+    <h3>
+       Handel gjennomført!
+    </h3>
+    <img
+      alt="Handel gjennomført gif"
+      src="/images/complete.gif"
+    />
+    <p>
+       Logger ut om 3 sekunder 
+    </p>
+  </div>
+</DocumentFragment>
+`;

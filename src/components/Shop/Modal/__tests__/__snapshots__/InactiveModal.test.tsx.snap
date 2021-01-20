@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hMdVtH"
+  >
+    <h3>
+       Du har vært inaktiv for lenge!
+    </h3>
+    <p>
+       Logger ut om 10 sekunder 
+    </p>
+  </div>
+</DocumentFragment>
+`;
