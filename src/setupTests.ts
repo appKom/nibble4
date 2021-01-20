@@ -46,6 +46,14 @@ const mockState: State = {
   modalState: modalTypes.DISABLED,
 };
 
+const emptyState: State = {
+  user: null,
+  inventory: [],
+  category: "Alt",
+  cart: {},
+  modalState: modalTypes.DISABLED,
+};
+
 export const userContext: StateContextProps = {
   state: mockStateWithUser,
   dispatch: () => null,
@@ -53,5 +61,10 @@ export const userContext: StateContextProps = {
 
 export const fullContext: StateContextProps = {
   state: mockState,
+  dispatch: () => null,
+};
+
+export const emptyContext: StateContextProps = {
+  state: emptyState,
   dispatch: () => null,
 };
