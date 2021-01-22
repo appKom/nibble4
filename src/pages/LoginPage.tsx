@@ -21,14 +21,20 @@ const CardReader: FC = () => {
   return <Scanner />;
 };
 
-const LoginPage: FC = () => {
+type LoginPageProps = {
+  testActive: boolean;
+};
+const LoginPage: FC<LoginPageProps> = ({ testActive }: LoginPageProps) => {
   const { state } = useContext(StateContext);
   if (state.user) return <Redirect to={shopRoute} />;
   return (
     <Container>
-      <Card>
-        <CardReader />
-      </Card>
+      {testActive ? null : (
+        <Card>
+          <CardReader />
+        </Card>
+      )}
+
       <Instructions />
     </Container>
   );

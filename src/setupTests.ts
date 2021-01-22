@@ -64,7 +64,7 @@ export const fullContext: StateContextProps = {
   dispatch: () => null,
 };
 
-export const emptyContext: StateContextProps = {
+export const mockEmptyContext: StateContextProps = {
   state: emptyState,
   dispatch: () => null,
 };

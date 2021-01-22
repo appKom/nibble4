@@ -3,7 +3,7 @@ import { render, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import App from "../App";
 import { StateContext } from "state/state";
-import { fullContext, emptyContext } from "setupTests";
+import { fullContext, mockEmptyContext } from "setupTests";
 
 afterEach(cleanup);
 
@@ -19,7 +19,7 @@ describe("Snapshot tests for app", () => {
 
   it("Should match snapshot(login)", () => {
     const { asFragment } = render(
-      <StateContext.Provider value={emptyContext}>
+      <StateContext.Provider value={mockEmptyContext}>
         <App />
       </StateContext.Provider>
     );
