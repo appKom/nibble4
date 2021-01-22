@@ -10,7 +10,7 @@ import PurchaseModal from "./PurchaseModal";
 import CompleteModal from "./CompleteModal";
 import ErrorModal from "./ErrorModal";
 import InactiveModal from "./InactiveModal";
-
+import OlCoinsModal from "./OlCoinsModal";
 const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { modalState } = state;
@@ -29,6 +29,7 @@ const Modal: FC = () => {
       {modalState == modalTypes.COMPLETE ? <CompleteModal /> : null}
       {modalState == modalTypes.ERROR ? <ErrorModal /> : null}
       {modalState == modalTypes.INACTIVE ? <InactiveModal /> : null}
+      {modalState == modalTypes.OLCOINS ? <OlCoinsModal /> : null}
     </Container>,
     document.getElementById("root")!
   );
