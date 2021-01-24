@@ -6,12 +6,13 @@ import {
   createCartItem,
   decrementCartItem,
 } from "types/inventory";
-import { User } from "types/user";
+import { User, OlCoinsUser } from "types/user";
 import { modalTypes } from "types/modal";
 import { Action, ActionTypes } from "state/actions";
 
 type State = {
   user?: User;
+  olCoinsUser?: OlCoinsUser;
   inventory: Product[];
   category: string;
   cart: { [id: number]: CartItem };
@@ -19,6 +20,7 @@ type State = {
 };
 
 const initialState: State = {
+  olCoinsUser: { balance: 100 },
   inventory: [],
   category: "Alt",
   cart: {},
