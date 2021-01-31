@@ -17,6 +17,7 @@ type State = {
   category: string;
   cart: { [id: number]: CartItem };
   modalState: modalTypes;
+  newOlCoins: number;
 };
 
 const initialState: State = {
@@ -25,6 +26,7 @@ const initialState: State = {
   category: "Alt",
   cart: {},
   modalState: modalTypes.DISABLED,
+  newOlCoins: 0,
 };
 
 const getIncrementedCartItem = (id: number, state: State): CartItem => {
@@ -41,6 +43,10 @@ const getDecrementedCart = (id: number, state: State) => {
   const removedCart = { ...state.cart };
   delete removedCart[id];
   return { ...removedCart };
+};
+
+const updateNewOlCoins = (newValue: number, state: State) => {
+  return state.newOlCoins + newValue;
 };
 
 const StateReducer = (state: State, action: Action): State => {
@@ -61,6 +67,11 @@ const StateReducer = (state: State, action: Action): State => {
       return { ...state, category: action.payload };
     case ActionTypes.SET_MODAL_STATE:
       return { ...state, modalState: action.payload };
+    case ActionTypes.CHANGE_NEWOLCOINS:
+      return {
+        ...state,
+        newOlCoins: updateNewOlCoins(action.payload, state),
+      };
     case ActionTypes.ADD_TO_CART:
       return {
         ...state,

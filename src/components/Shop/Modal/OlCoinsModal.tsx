@@ -1,20 +1,23 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useContext } from "react";
 import styled from "styled-components";
 import ButtonBar from "../OlCoins/ButtonBar";
+import Button from "../../../atoms/Button";
+import { StateContext } from "state/state";
 
 const OlCoinsModal: FC = () => {
-  const [total, updateTotal] = useState(0);
+  const { state, dispatch } = useContext(StateContext);
+  const { newOlCoins } = state;
 
-  const changeTotal = (costNumber: number) => {
-    updateTotal((total) => total + costNumber);
-  };
+  const addCoins = () => console.log("Added: " + newOlCoins + "ølcoins");
 
   return (
     <Container>
       <h3> ØlCoins</h3>
-      <ButtonBar signValue={1} func={changeTotal} />
-      <ButtonBar signValue={0} func={changeTotal} />
-      <div> {total}</div>
+      <ButtonBar signValue={1} />
+      <ButtonBar signValue={0} />
+      <div> {newOlCoins} </div>
+
+      <Button onClick={addCoins}> Add </Button>
     </Container>
   );
 };

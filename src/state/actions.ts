@@ -11,6 +11,7 @@ export enum ActionTypes {
   EMPTY_CART = "EMPTY_CART",
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL_STATE = "SET_MODAL_STATE",
+  CHANGE_NEWOLCOINS = "CHANGE_NEWOLCOINS",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -42,6 +43,11 @@ type SetModalState = {
   payload: modalTypes;
 };
 
+type ChangeOlCoins = {
+  type: ActionTypes.CHANGE_NEWOLCOINS;
+  payload: number;
+};
+
 export type Action =
   | SetUserAction
   | LogoutUserAction
@@ -50,7 +56,8 @@ export type Action =
   | AddToCartAction
   | RemoveFromCartAction
   | EmptyCartAction
-  | SetModalState;
+  | SetModalState
+  | ChangeOlCoins;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
@@ -83,4 +90,9 @@ export const setCategory = (id: string): SetCategoryAction => ({
 export const setModalState = (modalType: modalTypes): SetModalState => ({
   type: ActionTypes.SET_MODAL_STATE,
   payload: modalType,
+});
+
+export const changeOlCoins = (newValue: number): ChangeOlCoins => ({
+  type: ActionTypes.CHANGE_NEWOLCOINS,
+  payload: newValue,
 });

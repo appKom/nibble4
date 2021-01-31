@@ -1,10 +1,11 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import styled from "styled-components";
 import Button from "atoms/Button";
+import { StateContext } from "state/state";
+import { changeOlCoins } from "state/actions";
 
 type ButtonBarProps = {
   signValue: number;
-  func: (costNumber: number) => void;
 };
 
 const ButtonStyle = {
@@ -12,14 +13,16 @@ const ButtonStyle = {
   width: "20%",
 };
 
-const ButtonBar: FC<ButtonBarProps> = ({ signValue, func }: ButtonBarProps) => {
+const ButtonBar: FC<ButtonBarProps> = ({ signValue }: ButtonBarProps) => {
+  const { state, dispatch } = useContext(StateContext);
   const values = [1, 5, 10, 100];
-  console.log(func);
+
   const ButtonBarComponent = values.map((value) => (
     <Button
       key={value}
       value={signValue ? value : value * -1}
       style={ButtonStyle}
+      onClick={() => dispatch(changeOlCoins(signValue ? value : value * -1))}
     >
       {signValue ? value : value * -1}
     </Button>
