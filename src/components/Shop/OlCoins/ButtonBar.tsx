@@ -9,12 +9,12 @@ type ButtonBarProps = {
 };
 
 const ButtonStyle = {
-  marginRight: "10px",
-  width: "20%",
+  width: "100%",
+  margin: "3px",
 };
 
 const ButtonBar: FC<ButtonBarProps> = ({ signValue }: ButtonBarProps) => {
-  const { state, dispatch } = useContext(StateContext);
+  const { dispatch } = useContext(StateContext);
   const values = [1, 5, 10, 100];
 
   const ButtonBarComponent = values.map((value) => (
@@ -27,10 +27,14 @@ const ButtonBar: FC<ButtonBarProps> = ({ signValue }: ButtonBarProps) => {
       {signValue ? value : value * -1}
     </Button>
   ));
-  return <div> {ButtonBarComponent} </div>;
+  return <Container> {ButtonBarComponent} </Container>;
 };
 
-export default styled(ButtonBar)`
-  ButtonBarComponent {
-  }
+export default styled(ButtonBar)``;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 `;

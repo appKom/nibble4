@@ -46,7 +46,8 @@ const getDecrementedCart = (id: number, state: State) => {
 };
 
 const updateNewOlCoins = (newValue: number, state: State) => {
-  return state.newOlCoins + newValue;
+  if (state.newOlCoins + newValue > 0) return state.newOlCoins + newValue;
+  else return 0;
 };
 
 const StateReducer = (state: State, action: Action): State => {
