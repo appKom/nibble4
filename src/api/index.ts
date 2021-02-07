@@ -58,7 +58,7 @@ export const authorizedGet = ({
     },
   });
 
-export const post = ({
+export const postWithHeader = ({
   url,
   body,
   headers,
@@ -69,6 +69,17 @@ export const post = ({
     headers: {
       "Content-Type": "application/json",
     },
+  });
+
+export const post = ({
+  url,
+  body,
+  headers,
+}: AJAXArguments): Promise<Response> =>
+  fetch(url, {
+    method: "POST",
+    body: typeof body === "string" ? body : JSON.stringify(body),
+    headers,
   });
 
 export const authorizedPost = ({

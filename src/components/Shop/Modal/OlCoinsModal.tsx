@@ -15,7 +15,7 @@ const OlCoinsModal: FC = () => {
   const { newOlCoins } = state;
 
   const addCoins = () => {
-    olCoinsTransaction(1, 100).then((response) => console.log(response));
+    olCoinsTransaction(1, newOlCoins).then((response) => console.log(response));
   };
   return (
     <Container>

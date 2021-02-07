@@ -1,4 +1,4 @@
-import { get, put, post, OLCOINS_USER_URI } from "api";
+import { get, put, postWithHeader, OLCOINS_USER_URI } from "api";
 
 //make transaction
 
@@ -21,8 +21,8 @@ export const olCoinsTransaction = async (
   transactionTotal: number
 ) => {
   const url = OLCOINS_USER_URI(pk);
-  const body = { coins: 50 };
-  const response = await post({ url, body });
+  const body = { coins: transactionTotal };
+  const response = await postWithHeader({ url, body });
   const json = await response.json();
   return json;
 };
