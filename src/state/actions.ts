@@ -1,6 +1,6 @@
 import { Product } from "types/inventory";
-import { User } from "types/user";
 import { modalTypes } from "types/modal";
+import { User, OlCoinsUser } from "types/user";
 
 export enum ActionTypes {
   SET_USER = "SET_USER",
@@ -12,6 +12,7 @@ export enum ActionTypes {
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL_STATE = "SET_MODAL_STATE",
   CHANGE_NEWOLCOINS = "CHANGE_NEWOLCOINS",
+  SET_OLCOINS_USER = "SET_OLCOINS_USER",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -48,6 +49,11 @@ type ChangeOlCoins = {
   payload: number;
 };
 
+type SetOlCoinsUserAction = {
+  type: ActionTypes.SET_OLCOINS_USER;
+  payload: OlCoinsUser;
+};
+
 export type Action =
   | SetUserAction
   | LogoutUserAction
@@ -57,12 +63,19 @@ export type Action =
   | RemoveFromCartAction
   | EmptyCartAction
   | SetModalState
-  | ChangeOlCoins;
+  | ChangeOlCoins
+  | SetOlCoinsUserAction;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
   payload: user,
 });
+
+export const setOlCoinsUser = (user: OlCoinsUser): SetOlCoinsUserAction => ({
+  type: ActionTypes.SET_OLCOINS_USER,
+  payload: user,
+});
+
 export const logoutUser = (): LogoutUserAction => ({
   type: ActionTypes.LOGOUT_USER,
 });

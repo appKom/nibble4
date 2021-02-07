@@ -54,6 +54,8 @@ const StateReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case ActionTypes.SET_USER:
       return { ...state, user: action.payload };
+    case ActionTypes.SET_OLCOINS_USER:
+      return { ...state, olCoinsUser: action.payload };
     case ActionTypes.LOGOUT_USER:
       return {
         ...state,

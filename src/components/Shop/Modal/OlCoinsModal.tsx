@@ -3,7 +3,12 @@ import styled from "styled-components";
 import ButtonBar from "../OlCoins/ButtonBar";
 import Button from "../../../atoms/Button";
 import { StateContext } from "state/state";
-import { olCoinsRegister, olCoinsLogin, olCoinsTransaction } from "api/olcoins";
+import {
+  olCoinsRegister,
+  olCoinsLogin,
+  olCoinsTransaction,
+  handleLogin,
+} from "api/olcoins";
 
 const style1 = {
   gridColumn: 2,
@@ -15,7 +20,7 @@ const OlCoinsModal: FC = () => {
   const { newOlCoins } = state;
 
   const addCoins = () => {
-    olCoinsTransaction(1, newOlCoins).then((response) => console.log(response));
+    handleLogin(2);
   };
   return (
     <Container>
