@@ -4,6 +4,8 @@ import { StateContext } from "state/state";
 import { removeFromCart } from "state/actions";
 import { Product } from "types/inventory";
 import { IMAGE_URI } from "../../../api";
+import { RiCloseLine } from "react-icons/ri";
+import { IconContext } from "react-icons";
 
 type BasketItemProps = {
   id: number;
@@ -13,32 +15,42 @@ type BasketItemProps = {
 const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
   const { state, dispatch } = useContext(StateContext);
 
-  const removeItem = () => dispatch(removeFromCart(id));
+  // const removeItem = () => dispatch(removeFromCart(id));
 
   const item: Product = state.inventory.find((e) => e.pk === id)!;
   const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";
 
   return (
-    <Container onClick={removeItem}>
+    <Container>
       <img
         src={
           imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
         }
         alt="Product image"
       />
-
       <span>
         <b> {item.name} </b>
       </span>
-      <span></span>
-
+      F
       <span>
         Quantity:<b>{quantity}</b>
       </span>
-
       <span>
         <b>{item.price}</b>kr
       </span>
+      <IconContext.Provider
+        value={{
+          color: "red",
+          size: "20px",
+        }}
+      >
+        <RiCloseLine
+          alignmentBaseline={"after-edge"}
+          onClick={() => {
+            dispatch(removeFromCart(id));
+          }}
+        />
+      </IconContext.Provider>
     </Container>
   );
 };
