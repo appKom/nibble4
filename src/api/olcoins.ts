@@ -1,5 +1,6 @@
 import { get, put, postWithHeader, OLCOINS_USER_URI } from "api";
 import { UserOlCoinsresponse } from "types/api";
+import { OlCoinsUser } from "types/user";
 
 export const olCoinsLogin = async (pk: number) => {
   const url = OLCOINS_USER_URI(pk);
@@ -27,9 +28,9 @@ export const olCoinsTransaction = async (
 
 export const handleLogin = async (pk: number) => {
   const olCoinsUser = await olCoinsLogin(pk);
-  if (olCoinsUser.id) return olCoinsUser as UserOlCoinsresponse;
+  if (olCoinsUser.id) return olCoinsUser as OlCoinsUser;
   else {
     const newOlCoinsUser = await olCoinsRegister(pk);
-    return newOlCoinsUser as UserOlCoinsresponse;
+    return newOlCoinsUser as OlCoinsUser;
   }
 };

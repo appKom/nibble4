@@ -21,7 +21,7 @@ type State = {
 };
 
 const initialState: State = {
-  olCoinsUser: { balance: 100 },
+  olCoinsUser: { balance: 100, id: 0 },
   inventory: [],
   category: "Alt",
   cart: {},

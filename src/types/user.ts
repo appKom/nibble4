@@ -6,4 +6,5 @@ export type User = {
 
 export type OlCoinsUser = {
   balance: number;
+  id: number;
 };
