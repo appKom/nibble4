@@ -4,6 +4,7 @@ import { StateContext } from "state/state";
 import { removeFromCart } from "state/actions";
 import { Product } from "types/inventory";
 import { IMAGE_URI } from "../../../api";
+import QuantityInput from "atoms/QuantityInput";
 
 type BasketItemProps = {
   id: number;
@@ -47,9 +48,7 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
           <path d="M15.854 12.854c-0-0-0-0-0-0l-4.854-4.854 4.854-4.854c0-0 0-0 0-0 0.052-0.052 0.090-0.113 0.114-0.178 0.066-0.178 0.028-0.386-0.114-0.529l-2.293-2.293c-0.143-0.143-0.351-0.181-0.529-0.114-0.065 0.024-0.126 0.062-0.178 0.114 0 0-0 0-0 0l-4.854 4.854-4.854-4.854c-0-0-0-0-0-0-0.052-0.052-0.113-0.090-0.178-0.114-0.178-0.066-0.386-0.029-0.529 0.114l-2.293 2.293c-0.143 0.143-0.181 0.351-0.114 0.529 0.024 0.065 0.062 0.126 0.114 0.178 0 0 0 0 0 0l4.854 4.854-4.854 4.854c-0 0-0 0-0 0-0.052 0.052-0.090 0.113-0.114 0.178-0.066 0.178-0.029 0.386 0.114 0.529l2.293 2.293c0.143 0.143 0.351 0.181 0.529 0.114 0.065-0.024 0.126-0.062 0.178-0.114 0-0 0-0 0-0l4.854-4.854 4.854 4.854c0 0 0 0 0 0 0.052 0.052 0.113 0.090 0.178 0.114 0.178 0.066 0.386 0.029 0.529-0.114l2.293-2.293c0.143-0.143 0.181-0.351 0.114-0.529-0.024-0.065-0.062-0.126-0.114-0.178z"></path>
         </RedCross>
       </RedCrossWrapper>
-      <span>
-        Quantity:<b>{quantity}</b>
-      </span>
+      <QuantityInput quantity={quantity}></QuantityInput>
       <PricetagWrapper>
         <b>{item.price}</b>kr
       </PricetagWrapper>
@@ -83,6 +82,7 @@ const Container = styled.div`
   margin-bottom: 15px;
   padding: 10px;
   box-shadow: 2px 2px 7px #888888;
+  border-radius: 3px;
 
   display: grid;
   grid-template-rows: 1fr 1fr;
