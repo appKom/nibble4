@@ -4,8 +4,6 @@ import { StateContext } from "state/state";
 import { removeFromCart } from "state/actions";
 import { Product } from "types/inventory";
 import { IMAGE_URI } from "../../../api";
-import { RiCloseLine } from "react-icons/ri";
-import { IconContext } from "react-icons";
 
 type BasketItemProps = {
   id: number;
@@ -21,7 +19,11 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
   const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";
 
   return (
-    <Container>
+    <Container
+      onClick={() => {
+        dispatch(removeFromCart(id));
+      }}
+    >
       <img
         src={
           imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
@@ -31,40 +33,56 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
       <span>
         <b> {item.name} </b>
       </span>
-      F
+      <RedCrossWrapper>
+        <RedCross
+          stroke="red"
+          fill="red"
+          strokeWidth="0"
+          version="1.1"
+          viewBox="0 0 16 16"
+          height="1.5em"
+          width="1.5em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M15.854 12.854c-0-0-0-0-0-0l-4.854-4.854 4.854-4.854c0-0 0-0 0-0 0.052-0.052 0.090-0.113 0.114-0.178 0.066-0.178 0.028-0.386-0.114-0.529l-2.293-2.293c-0.143-0.143-0.351-0.181-0.529-0.114-0.065 0.024-0.126 0.062-0.178 0.114 0 0-0 0-0 0l-4.854 4.854-4.854-4.854c-0-0-0-0-0-0-0.052-0.052-0.113-0.090-0.178-0.114-0.178-0.066-0.386-0.029-0.529 0.114l-2.293 2.293c-0.143 0.143-0.181 0.351-0.114 0.529 0.024 0.065 0.062 0.126 0.114 0.178 0 0 0 0 0 0l4.854 4.854-4.854 4.854c-0 0-0 0-0 0-0.052 0.052-0.090 0.113-0.114 0.178-0.066 0.178-0.029 0.386 0.114 0.529l2.293 2.293c0.143 0.143 0.351 0.181 0.529 0.114 0.065-0.024 0.126-0.062 0.178-0.114 0-0 0-0 0-0l4.854-4.854 4.854 4.854c0 0 0 0 0 0 0.052 0.052 0.113 0.090 0.178 0.114 0.178 0.066 0.386 0.029 0.529-0.114l2.293-2.293c0.143-0.143 0.181-0.351 0.114-0.529-0.024-0.065-0.062-0.126-0.114-0.178z"></path>
+        </RedCross>
+      </RedCrossWrapper>
       <span>
         Quantity:<b>{quantity}</b>
       </span>
-      <span>
+      <PricetagWrapper>
         <b>{item.price}</b>kr
-      </span>
-      <IconContext.Provider
-        value={{
-          color: "red",
-          size: "20px",
-        }}
-      >
-        <RiCloseLine
-          alignmentBaseline={"after-edge"}
-          onClick={() => {
-            dispatch(removeFromCart(id));
-          }}
-        />
-      </IconContext.Provider>
+      </PricetagWrapper>
     </Container>
   );
 };
 
 export default BasketItem;
 
+const RedCrossWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+`;
+
+const RedCross = styled.svg`
+  position: relative;
+`;
+
+const PricetagWrapper = styled.span`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const Container = styled.div`
   width: 90%;
-  border: 1px solid black;
-  border-radius: 3px;
   height: 15%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-shadow: 2px 2px 7px #888888;
 
   display: grid;
   grid-template-rows: 1fr 1fr;

@@ -31,7 +31,9 @@ const BasketWindow: FC = () => {
 
   return (
     <Container>
+
       <h2>Saldo: {user!.balance}kr</h2>
+
       <ItemDiv>{basketItems}</ItemDiv>
 
       <CostDiv>
@@ -52,6 +54,10 @@ const BasketWindow: FC = () => {
 };
 
 export default BasketWindow;
+
+const Title = styled.h2`
+  margin-left: 20px;
+`;
 
 const Container = styled.div`
   display: grid;
