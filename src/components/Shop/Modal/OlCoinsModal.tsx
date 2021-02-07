@@ -17,10 +17,10 @@ const style1 = {
 
 const OlCoinsModal: FC = () => {
   const { state } = useContext(StateContext);
-  const { newOlCoins } = state;
+  const { newOlCoins, olCoinsUser } = state;
 
   const addCoins = () => {
-    handleLogin(2);
+    olCoinsTransaction(olCoinsUser!.id, newOlCoins);
   };
   return (
     <Container>
