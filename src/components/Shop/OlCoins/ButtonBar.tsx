@@ -24,7 +24,7 @@ const ButtonBar: FC<ButtonBarProps> = ({ signValue }: ButtonBarProps) => {
       style={ButtonStyle}
       onClick={() => dispatch(changeOlCoins(signValue ? value : value * -1))}
     >
-      {signValue ? value + "øc" : value * -1 + "øc"}
+      {signValue ? value + "" : value * -1}
     </Button>
   ));
   return <Container> {ButtonBarComponent} </Container>;
