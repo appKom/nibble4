@@ -34,7 +34,7 @@ const App: FC = () => {
   };
 
   const {} = useIdleTimer({
-    timeout: 1000 * 50,
+    timeout: 100000 * 50,
     onIdle: handleOnIdle,
   });
 

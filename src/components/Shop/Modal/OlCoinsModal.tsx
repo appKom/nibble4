@@ -37,14 +37,11 @@ const OlCoinsModal: FC = () => {
       <h3 style={style1}> ØlCoins</h3>
       <ButtonBar signValue={1} />
       <ButtonBar signValue={0} />
-      <div
-        style={{
-          gridColumn: 2,
-          gridRow: 2,
-        }}
-      >
-        {newOlCoins}
-      </div>
+      <DisplayContainer>
+        <span>
+          <b> {newOlCoins} </b>øc
+        </span>
+      </DisplayContainer>
 
       <Button
         style={{
@@ -67,4 +64,16 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+`;
+
+const DisplayContainer = styled.div`
+  grid-column: 2;
+  grid-row: 2;
+  border-top: 3px solid orange;
+  box-shadow: 2px 2px 7px #888888;
+
+  height: 75%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 `;
