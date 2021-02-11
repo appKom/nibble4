@@ -3,12 +3,7 @@ import styled from "styled-components";
 import ButtonBar from "../OlCoins/ButtonBar";
 import Button from "../../../atoms/Button";
 import { StateContext } from "state/state";
-import {
-  olCoinsRegister,
-  olCoinsLogin,
-  olCoinsTransaction,
-  handleLogin,
-} from "api/olcoins";
+import { olCoinsTransaction, handleLogin } from "api/olcoins";
 import { setOlCoinsUser } from "state/actions";
 import { modalTypes } from "types/modal";
 import { setModalState } from "state/actions";
@@ -20,7 +15,7 @@ const style1 = {
 
 const OlCoinsModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { newOlCoins, olCoinsUser, user, modalState } = state;
+  const { newOlCoins, olCoinsUser, user } = state;
 
   const addCoins = () => {
     olCoinsTransaction(olCoinsUser!.id, newOlCoins).then(() => {
