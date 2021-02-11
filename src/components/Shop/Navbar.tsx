@@ -13,7 +13,6 @@ import { modalTypes } from "types/modal";
 const Navbar: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { user, olCoinsUser } = state;
-  console.log(olCoinsUser);
   return (
     <Container>
       <img
