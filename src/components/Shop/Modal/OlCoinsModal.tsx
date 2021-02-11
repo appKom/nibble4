@@ -10,6 +10,8 @@ import {
   handleLogin,
 } from "api/olcoins";
 import { setOlCoinsUser } from "state/actions";
+import { modalTypes } from "types/modal";
+import { setModalState } from "state/actions";
 
 const style1 = {
   gridColumn: 2,
@@ -18,13 +20,14 @@ const style1 = {
 
 const OlCoinsModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { newOlCoins, olCoinsUser, user } = state;
-  console.log(newOlCoins);
+  const { newOlCoins, olCoinsUser, user, modalState } = state;
+
   const addCoins = () => {
     olCoinsTransaction(olCoinsUser!.id, newOlCoins).then(() => {
-      handleLogin(user!.pk).then((updatedUser) =>
-        dispatch(setOlCoinsUser(updatedUser))
-      );
+      handleLogin(user!.pk).then((updatedUser) => {
+        dispatch(setOlCoinsUser(updatedUser));
+        dispatch(setModalState(modalTypes.OLCOINSCOMPLETE));
+      });
     });
   };
   return (
