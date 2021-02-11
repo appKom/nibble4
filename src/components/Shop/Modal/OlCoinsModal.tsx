@@ -18,13 +18,20 @@ const OlCoinsModal: FC = () => {
   const { newOlCoins, olCoinsUser, user } = state;
 
   const addCoins = () => {
-    olCoinsTransaction(olCoinsUser!.id, newOlCoins).then(() => {
-      handleLogin(user!.pk).then((updatedUser) => {
-        dispatch(setOlCoinsUser(updatedUser));
-        dispatch(setModalState(modalTypes.OLCOINSCOMPLETE));
-      });
-    });
+    if (newOlCoins > 0) {
+      olCoinsTransaction(olCoinsUser!.id, newOlCoins)
+        .then(() => {
+          handleLogin(user!.pk)
+            .then((updatedUser) => {
+              dispatch(setOlCoinsUser(updatedUser));
+              dispatch(setModalState(modalTypes.OLCOINSCOMPLETE));
+            })
+            .catch(() => dispatch(setModalState(modalTypes.ERROR)));
+        })
+        .catch(() => dispatch(setModalState(modalTypes.ERROR)));
+    }
   };
+
   return (
     <Container>
       <h3 style={style1}> ØlCoins</h3>
