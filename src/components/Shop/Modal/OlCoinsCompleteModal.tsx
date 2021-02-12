@@ -1,12 +1,10 @@
-import React, { FC, useContext, useEffect, useState } from "react";
-import { modalTypes } from "types/modal";
+import React, { FC, useContext } from "react";
 import { StateContext } from "state/state";
 import styled from "styled-components";
 
 const OlCoinsCompleteModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { modalState, newOlCoins } = state;
-
+  const { newOlCoins } = state;
   return (
     <Container>
       <h3> Du har lagt til {newOlCoins}øc!</h3>

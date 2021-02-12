@@ -75,6 +75,11 @@ const StateReducer = (state: State, action: Action): State => {
         ...state,
         newOlCoins: updateNewOlCoins(action.payload, state),
       };
+    case ActionTypes.RESET_OLCOINS:
+      return {
+        ...state,
+        newOlCoins: 0,
+      };
     case ActionTypes.ADD_TO_CART:
       return {
         ...state,

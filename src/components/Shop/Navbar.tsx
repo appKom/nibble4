@@ -9,6 +9,7 @@ import { IconContext } from "react-icons";
 import { logoutUser } from "state/actions";
 import { setModalState } from "state/actions";
 import { modalTypes } from "types/modal";
+import { resetOlcoins } from "state/actions";
 
 const Navbar: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -24,7 +25,10 @@ const Navbar: FC = () => {
           <span>
             {user!.first_name} | <GiWallet /> {user!.balance}kr |
             <IoIosBeer
-              onClick={() => dispatch(setModalState(modalTypes.OLCOINS))}
+              onClick={() => {
+                dispatch(resetOlcoins());
+                dispatch(setModalState(modalTypes.OLCOINS));
+              }}
             />
             {olCoinsUser!.balance}øc
           </span>

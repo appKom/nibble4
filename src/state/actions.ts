@@ -13,6 +13,7 @@ export enum ActionTypes {
   SET_MODAL_STATE = "SET_MODAL_STATE",
   CHANGE_NEWOLCOINS = "CHANGE_NEWOLCOINS",
   SET_OLCOINS_USER = "SET_OLCOINS_USER",
+  RESET_OLCOINS = "RESET_OLCOINS",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -54,6 +55,10 @@ type SetOlCoinsUserAction = {
   payload: OlCoinsUser;
 };
 
+type ResetOlCoinsAction = {
+  type: ActionTypes.RESET_OLCOINS;
+};
+
 export type Action =
   | SetUserAction
   | LogoutUserAction
@@ -64,7 +69,8 @@ export type Action =
   | EmptyCartAction
   | SetModalState
   | ChangeOlCoins
-  | SetOlCoinsUserAction;
+  | SetOlCoinsUserAction
+  | ResetOlCoinsAction;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
@@ -108,4 +114,8 @@ export const setModalState = (modalType: modalTypes): SetModalState => ({
 export const changeOlCoins = (newValue: number): ChangeOlCoins => ({
   type: ActionTypes.CHANGE_NEWOLCOINS,
   payload: newValue,
+});
+
+export const resetOlcoins = (): ResetOlCoinsAction => ({
+  type: ActionTypes.RESET_OLCOINS,
 });
