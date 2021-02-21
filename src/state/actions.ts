@@ -9,6 +9,7 @@ export enum ActionTypes {
   ADD_TO_CART = "ADD_TO_CART",
   REMOVE_FROM_CART = "REMOVE_FROM_CART",
   EMPTY_CART = "EMPTY_CART",
+  DELETE_ITEM_FROM_CART = "DELETE_ITEM_FROM_CART",
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL_STATE = "SET_MODAL_STATE",
 }
@@ -33,6 +34,11 @@ type RemoveFromCartAction = {
   payload: number;
 };
 
+type DeleteItemFromCartAction = {
+  type: ActionTypes.DELETE_ITEM_FROM_CART;
+  payload: number;
+};
+
 type EmptyCartAction = {
   type: ActionTypes.EMPTY_CART;
 };
@@ -49,6 +55,7 @@ export type Action =
   | SetCategoryAction
   | AddToCartAction
   | RemoveFromCartAction
+  | DeleteItemFromCartAction
   | EmptyCartAction
   | SetModalState;
 
@@ -71,6 +78,11 @@ export const removeFromCart = (id: number): RemoveFromCartAction => ({
   type: ActionTypes.REMOVE_FROM_CART,
   payload: id,
 });
+export const deleteItemFromCart = (id: number): DeleteItemFromCartAction => ({
+  type: ActionTypes.DELETE_ITEM_FROM_CART,
+  payload: id,
+});
+
 export const emptyCart = (): EmptyCartAction => ({
   type: ActionTypes.EMPTY_CART,
 });
