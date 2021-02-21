@@ -9,6 +9,9 @@ export enum ActionTypes {
   ADD_TO_CART = "ADD_TO_CART",
   REMOVE_FROM_CART = "REMOVE_FROM_CART",
   EMPTY_CART = "EMPTY_CART",
+  ADD_TO_OL_CART = "ADD_TO_OL_CART",
+  REMOVE_FROM_OL_CART = "REMOVE_FROM_OL_CART",
+  EMPTY_OL_CART = "EMPTY_OL_CART",
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL_STATE = "SET_MODAL_STATE",
   CHANGE_NEWOLCOINS = "CHANGE_NEWOLCOINS",
@@ -40,6 +43,19 @@ type EmptyCartAction = {
   type: ActionTypes.EMPTY_CART;
 };
 
+type AddToOlCartAction = {
+  type: ActionTypes.ADD_TO_OL_CART;
+  payload: number;
+};
+type RemoveFromOlCartAction = {
+  type: ActionTypes.REMOVE_FROM_OL_CART;
+  payload: number;
+};
+
+type EmptyOlCartAction = {
+  type: ActionTypes.EMPTY_OL_CART;
+};
+
 type SetModalState = {
   type: ActionTypes.SET_MODAL_STATE;
   payload: modalTypes;
@@ -67,6 +83,9 @@ export type Action =
   | AddToCartAction
   | RemoveFromCartAction
   | EmptyCartAction
+  | AddToOlCartAction
+  | RemoveFromOlCartAction
+  | EmptyOlCartAction
   | SetModalState
   | ChangeOlCoins
   | SetOlCoinsUserAction
@@ -99,6 +118,18 @@ export const removeFromCart = (id: number): RemoveFromCartAction => ({
 });
 export const emptyCart = (): EmptyCartAction => ({
   type: ActionTypes.EMPTY_CART,
+});
+
+export const addToOlCart = (id: number): AddToOlCartAction => ({
+  type: ActionTypes.ADD_TO_OL_CART,
+  payload: id,
+});
+export const removeFromOlCart = (id: number): RemoveFromOlCartAction => ({
+  type: ActionTypes.REMOVE_FROM_OL_CART,
+  payload: id,
+});
+export const emptyOlCart = (): EmptyOlCartAction => ({
+  type: ActionTypes.EMPTY_OL_CART,
 });
 
 export const setCategory = (id: string): SetCategoryAction => ({

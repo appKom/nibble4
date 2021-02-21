@@ -16,15 +16,17 @@ type State = {
   inventory: Product[];
   category: string;
   cart: { [id: number]: CartItem };
+  olCart: { [id: number]: CartItem };
   modalState: modalTypes;
   newOlCoins: number;
 };
 
 const initialState: State = {
-  olCoinsUser: { balance: 100, id: 0 },
+  olCoinsUser: { balance: 0, id: 0 },
   inventory: [],
   category: "Alt",
   cart: {},
+  olCart: {},
   modalState: modalTypes.DISABLED,
   newOlCoins: 0,
 };
@@ -41,6 +43,22 @@ const getDecrementedCart = (id: number, state: State) => {
     return { ...state.cart, [id]: decrementCartItem(state.cart[id]) };
   }
   const removedCart = { ...state.cart };
+  delete removedCart[id];
+  return { ...removedCart };
+};
+
+const getIncrementedOlCartItem = (id: number, state: State): CartItem => {
+  if (state.olCart[id]) {
+    return incrementCartItem(state.olCart[id]);
+  }
+  return createCartItem(id);
+};
+
+const getDecrementedOlCart = (id: number, state: State) => {
+  if (state.olCart[id].quantity > 1) {
+    return { ...state.olCart, [id]: decrementCartItem(state.olCart[id]) };
+  }
+  const removedCart = { ...state.olCart };
   delete removedCart[id];
   return { ...removedCart };
 };
@@ -96,6 +114,22 @@ const StateReducer = (state: State, action: Action): State => {
     }
     case ActionTypes.EMPTY_CART:
       return { ...state, cart: {} };
+    case ActionTypes.ADD_TO_OL_CART:
+      return {
+        ...state,
+        olCart: {
+          ...state.olCart,
+          [action.payload]: getIncrementedCartItem(action.payload, state),
+        },
+      };
+    case ActionTypes.REMOVE_FROM_OL_CART: {
+      return {
+        ...state,
+        olCart: getDecrementedCart(action.payload, state),
+      };
+    }
+    case ActionTypes.EMPTY_OL_CART:
+      return { ...state, olCart: {} };
     default:
       return { ...state };
   }
