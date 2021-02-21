@@ -11,9 +11,11 @@ import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, user, inventory } = state;
+  const { olCart, cart, user, inventory } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
+  const olCoinsPrice = calculateCartTotal(olCart, inventory);
+
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
 
   const purchase = () => {
@@ -40,6 +42,12 @@ const BasketWindow: FC = () => {
         </span>
         <span id="pris">
           <b> {totalPrice}kr</b>
+        </span>
+        <span>
+          <b> Ølcoins :</b>
+        </span>
+        <span id="pris">
+          <b> {olCoinsPrice}øc</b>
         </span>
       </CostDiv>
       <Button onClick={purchase}>
