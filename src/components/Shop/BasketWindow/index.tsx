@@ -31,10 +31,20 @@ const BasketWindow: FC = () => {
     />
   ));
 
+  const olCoinsItems = Object.keys(olCart).map((key: string) => (
+    <BasketItem
+      key={key}
+      id={Number(key)}
+      quantity={olCart[Number(key)].quantity}
+    />
+  ));
+
   return (
     <Container>
       <h2> Handlekurven din</h2>
-      <ItemDiv>{basketItems}</ItemDiv>
+      <ItemDiv>
+        {basketItems} {olCoinsItems}
+      </ItemDiv>
 
       <CostDiv>
         <span>
