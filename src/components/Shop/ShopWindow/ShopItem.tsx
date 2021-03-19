@@ -41,7 +41,6 @@ const ShopItem: FC<ShopWindowItemProps> = ({
 export default ShopItem;
 
 const Container = styled.div`
-
   padding: 5px;
   background-color: white;
   border-radius: 3px;
