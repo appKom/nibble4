@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { StateContext } from "state/state";
 import { removeFromCart } from "state/actions";
 import { Product } from "types/inventory";
-import { IMAGE_URI } from "../../../api";
+import { IMAGE_URI } from "api";
 
-type BasketItemProps = {
+type ItemProps = {
   id: number;
   quantity: number;
 };
 
-const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
+const Item: FC<ItemProps> = ({ id, quantity }: ItemProps) => {
   const { state, dispatch } = useContext(StateContext);
 
   const removeItem = () => dispatch(removeFromCart(id));
@@ -43,7 +43,7 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
   );
 };
 
-export default BasketItem;
+export default Item;
 
 const Container = styled.div`
   width: 90%;

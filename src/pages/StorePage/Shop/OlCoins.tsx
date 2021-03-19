@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import Button from "atoms/Button";
+import Button from "components/Button";
 
-type ButtonBarProps = {
+type OlCoinsProps = {
   signValue: number;
   func: (costNumber: number) => void;
 };
@@ -12,7 +12,7 @@ const ButtonStyle = {
   width: "20%",
 };
 
-const ButtonBar: FC<ButtonBarProps> = ({ signValue, func }: ButtonBarProps) => {
+const ButtonBar: FC<OlCoinsProps> = ({ signValue, func }: OlCoinsProps) => {
   const values = [1, 5, 10, 100];
   console.log(func);
   const ButtonBarComponent = values.map((value) => (

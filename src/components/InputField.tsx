@@ -5,6 +5,7 @@ import { OffWhite } from "utility/style";
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   inputLabel?: string;
 };
+
 type LabelProps = { label: string };
 
 const InputLabel: FC<LabelProps> = ({ label }: LabelProps) =>

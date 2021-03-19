@@ -1,12 +1,12 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
-import BasketItem from "./BasketItem";
+import Item from "./Item";
 import { OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
-import Button from "atoms/Button";
+import Button from "components/Button";
 import { setModalState } from "state/actions";
-import Modal from "components/Shop/Modal";
+import Modal from "components/Modal";
 import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
@@ -22,17 +22,13 @@ const BasketWindow: FC = () => {
   };
 
   const basketItems = Object.keys(cart).map((key: string) => (
-    <BasketItem
-      key={key}
-      id={Number(key)}
-      quantity={cart[Number(key)].quantity}
-    />
+    <Item key={key} id={Number(key)} quantity={cart[Number(key)].quantity} />
   ));
 
   return (
     <Container>
       <h2> Handlekurven din</h2>
-      <ItemDiv>{basketItems}</ItemDiv>
+      <ItemContainer>{basketItems}</ItemContainer>
 
       <CostDiv>
         <span>
@@ -69,7 +65,7 @@ const Container = styled.div`
   margin-right: auto;
 `;
 
-const ItemDiv = styled.div`
+const ItemContainer = styled.div`
   ::-webkit-scrollbar {
     width: 8px;
   }

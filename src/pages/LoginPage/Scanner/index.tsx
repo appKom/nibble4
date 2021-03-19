@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import Login from "components/Login";
+import Login from "./Login";
 
 const Scanner: FC = () => (
   <Container>
