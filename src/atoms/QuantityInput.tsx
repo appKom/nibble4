@@ -1,33 +1,56 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import styled from "styled-components";
+
+import { StateContext } from "state/state";
+import { addToCart, removeFromCart } from "../state/actions";
+import { HiMinusCircle, HiPlusCircle } from "react-icons/hi";
+
 
 interface Props {
   quantity: number;
 }
 
-const QuantityInput: FC<Props> = ({ quantity }: Props) => (
-  <Container>
-    <DecrementButton>-</DecrementButton>
-    <QuantityDisplay>{quantity}</QuantityDisplay>
-    <IncrementButton>+</IncrementButton>
-  </Container>
-);
+
+const QuantityInput: FC<Props> = ({ quantity, id }: Props) => {
+  const { dispatch } = useContext(StateContext);
+  return (
+    <Container>
+      <QuantityOperator>
+        <HiMinusCircle
+          onClick={() => {
+            dispatch(removeFromCart(id));
+          }}
+        />
+      </QuantityOperator>
+      <QuantityDisplay>{quantity}</QuantityDisplay>
+      <QuantityOperator>
+        <HiPlusCircle
+          onClick={() => {
+            dispatch(addToCart(id));
+          }}
+        />
+      </QuantityOperator>
+    </Container>
+  );
+};
+
 
 const Container = styled.div`
-  border: 2px solid #0d5474;
+  width: 50%;
+  /*  border: 2px solid #0d5474; */
   box-sizing: border-box;
   border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
 `;
 
-const DecrementButton = styled.p`
-  display: inline-block;
-  width: 30px;
-  font-size: 30px;
-  font-weight: bold;
-  margin: 0;
-  background-color: #0d5474;
-  color: white;
-  border-radius: 0 0 3px 3px;
+const QuantityOperator = styled.div`
+  display: flex;
+  align-items: center;
+  > svg {
+    color: #0d5474;
+    transform: scale(1.5, 1.5);
+  }
 `;
 
 const QuantityDisplay = styled.p`
@@ -36,17 +59,7 @@ const QuantityDisplay = styled.p`
   text-align: center;
   font-size: 30px;
   margin: 0;
-`;
-
-const IncrementButton = styled.p`
-  display: inline-block;
-  width: 30px;
-  font-size: 30px;
-  font-weight: bold;
-  margin: 0;
-  background-color: #0d5474;
-  box-sizing: border-box;
-  color: white;
+  align-items: center;
 `;
 
 export default QuantityInput;
