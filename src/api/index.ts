@@ -61,7 +61,6 @@ export const authorizedGet = ({
 export const postWithHeader = ({
   url,
   body,
-  headers,
 }: AJAXArguments): Promise<Response> =>
   fetch(url, {
     method: "POST",
