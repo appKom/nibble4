@@ -37,6 +37,7 @@ const Navbar: FC = () => {
 export default Navbar;
 
 const Container = styled.div`
+  height: 30px;
   background-color: ${OnlineBlue};
   color: white;
   text-align: left;

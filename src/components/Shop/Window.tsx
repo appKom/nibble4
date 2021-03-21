@@ -19,4 +19,5 @@ const Container = styled.div`
   grid-template-columns: 2fr 1fr;
   width: 100%;
   height: 100%;
+  padding: 0.5rem 0;
 `;
