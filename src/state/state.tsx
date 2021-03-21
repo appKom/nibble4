@@ -119,13 +119,13 @@ const StateReducer = (state: State, action: Action): State => {
         ...state,
         olCart: {
           ...state.olCart,
-          [action.payload]: getIncrementedCartItem(action.payload, state),
+          [action.payload]: getIncrementedOlCartItem(action.payload, state),
         },
       };
     case ActionTypes.REMOVE_FROM_OL_CART: {
       return {
         ...state,
-        olCart: getDecrementedCart(action.payload, state),
+        olCart: getDecrementedOlCart(action.payload, state),
       };
     }
     case ActionTypes.EMPTY_OL_CART:

@@ -28,6 +28,7 @@ const BasketWindow: FC = () => {
       key={key}
       id={Number(key)}
       quantity={cart[Number(key)].quantity}
+      ol={false}
     />
   ));
 
@@ -36,6 +37,7 @@ const BasketWindow: FC = () => {
       key={key}
       id={Number(key)}
       quantity={olCart[Number(key)].quantity}
+      ol={true}
     />
   ));
 
