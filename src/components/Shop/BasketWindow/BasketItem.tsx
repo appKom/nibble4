@@ -64,20 +64,20 @@ const RedCrossWrapper = styled.div`
 `;
 
 const RedCross = styled.svg`
-  position: relative;
+  position: relative; 
+  display: block; 
   fill: red;
-  strokeWidth: 0;
-  version: 1.1;
-  viewBox: 0 0 16 16;
   height: 1.5em;
-  width: 1.5em; 
-  xmlns: http://www.w3.org/2000/svg; 
+  width: 1.5em;
+  xmlns: http://www.w3.org/2000/svg;
+  background-color: pink;  
 `;
 
 const PricetagWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-item: flex-end;
+  padding-top: 15px;
 `;
 
 const Container = styled.div`
