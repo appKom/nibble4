@@ -3,7 +3,7 @@ import { StateContext } from "state/state";
 import styled from "styled-components";
 
 const OlCoinsCompleteModal: FC = () => {
-  const { state, dispatch } = useContext(StateContext);
+  const { state } = useContext(StateContext);
   const { newOlCoins } = state;
   return (
     <Container>
