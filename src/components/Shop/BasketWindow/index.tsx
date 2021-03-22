@@ -11,15 +11,21 @@ import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { olCart, cart, user, inventory } = state;
+  const { olCart, cart, user, inventory, olCoinsUser } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
   const olCoinsPrice = calculateCartTotal(olCart, inventory);
 
-  const insufficient = user!.balance - totalPrice <= 0 ? true : false;
+  const insufficient = user!.balance - totalPrice < 0 ? true : false;
+  const olCoinsInsufficient =
+    olCoinsUser!.balance - olCoinsPrice < 0 ? true : false;
 
   const purchase = () => {
-    if (insufficient || (totalPrice <= 0 && olCoinsPrice <= 0))
+    if (
+      insufficient ||
+      olCoinsInsufficient ||
+      (totalPrice <= 0 && olCoinsPrice <= 0)
+    )
       return undefined;
     return dispatch(setModalState(modalTypes.PURCHASE));
   };
@@ -64,7 +70,9 @@ const BasketWindow: FC = () => {
         </span>
       </CostDiv>
       <Button onClick={purchase}>
-        {insufficient ? "Utilstrekkelig med penger" : "Kjøp"}
+        {insufficient || olCoinsInsufficient
+          ? "Utilstrekkelig med penger"
+          : "Kjøp"}
       </Button>
 
       <Modal />
