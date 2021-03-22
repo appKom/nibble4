@@ -33,9 +33,12 @@ const Container = styled.div`
   width: 95%;
   margin-left: auto;
   margin-right: auto;
-
-  height: 70%;
   display: grid;
+  /* The height for the shop items need to be set, as overflow needs a specific height in some value.
+  100% becomes 100vh for some reason. The height is therefore the whole viewable screen (100vh),
+  minus the height from the navbar (30px) + its padding (20px), minus the height from the category bar (30px)
+  30px from Navbar height, and minus 0.5 rem as the padding around the store container */
+  height: calc(100vh - 30px - 30px - 20px - 20px - 0.5rem);
   overflow: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 1fr);

@@ -2,6 +2,7 @@ import { handleRfid } from "api/authorization";
 import React, {
   ChangeEvent,
   FC,
+  FormEvent,
   useContext,
   useEffect,
   useRef,
@@ -36,7 +37,8 @@ const Login: FC = () => {
     if (value.trim()) setRfid(value);
   };
 
-  const onKeyUp = async () => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!rfid.trim()) return;
     const user = await handleRfid(rfid);
     if (user) {
@@ -49,13 +51,14 @@ const Login: FC = () => {
   if (registerCard) return <Redirect to={registerCardRoute(rfid)} />;
 
   return (
-    <HiddenInput
-      type="text"
-      ref={inputRef}
-      value={rfid}
-      onChange={onChange}
-      onKeyUp={onKeyUp}
-    />
+    <form onSubmit={onSubmit}>
+      <HiddenInput
+        type="text"
+        ref={inputRef}
+        value={rfid}
+        onChange={onChange}
+      />
+    </form>
   );
 };
 

@@ -21,4 +21,5 @@ export default CategoryBar;
 const Container = styled.div`
   display: flex;
   margin-left: 25px;
+  height: 30px;
 `;

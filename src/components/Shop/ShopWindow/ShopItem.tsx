@@ -46,7 +46,6 @@ const ShopItem: FC<ShopWindowItemProps> = ({
 export default ShopItem;
 
 const Container = styled.div`
-
   padding: 5px;
   background-color: white;
   border-radius: 3px;
@@ -60,7 +59,7 @@ const Container = styled.div`
   box-shadow: 2px 2px 7px #888888;
 
   display: grid;
-  grid-template-rows; 4fr 3fr;
+  grid-template-rows: 4fr 3fr;
 
   img {
     display: block;
