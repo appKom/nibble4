@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-const CompleteModal: FC = () => {
+const ErrorModal: FC = () => {
   return (
     <Container>
       <h3> En feil oppsto! </h3>
@@ -10,7 +10,7 @@ const CompleteModal: FC = () => {
   );
 };
 
-export default CompleteModal;
+export default ErrorModal;
 
 const Container = styled.div`
   text-align: center;

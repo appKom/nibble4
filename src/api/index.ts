@@ -9,6 +9,8 @@ export const CLIENT_SECRET = encodeURIComponent(
 );
 
 const API_BASE = process.env.REACT_APP_API_BASE || "";
+const OLCOINS_API_BASE = process.env.REACT_APP_OLCOINS_API_BASE || "";
+
 export const AUTHORIZE_URI = `${API_BASE}/auth/`;
 export const REGISTER_RFID_URI = `${API_BASE}/rfid/`;
 export const INVENTORY_URI = `${process.env.REACT_APP_API_BASE}/inventory/`;
@@ -17,6 +19,9 @@ export const TRANSACTION_URI = `${process.env.REACT_APP_API_BASE}/orderline/`; /
 export const LOGIN_URI = (rfid: string): string =>
   `${API_BASE}/usersaldo/?rfid=${rfid}`;
 export const IMAGE_URI = (sm: string): string => `https://online.ntnu.no/${sm}`;
+
+export const OLCOINS_USER_URI = (pk: number): string =>
+  `${OLCOINS_API_BASE}/users/${pk}?code=${process.env.REACT_APP_OLCOINS_DEFAULT_KEY}`;
 
 type AJAXArguments = {
   url: string;
@@ -31,6 +36,24 @@ export const get = ({ url, body, headers }: AJAXArguments): Promise<Response> =>
     headers: headers,
   });
 
+export const olCoinsPut = ({ url, body }: AJAXArguments): Promise<Response> =>
+  fetch(url, {
+    method: "PUT",
+    body: JSON.stringify(body),
+  });
+
+export const olCoinsGet = ({ url, body }: AJAXArguments): Promise<Response> =>
+  get({
+    url,
+    body,
+  });
+
+export const olCoinsPost = ({ url, body }: AJAXArguments): Promise<Response> =>
+  post({
+    url,
+    body,
+  });
+
 export const authorizedGet = ({
   url,
   body,
@@ -42,6 +65,17 @@ export const authorizedGet = ({
     headers: {
       ...headers,
       Authorization: `Bearer ${loadToken()}`,
+    },
+  });
+
+export const postWithHeader = ({
+  url,
+  body,
+}: AJAXArguments): Promise<Response> =>
+  fetch(url, {
+    method: "POST",
+    body: typeof body === "string" ? body : JSON.stringify(body),
+    headers: {
       "Content-Type": "application/json",
     },
   });

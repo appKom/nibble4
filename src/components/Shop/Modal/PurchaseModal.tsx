@@ -7,7 +7,7 @@ import Button from "../../../atoms/Button";
 import purchaseItems from "api/order";
 import { setModalState } from "state/actions";
 import { modalTypes } from "types/modal";
-
+import { olCoinsTransaction } from "api/olcoins";
 const styledButton = {
   gridColumn: 2,
   gridRow: 3,
@@ -26,26 +26,35 @@ const styledText = {
 
 const PurchaseModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, inventory, user } = state;
+  const { cart, inventory, user, olCart, olCoinsUser } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
+  const olCoinsPrice = calculateCartTotal(olCart, inventory);
 
   const purchase = () => {
-    purchaseItems(user!.pk, cart)
-      .then((response) => {
-        if (response.ok) dispatch(setModalState(modalTypes.COMPLETE));
-        else dispatch(setModalState(modalTypes.ERROR));
-      })
-      .catch(() => dispatch(setModalState(modalTypes.ERROR)));
+    if (totalPrice > 0)
+      purchaseItems(user!.pk, cart)
+        .then((response) => {
+          if (response.ok) dispatch(setModalState(modalTypes.COMPLETE));
+          else dispatch(setModalState(modalTypes.ERROR));
+        })
+        .catch(() => dispatch(setModalState(modalTypes.ERROR)));
+    if (olCoinsPrice > 0)
+      olCoinsTransaction(olCoinsUser!.id, olCoinsPrice * -1)
+        .then((response) => {
+          if (response.ok) dispatch(setModalState(modalTypes.COMPLETE));
+          else dispatch(setModalState(modalTypes.ERROR));
+        })
+        .catch(() => dispatch(setModalState(modalTypes.ERROR)));
   };
 
   return (
     <Container>
       <h3 style={styledText}> Bekreft kjøp </h3>
       <TotalDiv>
-        <span> Total: </span>
+        <span> Total: {totalPrice} kr</span>
         <hr />
-        <span> {totalPrice} kr </span>
+        <span> Ølcoins: {olCoinsPrice} kr </span>
       </TotalDiv>
       <Button style={styledButton} onClick={purchase}>
         Kjøp
@@ -69,6 +78,7 @@ const TotalDiv = styled.div`
 
   width: 100%;
   height: 60%;
+  padding-top: 10px;
 
   background-color: ${OffWhite};
   margin-left: auto;

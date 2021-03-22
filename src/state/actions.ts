@@ -1,6 +1,6 @@
 import { Product } from "types/inventory";
-import { User } from "types/user";
 import { modalTypes } from "types/modal";
+import { User, OlCoinsUser } from "types/user";
 
 export enum ActionTypes {
   SET_USER = "SET_USER",
@@ -9,8 +9,14 @@ export enum ActionTypes {
   ADD_TO_CART = "ADD_TO_CART",
   REMOVE_FROM_CART = "REMOVE_FROM_CART",
   EMPTY_CART = "EMPTY_CART",
+  ADD_TO_OL_CART = "ADD_TO_OL_CART",
+  REMOVE_FROM_OL_CART = "REMOVE_FROM_OL_CART",
+  EMPTY_OL_CART = "EMPTY_OL_CART",
   SET_CATEGORY = "SET_CATEGORY",
   SET_MODAL_STATE = "SET_MODAL_STATE",
+  CHANGE_NEWOLCOINS = "CHANGE_NEWOLCOINS",
+  SET_OLCOINS_USER = "SET_OLCOINS_USER",
+  RESET_OLCOINS = "RESET_OLCOINS",
 }
 
 type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
@@ -37,9 +43,36 @@ type EmptyCartAction = {
   type: ActionTypes.EMPTY_CART;
 };
 
+type AddToOlCartAction = {
+  type: ActionTypes.ADD_TO_OL_CART;
+  payload: number;
+};
+type RemoveFromOlCartAction = {
+  type: ActionTypes.REMOVE_FROM_OL_CART;
+  payload: number;
+};
+
+type EmptyOlCartAction = {
+  type: ActionTypes.EMPTY_OL_CART;
+};
+
 type SetModalState = {
   type: ActionTypes.SET_MODAL_STATE;
   payload: modalTypes;
+};
+
+type ChangeOlCoins = {
+  type: ActionTypes.CHANGE_NEWOLCOINS;
+  payload: number;
+};
+
+type SetOlCoinsUserAction = {
+  type: ActionTypes.SET_OLCOINS_USER;
+  payload: OlCoinsUser;
+};
+
+type ResetOlCoinsAction = {
+  type: ActionTypes.RESET_OLCOINS;
 };
 
 export type Action =
@@ -50,12 +83,24 @@ export type Action =
   | AddToCartAction
   | RemoveFromCartAction
   | EmptyCartAction
-  | SetModalState;
+  | AddToOlCartAction
+  | RemoveFromOlCartAction
+  | EmptyOlCartAction
+  | SetModalState
+  | ChangeOlCoins
+  | SetOlCoinsUserAction
+  | ResetOlCoinsAction;
 
 export const setUser = (user: User): SetUserAction => ({
   type: ActionTypes.SET_USER,
   payload: user,
 });
+
+export const setOlCoinsUser = (user: OlCoinsUser): SetOlCoinsUserAction => ({
+  type: ActionTypes.SET_OLCOINS_USER,
+  payload: user,
+});
+
 export const logoutUser = (): LogoutUserAction => ({
   type: ActionTypes.LOGOUT_USER,
 });
@@ -75,6 +120,18 @@ export const emptyCart = (): EmptyCartAction => ({
   type: ActionTypes.EMPTY_CART,
 });
 
+export const addToOlCart = (id: number): AddToOlCartAction => ({
+  type: ActionTypes.ADD_TO_OL_CART,
+  payload: id,
+});
+export const removeFromOlCart = (id: number): RemoveFromOlCartAction => ({
+  type: ActionTypes.REMOVE_FROM_OL_CART,
+  payload: id,
+});
+export const emptyOlCart = (): EmptyOlCartAction => ({
+  type: ActionTypes.EMPTY_OL_CART,
+});
+
 export const setCategory = (id: string): SetCategoryAction => ({
   type: ActionTypes.SET_CATEGORY,
   payload: id,
@@ -83,4 +140,13 @@ export const setCategory = (id: string): SetCategoryAction => ({
 export const setModalState = (modalType: modalTypes): SetModalState => ({
   type: ActionTypes.SET_MODAL_STATE,
   payload: modalType,
+});
+
+export const changeOlCoins = (newValue: number): ChangeOlCoins => ({
+  type: ActionTypes.CHANGE_NEWOLCOINS,
+  payload: newValue,
+});
+
+export const resetOlcoins = (): ResetOlCoinsAction => ({
+  type: ActionTypes.RESET_OLCOINS,
 });

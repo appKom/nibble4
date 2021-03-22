@@ -14,3 +14,9 @@ export type OrderLineFormat = {
   user: number;
   orders: CartItem[];
 };
+
+export type UserOlCoinsresponse = {
+  id: number;
+  balance: number;
+  createdAt: number;
+};

@@ -11,13 +11,22 @@ import { modalTypes } from "types/modal";
 
 const BasketWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
-  const { cart, user, inventory } = state;
+  const { olCart, cart, user, inventory, olCoinsUser } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
-  const insufficient = user!.balance - totalPrice <= 0 ? true : false;
+  const olCoinsPrice = calculateCartTotal(olCart, inventory);
+
+  const insufficient = user!.balance - totalPrice < 0 ? true : false;
+  const olCoinsInsufficient =
+    olCoinsUser!.balance - olCoinsPrice < 0 ? true : false;
 
   const purchase = () => {
-    if (insufficient || totalPrice <= 0) return undefined;
+    if (
+      insufficient ||
+      olCoinsInsufficient ||
+      (totalPrice <= 0 && olCoinsPrice <= 0)
+    )
+      return undefined;
     return dispatch(setModalState(modalTypes.PURCHASE));
   };
 
@@ -26,13 +35,25 @@ const BasketWindow: FC = () => {
       key={key}
       id={Number(key)}
       quantity={cart[Number(key)].quantity}
+      ol={false}
+    />
+  ));
+
+  const olCoinsItems = Object.keys(olCart).map((key: string) => (
+    <BasketItem
+      key={key}
+      id={Number(key)}
+      quantity={olCart[Number(key)].quantity}
+      ol={true}
     />
   ));
 
   return (
     <Container>
       <h2> Handlekurven din</h2>
-      <ItemDiv>{basketItems}</ItemDiv>
+      <ItemDiv>
+        {basketItems} {olCoinsItems}
+      </ItemDiv>
 
       <CostDiv>
         <span>
@@ -41,9 +62,17 @@ const BasketWindow: FC = () => {
         <span id="pris">
           <b> {totalPrice}kr</b>
         </span>
+        <span>
+          <b> Ølcoins :</b>
+        </span>
+        <span id="pris">
+          <b> {olCoinsPrice}øc</b>
+        </span>
       </CostDiv>
       <Button onClick={purchase}>
-        {insufficient ? "Utilstrekkelig med penger" : "Kjøp"}
+        {insufficient || olCoinsInsufficient
+          ? "Utilstrekkelig med penger"
+          : "Kjøp"}
       </Button>
 
       <Modal />

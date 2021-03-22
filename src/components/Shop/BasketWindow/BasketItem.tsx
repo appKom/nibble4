@@ -1,19 +1,25 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
-import { removeFromCart } from "state/actions";
+import { removeFromCart, removeFromOlCart } from "state/actions";
 import { Product } from "types/inventory";
 import { IMAGE_URI } from "../../../api";
 
 type BasketItemProps = {
   id: number;
   quantity: number;
+  ol: boolean;
 };
 
-const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
+const BasketItem: FC<BasketItemProps> = ({
+  id,
+  quantity,
+  ol,
+}: BasketItemProps) => {
   const { state, dispatch } = useContext(StateContext);
 
-  const removeItem = () => dispatch(removeFromCart(id));
+  const removeItem = () =>
+    ol ? dispatch(removeFromOlCart(id)) : dispatch(removeFromCart(id));
 
   const item: Product = state.inventory.find((e) => e.pk === id)!;
   const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";

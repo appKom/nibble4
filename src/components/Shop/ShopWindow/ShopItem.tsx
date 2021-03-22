@@ -6,18 +6,23 @@ import { IMAGE_URI } from "../../../api";
 type ShopWindowItemProps = {
   product: Product;
   addItem: (id: number) => void;
+  addOlItem: (id: number) => void;
 };
 
 const ShopItem: FC<ShopWindowItemProps> = ({
   product,
   addItem,
+  addOlItem,
 }: ShopWindowItemProps) => {
   const imageSrc = product.image ? IMAGE_URI(product.image.sm) : "";
 
   const addToCart = () => addItem(product.pk);
+  const addToOlCart = () => addOlItem(product.pk);
 
   return (
-    <Container onClick={addToCart}>
+    <Container
+      onClick={product.category.name == "Snacks" ? addToOlCart : addToCart}
+    >
       <img
         src={
           imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
