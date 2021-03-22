@@ -19,7 +19,8 @@ const BasketWindow: FC = () => {
   const insufficient = user!.balance - totalPrice <= 0 ? true : false;
 
   const purchase = () => {
-    if (insufficient || totalPrice <= 0) return undefined;
+    if (insufficient || (totalPrice <= 0 && olCoinsPrice <= 0))
+      return undefined;
     return dispatch(setModalState(modalTypes.PURCHASE));
   };
 

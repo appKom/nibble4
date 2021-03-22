@@ -20,9 +20,8 @@ export const LOGIN_URI = (rfid: string): string =>
   `${API_BASE}/usersaldo/?rfid=${rfid}`;
 export const IMAGE_URI = (sm: string): string => `https://online.ntnu.no/${sm}`;
 
-export const OLCOINS_AUTH_URI = `${OLCOINS_API_BASE}/auth/`;
 export const OLCOINS_USER_URI = (pk: number): string =>
-  `${OLCOINS_API_BASE}/user/${pk}`;
+  `${OLCOINS_API_BASE}/users/${pk}?code=${process.env.REACT_APP_OLCOINS_DEFAULT_KEY}`;
 
 type AJAXArguments = {
   url: string;
@@ -37,11 +36,22 @@ export const get = ({ url, body, headers }: AJAXArguments): Promise<Response> =>
     headers: headers,
   });
 
-export const put = ({ url, body, headers }: AJAXArguments): Promise<Response> =>
+export const olCoinsPut = ({ url, body }: AJAXArguments): Promise<Response> =>
   fetch(url, {
     method: "PUT",
     body: JSON.stringify(body),
-    headers: headers,
+  });
+
+export const olCoinsGet = ({ url, body }: AJAXArguments): Promise<Response> =>
+  get({
+    url,
+    body,
+  });
+
+export const olCoinsPost = ({ url, body }: AJAXArguments): Promise<Response> =>
+  post({
+    url,
+    body,
   });
 
 export const authorizedGet = ({

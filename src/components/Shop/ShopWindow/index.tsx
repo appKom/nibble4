@@ -8,7 +8,6 @@ import { addToCart, addToOlCart } from "state/actions";
 const ShopWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { cart, olCart } = state;
-  console.log(olCart);
 
   const addItem = (id: number) => dispatch(addToCart(id));
   const addOlItem = (id: number) => dispatch(addToOlCart(id));
