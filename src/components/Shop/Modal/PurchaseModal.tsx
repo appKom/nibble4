@@ -34,14 +34,14 @@ const PurchaseModal: FC = () => {
   const [playKing] = useSound(
     `${process.env.PUBLIC_URL}/audio/purchase_king.mp3`,
     {
-      volume: 0.25,
+      volume: 1,
     }
   );
 
   const [playNice] = useSound(
     `${process.env.PUBLIC_URL}/audio/purchase_nice.mp3`,
     {
-      volume: 0.25,
+      volume: 1,
     }
   );
 
