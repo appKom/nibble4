@@ -13,8 +13,7 @@ const getUser = async (url: string): Promise<Response> => {
   // No token
   if (response.status == 401) {
     await fetchToken();
-    const retryResponse = await authorizedGet({ url });
-    return retryResponse;
+    return await authorizedGet({ url });
   }
   return response;
 };

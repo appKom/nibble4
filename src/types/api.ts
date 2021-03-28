@@ -1,4 +1,4 @@
-import { CartItem } from "./inventory";
+import { CartItem, Product } from "./inventory";
 
 export interface UserResponse {
   count: number;
@@ -9,6 +9,18 @@ export interface UserResponse {
     saldo: number;
   }>;
 }
+
+export type OrderResponse = {
+  price: number;
+  quantity: number;
+  content_object: Product;
+};
+
+export type OrderLineResponse = {
+  orders: OrderResponse[];
+  paid: boolean;
+  datetime: string;
+};
 
 export type OrderLineFormat = {
   user: number;
