@@ -6,6 +6,7 @@ export enum ActionTypes {
   SET_USER = "SET_USER",
   LOGOUT_USER = "LOGOUT_USER",
   SET_INVENTORY = "SET_INVENTORY",
+  SET_FAVOURITES = "SET_FAVOURITES",
   ADD_TO_CART = "ADD_TO_CART",
   REMOVE_FROM_CART = "REMOVE_FROM_CART",
   EMPTY_CART = "EMPTY_CART",
@@ -17,6 +18,11 @@ type SetUserAction = { type: ActionTypes.SET_USER; payload: User };
 type LogoutUserAction = { type: ActionTypes.LOGOUT_USER };
 type SetInventoryAction = {
   type: ActionTypes.SET_INVENTORY;
+  payload: Product[];
+};
+
+type SetFavouritesAction = {
+  type: ActionTypes.SET_FAVOURITES;
   payload: Product[];
 };
 
@@ -46,6 +52,7 @@ export type Action =
   | SetUserAction
   | LogoutUserAction
   | SetInventoryAction
+  | SetFavouritesAction
   | SetCategoryAction
   | AddToCartAction
   | RemoveFromCartAction
@@ -63,6 +70,12 @@ export const setInventory = (inventory: Product[]): SetInventoryAction => ({
   type: ActionTypes.SET_INVENTORY,
   payload: inventory,
 });
+
+export const setFavourites = (favourites: Product[]): SetFavouritesAction => ({
+  type: ActionTypes.SET_FAVOURITES,
+  payload: favourites,
+});
+
 export const addToCart = (id: number): AddToCartAction => ({
   type: ActionTypes.ADD_TO_CART,
   payload: id,

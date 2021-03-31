@@ -13,6 +13,7 @@ import { Action, ActionTypes } from "state/actions";
 type State = {
   user?: User;
   inventory: Product[];
+  favourites: Product[];
   category: string;
   cart: { [id: number]: CartItem };
   modalState: modalTypes;
@@ -20,6 +21,7 @@ type State = {
 
 const initialState: State = {
   inventory: [],
+  favourites: [],
   category: "Alt",
   cart: {},
   modalState: modalTypes.DISABLED,
