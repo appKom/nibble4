@@ -2,7 +2,6 @@ import LoginPage from "pages/LoginPage";
 import StorePage from "pages/StorePage";
 import React, { useContext, useEffect, FC } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { INVENTORY_URI } from "./api/";
 import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
 import { fetchInventory } from "./api/";
@@ -15,7 +14,7 @@ const App: FC = () => {
   const { user } = state;
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchInventory(INVENTORY_URI);
+      const data = await fetchInventory();
 
       if (!state.inventory.length) {
         dispatch(setInventory(data));

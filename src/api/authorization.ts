@@ -1,27 +1,10 @@
-import {
-  authorizedGet,
-  authorizedPost,
-  LOGIN_URI,
-  REGISTER_RFID_URI,
-} from "api";
+import { LOGIN_URL, REGISTER_URL, get, post } from "api";
 import { UserResponse } from "types/api";
 import { User } from "types/user";
-import { fetchToken } from "api/token";
-
-const getUser = async (url: string): Promise<Response> => {
-  const response = await authorizedGet({ url });
-  // No token
-  if (response.status == 401) {
-    await fetchToken();
-    const retryResponse = await authorizedGet({ url });
-    return retryResponse;
-  }
-  return response;
-};
 
 export const login = async (rfid: string): Promise<UserResponse> => {
-  const url = LOGIN_URI(rfid);
-  const response = await getUser(url);
+  const url = LOGIN_URL(localStorage.getItem("AZURE_DEFAULT_TOKEN")!, rfid);
+  const response = await get({ url });
   const json = await response.json();
   return json as UserResponse;
 };
@@ -29,7 +12,6 @@ export const login = async (rfid: string): Promise<UserResponse> => {
 export const handleRfid = async (rfid: string): Promise<User | null> => {
   const user = await login(rfid);
   if (user.count) {
-    // As it returns a weird response
     const { pk, saldo, first_name } = user.results[0]; // The first and only user
     return { pk, balance: saldo, first_name };
   }
@@ -41,10 +23,11 @@ export const registerUser = (
   password: string,
   rfid: string
 ): Promise<Response> => {
+  const url = REGISTER_URL(localStorage.getItem("AZURE_DEFAULT_TOKEN")!);
   const data = {
     username,
     password,
     rfid,
   };
-  return authorizedPost({ url: REGISTER_RFID_URI, body: data });
+  return post({ url, body: data });
 };
