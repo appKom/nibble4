@@ -1,12 +1,12 @@
 import { Product } from "../types/inventory";
 
-export const LOGIN_URL = (code: string, rfid: string) =>
+export const LOGIN_URL = (code: string, rfid: string): string =>
   `https://nibble4-validator.azurewebsites.net/api/login?code=${code}&&rfid=${rfid}`;
-export const FETCH_INVENTORY_URL = (code: string) =>
+export const FETCH_INVENTORY_URL = (code: string): string =>
   `https://nibble4-validator.azurewebsites.net/api/fetchInventory?code=${code}`;
-export const PURCHASE_URL = (code: string) =>
+export const PURCHASE_URL = (code: string): string =>
   `https://nibble4-validator.azurewebsites.net/api/purchase?code=${code}`;
-export const REGISTER_URL = (code: string) =>
+export const REGISTER_URL = (code: string): string =>
   `https://nibble4-validator.azurewebsites.net/api/createUser?code=${code}`;
 
 export const IMAGE_URI = (sm: string): string => `https://online.ntnu.no/${sm}`;
