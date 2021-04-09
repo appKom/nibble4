@@ -10,9 +10,10 @@ import React, {
 } from "react";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
-import { setUser } from "state/actions";
+import { setFavourites, setUser } from "state/actions";
 import { StateContext } from "state/state";
 import { registerCardRoute } from "utility/routes";
+import { fetchFavourites } from "../api/favourites";
 
 const Login: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -40,8 +41,11 @@ const Login: FC = () => {
     event.preventDefault();
     if (!rfid.trim()) return;
     const user = await handleRfid(rfid);
-    if (user) dispatch(setUser(user));
-    else setRegisterCard(true);
+    if (user) {
+      dispatch(setUser(user));
+      const favourites = await fetchFavourites(user.pk);
+      dispatch(setFavourites(favourites));
+    } else setRegisterCard(true);
   };
 
   if (registerCard) return <Redirect to={registerCardRoute(rfid)} />;

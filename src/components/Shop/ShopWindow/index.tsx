@@ -10,10 +10,15 @@ const ShopWindow: FC = () => {
 
   const addItem = (id: number) => dispatch(addToCart(id));
 
-  const shopItems = state.inventory.map((item) => {
-    if (item.category.name === state.category || state.category === "Alt")
-      return <ShopItem key={item.pk} product={item} addItem={addItem} />;
-  });
+  const shopItems =
+    state.category === "Dine favoritter"
+      ? state.favourites.map((item) => {
+          return <ShopItem key={item.pk} product={item} addItem={addItem} />;
+        })
+      : state.inventory.map((item) => {
+          if (item.category.name === state.category || state.category === "Alt")
+            return <ShopItem key={item.pk} product={item} addItem={addItem} />;
+        });
 
   return <Container>{shopItems}</Container>;
 };

@@ -16,11 +16,11 @@ export type OrderResponse = {
   content_object: Product;
 };
 
-export type OrderLineResponse = {
+export interface PreviousPurchaseResponse {
   orders: OrderResponse[];
   paid: boolean;
   datetime: string;
-};
+}
 
 export type OrderLineFormat = {
   user: number;

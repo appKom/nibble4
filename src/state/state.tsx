@@ -51,6 +51,7 @@ const StateReducer = (state: State, action: Action): State => {
       return {
         ...state,
         user: undefined,
+        favourites: [],
         cart: {},
         category: "Alt",
         modalState: modalTypes.DISABLED,
