@@ -7,7 +7,7 @@ import { getCategories } from "types/inventory";
 const CategoryBar: FC = () => {
   const { state } = useContext(StateContext);
 
-  const categories = getCategories(state.inventory);
+  const categories = getCategories(state.inventory, state.user!);
 
   const CategoryBar = categories.map((category) => (
     <CategoryButton key={category} category={category} />

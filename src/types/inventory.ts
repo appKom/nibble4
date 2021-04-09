@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export type Product = {
   pk: number;
   name: string;
@@ -20,16 +22,18 @@ export type CartKeyValue = {
   [name: number]: CartItem;
 };
 
-export const getCategories = (inventory: Product[]): string[] =>
-  inventory.reduce(
-    (acc, current) => {
-      if (acc.includes(current.category.name)) {
-        return [...acc];
-      }
-      return [...acc, current.category.name];
-    },
-    ["Alt"] as string[]
-  );
+export const getCategories = (inventory: Product[], user: User): string[] =>
+  inventory
+    .reduce(
+      (acc, current) => {
+        if (acc.includes(current.category.name)) {
+          return [...acc];
+        }
+        return [...acc, current.category.name];
+      },
+      ["Alt"] as string[]
+    )
+    .concat(user.favourites.length > 0 ? "Dine favoritter" : []);
 
 export const createCartItem = (id: number): CartItem => ({
   object_id: id,

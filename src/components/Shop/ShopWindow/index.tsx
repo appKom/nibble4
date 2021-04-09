@@ -12,7 +12,7 @@ const ShopWindow: FC = () => {
 
   const shopItems =
     state.category === "Dine favoritter"
-      ? state.favourites.map((item) => {
+      ? state.user!.favourites.map((item) => {
           return <ShopItem key={item.pk} product={item} addItem={addItem} />;
         })
       : state.inventory.map((item) => {
