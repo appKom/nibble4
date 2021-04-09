@@ -5,11 +5,10 @@ import { StateContext } from "state/state";
 import { addToCart, removeFromCart } from "../state/actions";
 import { HiMinusCircle, HiPlusCircle } from "react-icons/hi";
 
-
 interface Props {
   quantity: number;
+  id: number;
 }
-
 
 const QuantityInput: FC<Props> = ({ quantity, id }: Props) => {
   const { dispatch } = useContext(StateContext);
@@ -33,7 +32,6 @@ const QuantityInput: FC<Props> = ({ quantity, id }: Props) => {
     </Container>
   );
 };
-
 
 const Container = styled.div`
   width: 50%;
