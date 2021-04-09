@@ -22,6 +22,8 @@ export type CartKeyValue = {
   [name: number]: CartItem;
 };
 
+export const favouritesCategory = "Dine favoritter";
+
 export const getCategories = (inventory: Product[], user: User): string[] =>
   inventory
     .reduce(
@@ -33,7 +35,7 @@ export const getCategories = (inventory: Product[], user: User): string[] =>
       },
       ["Alt"] as string[]
     )
-    .concat(user.favourites.length > 0 ? "Dine favoritter" : []);
+    .concat(user.favourites.length > 0 ? favouritesCategory : []);
 
 export const createCartItem = (id: number): CartItem => ({
   object_id: id,

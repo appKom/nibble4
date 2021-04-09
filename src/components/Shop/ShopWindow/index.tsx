@@ -4,6 +4,7 @@ import ShopItem from "./ShopItem";
 import { OnlineOrange, OffWhite } from "utility/style";
 import { StateContext } from "state/state";
 import { addToCart } from "state/actions";
+import { favouritesCategory } from "../../../types/inventory";
 
 const ShopWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -11,7 +12,7 @@ const ShopWindow: FC = () => {
   const addItem = (id: number) => dispatch(addToCart(id));
 
   const shopItems =
-    state.category === "Dine favoritter"
+    state.category === favouritesCategory
       ? state.user!.favourites.map((item) => {
           return <ShopItem key={item.pk} product={item} addItem={addItem} />;
         })
