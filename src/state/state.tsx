@@ -13,7 +13,6 @@ import { Action, ActionTypes } from "state/actions";
 type State = {
   user?: User;
   inventory: Product[];
-  favourites: Product[];
   category: string;
   cart: { [id: number]: CartItem };
   modalState: modalTypes;
@@ -21,7 +20,6 @@ type State = {
 
 const initialState: State = {
   inventory: [],
-  favourites: [],
   category: "Alt",
   cart: {},
   modalState: modalTypes.DISABLED,
@@ -51,7 +49,6 @@ const StateReducer = (state: State, action: Action): State => {
       return {
         ...state,
         user: undefined,
-        favourites: [],
         cart: {},
         category: "Alt",
         modalState: modalTypes.DISABLED,
