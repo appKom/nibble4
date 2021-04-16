@@ -31,7 +31,6 @@ const BasketWindow: FC = () => {
 
   return (
     <Container>
-
       <h2>Saldo: {user!.balance}kr</h2>
 
       <ItemDiv>{basketItems}</ItemDiv>

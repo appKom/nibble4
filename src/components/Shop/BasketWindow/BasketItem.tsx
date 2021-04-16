@@ -23,11 +23,7 @@ const BasketItem: FC<BasketItemProps> = ({ id, quantity }: BasketItemProps) => {
   const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";
 
   return (
-    <Container
-      onClick={() => {
-        dispatch(removeFromCart(id));
-      }}
-    >
+    <Container>
       <img
         src={
           imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
