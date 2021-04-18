@@ -24,18 +24,21 @@ export type CartKeyValue = {
 
 export const favouritesCategory = "Dine favoritter";
 
-export const getCategories = (inventory: Product[], user: User): string[] =>
-  inventory
-    .reduce(
-      (acc, current) => {
-        if (acc.includes(current.category.name)) {
-          return [...acc];
-        }
-        return [...acc, current.category.name];
-      },
-      ["Alt"] as string[]
-    )
-    .concat(user.favourites.length > 0 ? favouritesCategory : []);
+export const getCategories = (inventory: Product[], user: User): string[] => {
+  const baseCategories = inventory.reduce(
+    (acc, current) => {
+      if (acc.includes(current.category.name)) {
+        return [...acc];
+      }
+      return [...acc, current.category.name];
+    },
+    ["Alt"] as string[]
+  );
+  if (user.favourites.length > 0) {
+    return [...baseCategories, favouritesCategory];
+  }
+  return baseCategories;
+};
 
 export const createCartItem = (id: number): CartItem => ({
   object_id: id,

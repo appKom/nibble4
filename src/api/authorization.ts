@@ -7,7 +7,7 @@ import {
 import { UserResponse } from "types/api";
 import { User } from "types/user";
 import { fetchToken } from "api/token";
-import { fetchFavourites } from "./favourites";
+import { getFavourites } from "./favourites";
 
 const getUser = async (url: string): Promise<Response> => {
   const response = await authorizedGet({ url });
@@ -31,7 +31,7 @@ export const handleRfid = async (rfid: string): Promise<User | null> => {
   if (user.count) {
     // As it returns a weird response
     const { pk, saldo, first_name } = user.results[0]; // The first and only user
-    const favourites = await fetchFavourites(pk);
+    const favourites = await getFavourites(pk);
     return { pk, balance: saldo, first_name, favourites };
   }
   return null;
