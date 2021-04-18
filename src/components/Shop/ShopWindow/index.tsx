@@ -13,9 +13,15 @@ const ShopWindow: FC = () => {
 
   const shopItems =
     state.category === favouritesCategory
-      ? state.user!.favourites.map((item) => {
-          return <ShopItem key={item.pk} product={item} addItem={addItem} />;
-        })
+      ? state.user?.favourites
+          .filter((product) =>
+            state.inventory.some(
+              (activeProduct) => activeProduct.pk === product.pk
+            )
+          )
+          .map((item) => {
+            return <ShopItem key={item.pk} product={item} addItem={addItem} />;
+          })
       : state.inventory.map((item) => {
           if (item.category.name === state.category || state.category === "Alt")
             return <ShopItem key={item.pk} product={item} addItem={addItem} />;
