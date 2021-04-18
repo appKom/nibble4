@@ -1,4 +1,4 @@
-import { Product } from "../types/inventory";
+import { Product } from "types/inventory";
 import { get } from "./index";
 
 const fetchInventory = async (url: string): Promise<Product[]> => {

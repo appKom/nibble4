@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Category from "./Category";
 import { StateContext } from "state/state";
 import { favouritesCategory, getCategories } from "types/inventory";
-import { setCategory } from "../../../state/actions";
+import { setCategory } from "state/actions";
 
 const CategoryBar: FC = () => {
   const { state, dispatch } = useContext(StateContext);

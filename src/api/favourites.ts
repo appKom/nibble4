@@ -1,6 +1,6 @@
-import { OrderResponse, PreviousPurchaseResponse } from "../types/api";
+import { OrderResponse, PreviousPurchaseResponse } from "types/api";
 import { authorizedGet, PREVIOUS_ORDERS_URI } from "./index";
-import { Product } from "../types/inventory";
+import { Product } from "types/inventory";
 
 const fetchPreviousPurchases = async (
   pk: number
