@@ -14,7 +14,7 @@ const BasketWindow: FC = () => {
   const { cart, user, inventory } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
-  const insufficient = user!.balance - totalPrice <= 0 ? true : false;
+  const insufficient = user!.balance - totalPrice <= 0;
 
   const purchase = () => {
     if (insufficient || totalPrice <= 0) return undefined;
@@ -29,6 +29,7 @@ const BasketWindow: FC = () => {
     <Container>
       <h2> Handlekurven din</h2>
       <ItemContainer>{basketItems}</ItemContainer>
+      <h2>Saldo: {user!.balance}kr</h2>
 
       <CostDiv>
         <span>
