@@ -1,19 +1,20 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
-import CategoryButton from "./CategoryButton";
+import Category from "./Category";
 import { StateContext } from "state/state";
 import { getCategories } from "types/inventory";
 
 const CategoryBar: FC = () => {
   const { state } = useContext(StateContext);
-
   const categories = getCategories(state.inventory);
 
-  const CategoryBar = categories.map((category) => (
-    <CategoryButton key={category} category={category} />
-  ));
-
-  return <Container> {CategoryBar} </Container>;
+  return (
+    <Container>
+      {categories.map((category) => (
+        <Category key={category} category={category} />
+      ))}
+    </Container>
+  );
 };
 
 export default CategoryBar;

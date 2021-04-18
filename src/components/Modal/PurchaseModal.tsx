@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
 import { OffWhite } from "utility/style";
-import Button from "../../../atoms/Button";
+import Button from "components/Button";
 import purchaseItems from "api/order";
 import { setModalState } from "state/actions";
 import { modalTypes } from "types/modal";

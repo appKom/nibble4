@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import Card from "atoms/Card";
+import Card from "components/Card";
 import { OnlineBlue } from "utility/style";
 
 const Instructions: FC = () => (

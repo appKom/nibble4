@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { OnlineBlue, OnlineOrange } from "utility/style";
 import { StateContext } from "state/state";
 import { setCategory } from "state/actions";
+
 type CategoryButtonProps = {
   category: string;
 };
 
-const CategoryButton: FC<CategoryButtonProps> = ({
+const Category: FC<CategoryButtonProps> = ({
   category,
 }: CategoryButtonProps) => {
   const { state, dispatch } = useContext(StateContext);
@@ -25,7 +26,7 @@ const CategoryButton: FC<CategoryButtonProps> = ({
   );
 };
 
-export default CategoryButton;
+export default Category;
 
 const Button = styled.button`
   color: white;
