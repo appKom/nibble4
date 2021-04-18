@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { OnlineOrange, OffWhite } from "utility/style";
 import { StateContext } from "state/state";
 import { addToCart } from "state/actions";
-import { favouritesCategory } from "../../../types/inventory";
+import { favouritesCategory } from "types/inventory";
 import Item from "./Item";
 
 const ShopWindow: FC = () => {
