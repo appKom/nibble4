@@ -16,7 +16,7 @@ const CategoryBar: FC = () => {
 
   // If the logged in user has a substantial amount of products previously purchased,
   // automatically set the category to "Dine favoritter".
-  if (state.user!.favourites.length > 5)
+  if (state.user!.favourites.length >= 4)
     dispatch(setCategory(favouritesCategory));
 
   return <Container> {CategoryBar} </Container>;
