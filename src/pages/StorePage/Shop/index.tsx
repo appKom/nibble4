@@ -1,18 +1,18 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import ShopWindow from "./ShopWindow";
-import BasketWindow from "./BasketWindow";
+import Items from "./Items";
+import Basket from "./Basket";
 
-const Window: FC = () => {
+const Shop: FC = () => {
   return (
     <Container>
-      <ShopWindow />
-      <BasketWindow />
+      <Items />
+      <Basket />
     </Container>
   );
 };
 
-export default Window;
+export default Shop;
 
 const Container = styled.div`
   display: grid;

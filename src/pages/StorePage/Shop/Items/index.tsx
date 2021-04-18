@@ -1,10 +1,10 @@
 import React, { useContext, FC } from "react";
 import styled from "styled-components";
-import ShopItem from "./ShopItem";
 import { OnlineOrange, OffWhite } from "utility/style";
 import { StateContext } from "state/state";
 import { addToCart } from "state/actions";
 import { favouritesCategory } from "../../../types/inventory";
+import Item from "./Item";
 
 const ShopWindow: FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -20,11 +20,11 @@ const ShopWindow: FC = () => {
             )
           )
           .map((item) => {
-            return <ShopItem key={item.pk} product={item} addItem={addItem} />;
+            return <Item key={item.pk} product={item} addItem={addItem} />;
           })
       : state.inventory.map((item) => {
           if (item.category.name === state.category || state.category === "Alt")
-            return <ShopItem key={item.pk} product={item} addItem={addItem} />;
+            return <Item key={item.pk} product={item} addItem={addItem} />;
         });
 
   return <Container>{shopItems}</Container>;

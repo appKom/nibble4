@@ -6,7 +6,8 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { GiWallet } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import { logoutUser } from "state/actions";
-const Navbar: FC = () => {
+
+const TitleBar: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { user } = state;
 
@@ -34,7 +35,7 @@ const Navbar: FC = () => {
   );
 };
 
-export default Navbar;
+export default TitleBar;
 
 const Container = styled.div`
   height: 30px;

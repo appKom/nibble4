@@ -1,10 +1,10 @@
 import React, { FC, useContext } from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Card from "atoms/Card";
-import Instructions from "components/Instructions";
-import Scanner from "components/Scanner";
-import Register from "components/Register";
+import Card from "components/Card";
+import Instructions from "pages/LoginPage/Instructions";
+import Scanner from "./Scanner";
+import Register from "pages/LoginPage/Register";
 import { StateContext } from "state/state";
 import { shopRoute } from "utility/routes";
 
