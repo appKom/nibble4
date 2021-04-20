@@ -18,19 +18,24 @@ export const getFavourites = async (pk: number): Promise<Product[]> => {
   return previousPurchase
     .flatMap((previousPurchase) => previousPurchase.orders)
     .reduce((acc, current) => {
-      const obj = acc.find(
+      // Accumulate all purchase quantities for each product
+      const existingOrderResponse = acc.find(
         (orderResponse) =>
           orderResponse.content_object.pk === current.content_object.pk
       );
-      if (obj) {
-        const mutatedObj = {
-          ...obj,
-          quantity: obj.quantity + current.quantity,
+      if (existingOrderResponse) {
+        // Update array in an immutable-friendly way
+        const mutatedOrderResponse = {
+          ...existingOrderResponse,
+          quantity: existingOrderResponse.quantity + current.quantity,
         };
-        const filteredAcc = acc.filter(
-          (obj) => obj.content_object.pk !== current.content_object.pk
-        );
-        return [...filteredAcc, mutatedObj];
+        // Replace old OrderResponse instance with a new one with an updated quantity count
+        return [
+          ...acc.filter(
+            (obj) => obj.content_object.pk !== current.content_object.pk
+          ),
+          mutatedOrderResponse,
+        ];
       } else {
         return [...acc, current];
       }
