@@ -38,11 +38,10 @@ const ShopItem: FC<ShopWindowItemProps> = ({
 export default ShopItem;
 
 const Container = styled.div`
-
   padding: 5px;
   background-color: white;
   border-radius: 3px;
-  width: 350px;
+  width: 300px;
   height: 200px;
   margin: 5px;
   box-shadow: 2px 2px 7px #888888;

@@ -33,7 +33,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d2e8e96-e29b-4011-bc8a-2dc150500517" name="Default Changelist" comment="Red cross left bottom corner, removes one quantity when clicken" />
+    <list default="true" id="8d2e8e96-e29b-4011-bc8a-2dc150500517" name="Default Changelist" comment="Red cross left bottom corner, removes one quantity when clicken">
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shop/ShopWindow/ShopItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shop/ShopWindow/ShopItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shop/ShopWindow/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shop/ShopWindow/index.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +79,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="Debugger_Data_Views_Java" />
     <property name="show.migrate.to.gradle.popup" value="false" />
-    <property name="ts.external.directory.path" value="D:\Git nibble\nibble4\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\IntelliJ IDEA 2020.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -93,6 +99,11 @@
       <workItem from="1616340011976" duration="543000" />
       <workItem from="1617964030716" duration="786000" />
       <workItem from="1617965542959" duration="6300000" />
+      <workItem from="1618744086984" duration="82000" />
+      <workItem from="1618744183179" duration="123000" />
+      <workItem from="1618744458865" duration="238000" />
+      <workItem from="1618745369410" duration="380000" />
+      <workItem from="1619173028682" duration="4650000" />
     </task>
     <task id="LOCAL−00001" summary="Red cross left bottom corner, removes one quantity when clicken">
       <created>1612702139394</created>

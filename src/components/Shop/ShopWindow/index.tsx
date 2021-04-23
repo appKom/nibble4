@@ -32,8 +32,8 @@ const Container = styled.div`
   minus the height from the navbar (30px) + its padding (20px), minus the height from the category bar (30px)
   30px from Navbar height, and minus 0.5 rem as the padding around the store container */
   height: calc(100vh - 30px - 30px - 20px - 20px - 0.5rem);
-
-  overflow: auto;
+  grid-template-columns: repeat(3, 1fr);
+  overflow-x: auto;
 
   ::-webkit-scrollbar {
     width: 8px;
