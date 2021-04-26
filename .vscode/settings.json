@@ -1,5 +1,0 @@
-{
-    "eslint.run": "onSave",
-    "editor.formatOnSave": true,
-    "FSharp.suggestGitignore": false
-}
