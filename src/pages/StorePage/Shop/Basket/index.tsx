@@ -14,10 +14,10 @@ const BasketWindow: FC = () => {
   const { cart, user, inventory } = state;
 
   const totalPrice = calculateCartTotal(cart, inventory);
-  const insufficient = user!.balance - totalPrice <= 0;
+  const insufficient = user!.balance - totalPrice < 0;
 
   const purchase = () => {
-    if (insufficient || totalPrice <= 0) return undefined;
+    if (insufficient || totalPrice < 0) return undefined;
     return dispatch(setModalState(modalTypes.PURCHASE));
   };
 
