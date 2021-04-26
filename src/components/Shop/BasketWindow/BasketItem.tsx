@@ -2,7 +2,6 @@ import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 
-import { removeFromCart } from "state/actions";
 import { deleteItemFromCart } from "state/actions";
 
 import { Product } from "types/inventory";

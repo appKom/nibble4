@@ -54,10 +54,6 @@ const BasketWindow: FC = () => {
 
 export default BasketWindow;
 
-const Title = styled.h2`
-  margin-left: 20px;
-`;
-
 const Container = styled.div`
   display: grid;
   grid-template-rows: 1fr 8fr 1fr 1fr;
