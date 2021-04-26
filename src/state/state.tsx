@@ -41,6 +41,12 @@ const getDecrementedCart = (id: number, state: State) => {
   return { ...removedCart };
 };
 
+const getRemovedCart = (id: number, state: State) => {
+  const removedCart = { ...state.cart };
+  delete removedCart[id];
+  return { ...removedCart };
+};
+
 const StateReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case ActionTypes.SET_USER:
@@ -75,6 +81,12 @@ const StateReducer = (state: State, action: Action): State => {
     }
     case ActionTypes.EMPTY_CART:
       return { ...state, cart: {} };
+    case ActionTypes.DELETE_ITEM_FROM_CART: {
+      return {
+        ...state,
+        cart: getRemovedCart(action.payload, state),
+      };
+    }
     default:
       return { ...state };
   }

@@ -23,13 +23,10 @@ const Item: FC<ItemProps> = ({ product, addItem }: ItemProps) => {
       />
 
       <TextContainer>
-        <span>
-          <b> {product.name} </b>
-        </span>
-
-        <span>
+        <b> {product.name} </b>
+        <div>
           <b>{product.price}</b>kr
-        </span>
+        </div>
       </TextContainer>
     </Container>
   );
@@ -41,13 +38,9 @@ const Container = styled.div`
   padding: 5px;
   background-color: white;
   border-radius: 3px;
-  width: 90%;
-  height: 175px;
-
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 300px;
+  height: 200px;
+  margin: 5px;
   box-shadow: 2px 2px 7px #888888;
 
   display: grid;
@@ -62,7 +55,9 @@ const Container = styled.div`
 `;
 
 const TextContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 6fr 1fr;
+  width: 95%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
