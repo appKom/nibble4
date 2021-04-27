@@ -15,15 +15,19 @@ const Item: FC<ItemProps> = ({ product, addItem }: ItemProps) => {
 
   return (
     <Container onClick={addToCart}>
-      <img
-        src={
-          imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
-        }
-        alt="Product image"
-      />
+      <ImageContainer>
+        <img
+          src={
+            imageSrc ? imageSrc : `${process.env.PUBLIC_URL}/images/noImage.png`
+          }
+          alt="Product image"
+        />
+      </ImageContainer>
 
       <TextContainer>
-        <b> {product.name} </b>
+        <div>
+          <b> {product.name} </b>
+        </div>
         <div>
           <b>{product.price}</b>kr
         </div>
@@ -40,6 +44,7 @@ const Container = styled.div`
   border-radius: 3px;
   width: 90%;
   height: 175px;
+
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
@@ -48,17 +53,19 @@ const Container = styled.div`
 
   display: grid;
   grid-template-rows: 4fr 3fr;
-
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-  }
 `;
 
 const TextContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 6fr 1fr;
+`;
+
+const ImageContainer = styled.div`
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+  }
 `;
