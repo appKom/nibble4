@@ -47,7 +47,7 @@ const QuantityOperator = styled.div`
   align-items: center;
   > svg {
     color: #0d5474;
-    transform: scale(1.5, 1.5);
+    transform: scale(2.5, 2.5);
   }
 `;
 
