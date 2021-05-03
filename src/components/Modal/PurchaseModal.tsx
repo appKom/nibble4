@@ -7,7 +7,6 @@ import Button from "components/Button";
 import purchaseItems from "api/order";
 import { setModalState } from "state/actions";
 import { modalTypes } from "types/modal";
-import useSound from "use-sound";
 
 const styledButton = {
   gridColumn: 2,
@@ -31,25 +30,10 @@ const PurchaseModal: FC = () => {
 
   const totalPrice = calculateCartTotal(cart, inventory);
 
-  const [playKing] = useSound(
-    `${process.env.PUBLIC_URL}/audio/purchase_king.mp3`,
-    {
-      volume: 1,
-    }
-  );
-
-  const [playNice] = useSound(
-    `${process.env.PUBLIC_URL}/audio/purchase_nice.mp3`,
-    {
-      volume: 1,
-    }
-  );
-
   const purchase = () => {
     purchaseItems(user!.pk, cart)
       .then((response) => {
         if (response.ok) {
-          totalPrice >= 100 ? playKing() : playNice();
           dispatch(setModalState(modalTypes.COMPLETE));
         } else dispatch(setModalState(modalTypes.ERROR));
       })
