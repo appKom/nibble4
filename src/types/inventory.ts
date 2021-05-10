@@ -22,7 +22,7 @@ export type CartKeyValue = {
   [name: number]: CartItem;
 };
 
-export const favouritesCategory = "Dine favoritter";
+export const favouritesCategory = "Mest kjøpt";
 
 export const getCategories = (inventory: Product[], user: User): string[] => {
   const baseCategories = inventory.reduce(
