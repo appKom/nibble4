@@ -1,21 +1,14 @@
-import { loadToken } from "api/token";
 import { Product } from "../types/inventory";
 
-export const CLIENT_ID = encodeURIComponent(
-  process.env.REACT_APP_CLIENT_ID || ""
-);
-export const CLIENT_SECRET = encodeURIComponent(
-  process.env.REACT_APP_CLIENT_SECRET || ""
-);
+export const LOGIN_URL = (code: string, rfid: string): string =>
+  `https://nibble4-validator.azurewebsites.net/api/login?code=${code}&&rfid=${rfid}`;
+export const FETCH_INVENTORY_URL = (code: string): string =>
+  `https://nibble4-validator.azurewebsites.net/api/fetchInventory?code=${code}`;
+export const PURCHASE_URL = (code: string): string =>
+  `https://nibble4-validator.azurewebsites.net/api/purchase?code=${code}`;
+export const REGISTER_URL = (code: string): string =>
+  `https://nibble4-validator.azurewebsites.net/api/createUser?code=${code}`;
 
-const API_BASE = process.env.REACT_APP_API_BASE || "";
-export const AUTHORIZE_URI = `${API_BASE}/auth/`;
-export const REGISTER_RFID_URI = `${API_BASE}/rfid/`;
-export const INVENTORY_URI = `${process.env.REACT_APP_API_BASE}/inventory/`;
-export const BALANCE_URI = `${process.env.REACT_APP_API_BASE}/transactions/`; // Update balance
-export const TRANSACTION_URI = `${process.env.REACT_APP_API_BASE}/orderline/`; // purchase item
-export const LOGIN_URI = (rfid: string): string =>
-  `${API_BASE}/usersaldo/?rfid=${rfid}`;
 export const IMAGE_URI = (sm: string): string => `https://online.ntnu.no/${sm}`;
 
 type AJAXArguments = {
@@ -31,21 +24,6 @@ export const get = ({ url, body, headers }: AJAXArguments): Promise<Response> =>
     headers: headers,
   });
 
-export const authorizedGet = ({
-  url,
-  body,
-  headers,
-}: AJAXArguments): Promise<Response> =>
-  get({
-    url,
-    body,
-    headers: {
-      ...headers,
-      Authorization: `Bearer ${loadToken()}`,
-      "Content-Type": "application/json",
-    },
-  });
-
 export const post = ({
   url,
   body,
@@ -57,22 +35,8 @@ export const post = ({
     headers,
   });
 
-export const authorizedPost = ({
-  url,
-  body,
-  headers,
-}: AJAXArguments): Promise<Response> =>
-  post({
-    url,
-    body,
-    headers: {
-      ...headers,
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${loadToken()}`,
-    },
-  });
-
-export const fetchInventory = async (url: string): Promise<Product[]> => {
+export const fetchInventory = async (): Promise<Product[]> => {
+  const url = FETCH_INVENTORY_URL(localStorage.getItem("AZURE_DEFAULT_TOKEN")!);
   const response = await get({ url });
   if (response.ok) {
     const json = await response.json();
