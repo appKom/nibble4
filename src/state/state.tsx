@@ -22,7 +22,7 @@ const initialState: State = {
   inventory: [],
   category: "Alt",
   cart: {},
-  modalState: modalTypes.FAILURE,
+  modalState: modalTypes.DISABLED,
 };
 
 const getIncrementedCartItem = (id: number, state: State): CartItem => {
