@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-const CompleteModal: FC = () => {
+const FailureModal: FC = () => {
   return (
     <Container>
       <h3> Det ser ut til at OW er nede! </h3>
@@ -18,7 +18,7 @@ const CompleteModal: FC = () => {
   );
 };
 
-export default CompleteModal;
+export default FailureModal;
 
 const Container = styled.div`
   text-align: center;
