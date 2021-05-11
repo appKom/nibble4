@@ -6,8 +6,9 @@ const CompleteModal: FC = () => {
     <Container>
       <h3> Det ser ut til at OW er nede! </h3>
       <p>
-        Nibble4 er avhengig av at OW er oppe å kjører. Gjerne meld fra i
-        @support kanalen i slack, eller send en mail til appkom@online.ntnu.no
+        Nibble4 er avhengig av at dotkom sine systemer er oppe å kjører. Gjerne
+        meld fra i @support kanalen i slack, eller send en mail til
+        appkom@online.ntnu.no
       </p>
       <p>
         Hvis du tror dette er en feil, gjerne trykk på den gule pilen og skann
