@@ -7,6 +7,7 @@ import Scanner from "./Scanner";
 import Register from "pages/LoginPage/Register";
 import { StateContext } from "state/state";
 import { shopRoute } from "utility/routes";
+import Modal from "components/Modal";
 
 type RegisterLocation = {
   register?: boolean;
@@ -30,6 +31,7 @@ const LoginPage: FC = () => {
         <CardReader />
       </Card>
       <Instructions />
+      <Modal />
     </Container>
   );
 };

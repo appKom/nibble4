@@ -16,7 +16,9 @@ const App: FC = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await fetchInventory(INVENTORY_URI);
-
+      if (data.length == 0) {
+        dispatch(setModalState(modalTypes.FAILURE));
+      }
       if (!state.inventory.length) {
         dispatch(setInventory(data));
       }

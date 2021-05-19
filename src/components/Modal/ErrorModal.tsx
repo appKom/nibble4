@@ -5,6 +5,7 @@ const CompleteModal: FC = () => {
   return (
     <Container>
       <h3> En feil oppsto! </h3>
+      <p> Det kan hende at OW er nede </p>
       <p> Vennligst logg ut, og prøv igjen</p>
     </Container>
   );
