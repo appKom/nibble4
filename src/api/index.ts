@@ -73,8 +73,8 @@ export const authorizedPost = ({
   });
 
 export const fetchInventory = async (url: string): Promise<Product[]> => {
-  const response = await get({ url });
-  if (response.ok) {
+  const response = await get({ url }).catch(() => Promise.resolve(undefined));
+  if (response && response.ok) {
     const json = await response.json();
     return json.sort((a: Product, b: Product) => (a.name > b.name ? 1 : -1));
   }
