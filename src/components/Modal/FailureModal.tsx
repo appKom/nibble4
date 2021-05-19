@@ -4,7 +4,7 @@ import styled from "styled-components";
 const FailureModal: FC = () => {
   return (
     <Container>
-      <h3> Det ser ut til at OW er nede! </h3>
+      <h3> Uff da, her skjedde en feil </h3>
       <p>
         Nibble4 er avhengig av at dotkom sine systemer er oppe å kjører. Gjerne
         meld fra i @support kanalen i slack, eller send en mail til
