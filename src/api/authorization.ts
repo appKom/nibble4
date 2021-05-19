@@ -19,19 +19,24 @@ const getUser = async (url: string): Promise<Response> => {
   return response;
 };
 
-export const login = async (rfid: string): Promise<UserResponse> => {
+export const login = async (rfid: string): Promise<UserResponse | null> => {
   const url = LOGIN_URI(rfid);
   const response = await getUser(url);
-  const json = await response.json();
-  return json as UserResponse;
+  if (response.ok) {
+    const json = await response.json();
+    return json as UserResponse;
+  } else return null;
 };
 
 export const handleRfid = async (rfid: string): Promise<User | null> => {
   const user = await login(rfid);
-  if (user.count) {
-    // As it returns a weird response
-    const { pk, saldo, first_name } = user.results[0]; // The first and only user
-    return { pk, balance: saldo, first_name };
+  if (user) {
+    //error in req
+    if (user.count) {
+      //user OK
+      const { pk, saldo, first_name } = user.results[0]; // The first and only user
+      return { pk, balance: saldo, first_name };
+    } else return { pk: -1, balance: -1, first_name: "-1" };
   }
   return null;
 };

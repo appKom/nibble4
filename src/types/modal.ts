@@ -4,4 +4,5 @@ export enum modalTypes {
   ERROR = "ERROR",
   DISABLED = "DISABLED",
   INACTIVE = "INACTIVE",
+  FAILURE = "FAILURE",
 }

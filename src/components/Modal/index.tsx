@@ -10,7 +10,7 @@ import PurchaseModal from "./PurchaseModal";
 import CompleteModal from "./CompleteModal";
 import ErrorModal from "./ErrorModal";
 import InactiveModal from "./InactiveModal";
-
+import FailureModal from "./FailureModal";
 const Modal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { modalState } = state;
@@ -29,6 +29,7 @@ const Modal: FC = () => {
       {modalState == modalTypes.COMPLETE ? <CompleteModal /> : null}
       {modalState == modalTypes.ERROR ? <ErrorModal /> : null}
       {modalState == modalTypes.INACTIVE ? <InactiveModal /> : null}
+      {modalState == modalTypes.FAILURE ? <FailureModal /> : null}
     </Container>,
     document.getElementById("root")!
   );
@@ -43,7 +44,7 @@ const Container = styled.div`
 
   width: 400px;
   height: 400px;
-
+  z-index: 100;
   margin: auto;
   margin-top: 10%;
   border-radius: 25px;
