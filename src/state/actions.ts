@@ -70,6 +70,7 @@ export const setInventory = (inventory: Product[]): SetInventoryAction => ({
   type: ActionTypes.SET_INVENTORY,
   payload: inventory,
 });
+
 export const addToCart = (id: number): AddToCartAction => ({
   type: ActionTypes.ADD_TO_CART,
   payload: id,

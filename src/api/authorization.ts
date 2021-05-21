@@ -7,14 +7,14 @@ import {
 import { UserResponse } from "types/api";
 import { User } from "types/user";
 import { fetchToken } from "api/token";
+import { getFavourites } from "./favourites";
 
 const getUser = async (url: string): Promise<Response> => {
   const response = await authorizedGet({ url });
   // No token
   if (response.status == 401) {
     await fetchToken();
-    const retryResponse = await authorizedGet({ url });
-    return retryResponse;
+    return await authorizedGet({ url });
   }
   return response;
 };
@@ -35,8 +35,9 @@ export const handleRfid = async (rfid: string): Promise<User | null> => {
     if (user.count) {
       //user OK
       const { pk, saldo, first_name } = user.results[0]; // The first and only user
-      return { pk, balance: saldo, first_name };
-    } else return { pk: -1, balance: -1, first_name: "-1" };
+      const favourites = await getFavourites(pk);
+      return { pk, balance: saldo, first_name, favourites };
+    } else return { pk: -1, balance: -1, first_name: "-1", favourites: [] };
   }
   return null;
 };

@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { INVENTORY_URI } from "./api/";
 import { StateContext } from "./state/state";
 import { setInventory } from "./state/actions";
-import { fetchInventory } from "./api/";
 import { useIdleTimer } from "react-idle-timer";
 import { modalTypes } from "types/modal";
 import { setModalState } from "state/actions";
+import fetchInventory from "./api/inventory";
 
 const App: FC = () => {
   const { state, dispatch } = useContext(StateContext);

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { OnlineOrange, OffWhite } from "utility/style";
 import { StateContext } from "state/state";
 import { addToCart } from "state/actions";
+import { favouritesCategory } from "types/inventory";
 import Item from "./Item";
 
 const ShopWindow: FC = () => {
@@ -10,10 +11,21 @@ const ShopWindow: FC = () => {
 
   const addItem = (id: number) => dispatch(addToCart(id));
 
-  const shopItems = state.inventory.map((item) => {
-    if (item.category.name === state.category || state.category === "Alt")
-      return <Item key={item.pk} product={item} addItem={addItem} />;
-  });
+  const shopItems =
+    state.category === favouritesCategory
+      ? state.user?.favourites
+          .filter((product) =>
+            state.inventory.some(
+              (activeProduct) => activeProduct.pk === product.pk
+            )
+          )
+          .map((item) => {
+            return <Item key={item.pk} product={item} addItem={addItem} />;
+          })
+      : state.inventory.map((item) => {
+          if (item.category.name === state.category || state.category === "Alt")
+            return <Item key={item.pk} product={item} addItem={addItem} />;
+        });
 
   return <Container>{shopItems}</Container>;
 };
