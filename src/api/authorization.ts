@@ -21,8 +21,8 @@ const getUser = async (url: string): Promise<Response> => {
 
 export const login = async (rfid: string): Promise<UserResponse | null> => {
   const url = LOGIN_URI(rfid);
-  const response = await getUser(url);
-  if (response.ok) {
+  const response = await getUser(url).catch(() => Promise.resolve(undefined));
+  if (response && response.ok) {
     const json = await response.json();
     return json as UserResponse;
   } else return null;
