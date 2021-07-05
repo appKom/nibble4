@@ -15,15 +15,12 @@ import { StateContext } from "state/state";
 import { registerCardRoute } from "utility/routes";
 import { modalTypes } from "types/modal";
 import { setModalState } from "state/actions";
-import { PacmanLoader } from "react-spinners";
-import { OnlineOrange } from "utility/style";
 
 const Login: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { dispatch } = useContext(StateContext);
   const [registerCard, setRegisterCard] = useState(false);
   const [rfid, setRfid] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
 
   const focusInput = () => {
     if (inputRef.current) inputRef.current.focus();
@@ -44,9 +41,9 @@ const Login: FC = () => {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!rfid.trim()) return;
-    setLoading(true);
+    dispatch(setModalState(modalTypes.LOADING));
     const user = await handleRfid(rfid).then((user) => {
-      setLoading(false);
+      dispatch(setModalState(modalTypes.DISABLED));
       return user;
     });
     if (!user) {
@@ -60,22 +57,14 @@ const Login: FC = () => {
   if (registerCard) return <Redirect to={registerCardRoute(rfid)} />;
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
-        <HiddenInput
-          type="text"
-          ref={inputRef}
-          value={rfid}
-          onChange={onChange}
-        />
-      </form>
-      <PacmanLoader
-        color={OnlineOrange}
-        loading={loading}
-        size={150}
-        css={"display: block; margin:  0 auto;"}
+    <form onSubmit={onSubmit}>
+      <HiddenInput
+        type="text"
+        ref={inputRef}
+        value={rfid}
+        onChange={onChange}
       />
-    </>
+    </form>
   );
 };
 
