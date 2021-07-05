@@ -5,4 +5,5 @@ export enum modalTypes {
   DISABLED = "DISABLED",
   INACTIVE = "INACTIVE",
   FAILURE = "FAILURE",
+  LOADING = "LOADING",
 }
