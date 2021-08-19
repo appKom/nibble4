@@ -38,18 +38,11 @@ const PurchaseModal: FC = () => {
     }
   );
 
-  const [playNice] = useSound(
-    `${process.env.PUBLIC_URL}/audio/purchase_nice.mp3`,
-    {
-      volume: 1,
-    }
-  );
-
   const purchase = () => {
     purchaseItems(user!.pk, cart)
       .then((response) => {
         if (response.ok) {
-          totalPrice >= 100 ? playKing() : playNice();
+          if (totalPrice >= 100) playKing();
           dispatch(setModalState(modalTypes.COMPLETE));
         } else dispatch(setModalState(modalTypes.ERROR));
       })
