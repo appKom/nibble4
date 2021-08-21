@@ -14,6 +14,8 @@ const fetchPreviousPurchases = async (
 };
 
 export const getFavourites = async (pk: number): Promise<Product[]> => {
+  const favouriteThreshold = 3; // Products bought three times or more in the latest purchases are considered favourites
+
   const previousPurchase = await fetchPreviousPurchases(pk);
   return previousPurchase
     .flatMap((previousPurchase) => previousPurchase.orders)
@@ -40,7 +42,7 @@ export const getFavourites = async (pk: number): Promise<Product[]> => {
         return [...acc, current];
       }
     }, [] as OrderResponse[])
-    .filter((orderResponse) => orderResponse.quantity >= 5) // Only display products that the users have bought 5 times or more
+    .filter((orderResponse) => orderResponse.quantity >= favouriteThreshold) // Only display products that the users have bought 3 times or more
     .sort((p1, p2) => p2.quantity - p1.quantity) // Sort by descending purchase quantity
     .map((orderResponse) => orderResponse.content_object);
 };
