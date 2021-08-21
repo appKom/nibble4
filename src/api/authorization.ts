@@ -36,7 +36,7 @@ export const handleRfid = async (rfid: string): Promise<User | null> => {
       //user OK
       const { pk, saldo, first_name } = user.results[0]; // The first and only user
       const favourites = await getFavourites(pk);
-      return { pk, balance: saldo, first_name, favourites };
+      return { pk, balance: saldo, first_name, favourites: favourites };
     } else return { pk: -1, balance: -1, first_name: "-1", favourites: [] };
   }
   return null;

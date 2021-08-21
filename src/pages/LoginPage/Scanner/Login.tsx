@@ -41,7 +41,11 @@ const Login: FC = () => {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!rfid.trim()) return;
-    const user = await handleRfid(rfid);
+    dispatch(setModalState(modalTypes.LOADING));
+    const user = await handleRfid(rfid).then((user) => {
+      dispatch(setModalState(modalTypes.DISABLED));
+      return user;
+    });
     if (!user) {
       dispatch(setModalState(modalTypes.FAILURE));
       return;
