@@ -13,7 +13,7 @@ const CategoryBar: FC = () => {
   useEffect(() => {
     // If the logged in user has a substantial amount of products previously purchased,
     // automatically set the category to "Dine favoritter".
-    if (state.user && state.user.favourites.length >= 6) {
+    if (state.user && state.user.favourites.length >= 3) {
       dispatch(setCategory(favouritesCategory));
     }
     setInitialized(true);
