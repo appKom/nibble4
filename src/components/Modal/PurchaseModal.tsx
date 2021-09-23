@@ -49,7 +49,6 @@ const PurchaseModal: FC = () => {
         } else dispatch(setModalState(modalTypes.ERROR));
       })
       .catch(() => dispatch(setModalState(modalTypes.ERROR)));
-    console.log("Purchased");
     setButtonClicked(true);
   };
 
