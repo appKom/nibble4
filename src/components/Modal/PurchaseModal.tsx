@@ -1,4 +1,4 @@
-import React, { useContext, FC } from "react";
+import React, { useContext, FC, useState } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 import { calculateCartTotal } from "types/inventory";
@@ -28,6 +28,7 @@ const styledText = {
 const PurchaseModal: FC = () => {
   const { state, dispatch } = useContext(StateContext);
   const { cart, inventory, user } = state;
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   const totalPrice = calculateCartTotal(cart, inventory);
 
@@ -39,6 +40,7 @@ const PurchaseModal: FC = () => {
   );
 
   const purchase = () => {
+    if (buttonClicked) return;
     purchaseItems(user!.pk, cart)
       .then((response) => {
         if (response.ok) {
@@ -47,6 +49,8 @@ const PurchaseModal: FC = () => {
         } else dispatch(setModalState(modalTypes.ERROR));
       })
       .catch(() => dispatch(setModalState(modalTypes.ERROR)));
+    console.log("Purchased");
+    setButtonClicked(true);
   };
 
   return (
