@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { Product } from "types/inventory";
-import { IMAGE_URI } from "api";
 
 type ItemProps = {
   product: Product;
@@ -9,7 +8,7 @@ type ItemProps = {
 };
 
 const Item: FC<ItemProps> = ({ product, addItem }: ItemProps) => {
-  const imageSrc = product.image ? IMAGE_URI(product.image.sm) : "";
+  const imageSrc = product.image ? product.image.sm : "";
 
   const addToCart = () => addItem(product.pk);
 
