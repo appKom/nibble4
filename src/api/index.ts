@@ -17,7 +17,6 @@ export const PREVIOUS_ORDERS_URI = (pk: number): string =>
   `${API_BASE}/orderline/userorders/?pk=${pk}`;
 export const LOGIN_URI = (rfid: string): string =>
   `${API_BASE}/usersaldo/?rfid=${rfid}`;
-export const IMAGE_URI = (sm: string): string => `https://online.ntnu.no/${sm}`;
 
 type AJAXArguments = {
   url: string;

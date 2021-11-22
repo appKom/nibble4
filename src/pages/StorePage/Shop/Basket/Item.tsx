@@ -2,7 +2,6 @@ import React, { useContext, FC } from "react";
 import styled from "styled-components";
 import { StateContext } from "state/state";
 import { Product } from "types/inventory";
-import { IMAGE_URI } from "api";
 import { deleteItemFromCart } from "state/actions";
 import QuantityInput from "./QuantityInput";
 
@@ -15,7 +14,7 @@ const Item: FC<ItemProps> = ({ id, quantity }: ItemProps) => {
   const { state, dispatch } = useContext(StateContext);
 
   const item: Product = state.inventory.find((e) => e.pk === id)!;
-  const imageSrc = item.image ? IMAGE_URI(item.image.sm) : "";
+  const imageSrc = item.image ? item.image.sm : "";
 
   return (
     <Container>
