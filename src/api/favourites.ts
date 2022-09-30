@@ -17,13 +17,15 @@ export const getFavourites = async (pk: number): Promise<Product[]> => {
   const favouriteThreshold = 3; // Products bought three times or more in the latest purchases are considered favourites
 
   const previousPurchase = await fetchPreviousPurchases(pk);
+
   return previousPurchase
     .flatMap((previousPurchase) => previousPurchase.orders)
     .reduce((acc, current) => {
       // Accumulate all purchase quantities for each product
-      const existingOrderResponse = acc.find(
-        (orderResponse) =>
-          orderResponse.content_object.pk === current.content_object.pk
+      const existingOrderResponse = acc.find((orderResponse) =>
+        orderResponse.content_object && current.content_object
+          ? orderResponse.content_object.pk === current.content_object.pk
+          : null
       );
       if (existingOrderResponse) {
         // Update array in an immutable-friendly way
@@ -33,8 +35,10 @@ export const getFavourites = async (pk: number): Promise<Product[]> => {
         };
         // Replace old OrderResponse instance with a new one with an updated quantity count
         return [
-          ...acc.filter(
-            (obj) => obj.content_object.pk !== current.content_object.pk
+          ...acc.filter((obj) =>
+            obj.content_object && current.content_object
+              ? obj.content_object.pk !== current.content_object.pk
+              : null
           ),
           mutatedOrderResponse,
         ];
